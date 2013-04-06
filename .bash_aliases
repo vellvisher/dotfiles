@@ -10,3 +10,15 @@ alias ..='cd ..'
 
 # grep
 alias grep='grep --color=auto'
+
+# mkdir
+alias mkdir='mkdir -pv'
+
+# install colordiff
+alias diff='colordiff'
+
+# vim as default
+alias vi='vim'
+alias svi='sudo vi'
+alias vis='vim "+set si"'
+alias edit='vim'
