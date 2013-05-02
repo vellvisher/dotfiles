@@ -5,4 +5,4 @@ Dotfiles
 
 Aliases
 =======
-Add `source $HOME/.bash_aliases`
+Add `source $HOME/.bash_aliases` to `.bashrc`
