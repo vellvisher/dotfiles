@@ -114,3 +114,6 @@ source $HOME/.vim/abbreviations.vim
 
 " Add keybindings
 source $HOME/.vim/keybindings.vim
+
+" Add omnicomplete for filetypes
+source $HOME/.vim/languages_omni.vim
