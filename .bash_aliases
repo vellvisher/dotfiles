@@ -1,9 +1,19 @@
 # ls
-alias l='ls --color=auto'
-alias ll='ls -l --color=auto'
-alias la='ls -a --color=auto'
-alias lla='ls -la --color=auto'
-alias l.='ls -d .* --color=auto'
+if [ "$(uname)" == "Darwin" ]; then
+    export CLICOLOR=1
+    export LSCOLORS=GxFxCxDxBxegedabagaced
+    COLOR_COMMAND=' -G'
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    COLOR_COMMAND=' --color=auto'
+fi
+DEFAULT_LS=' -Fh'$COLOR_COMMAND
+
+alias l='ls'$DEFAULT_LS
+alias ls='ls'$DEFAULT_LS
+alias ll='ls -l'$DEFAULT_LS
+alias la='ls -a'$DEFAULT_LS
+alias lla='ls -la'$DEFAULT_LS
+alias lh='ls -d'$DEFAULT_LS' .*'
 
 # cd
 alias ..='cd ..'
