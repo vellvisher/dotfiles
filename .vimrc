@@ -4,6 +4,7 @@
 "" Remove vi compatibility
 set nocompatible
 
+filetype on
 filetype off
 filetype plugin indent on
 syntax on
