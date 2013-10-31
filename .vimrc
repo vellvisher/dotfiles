@@ -116,9 +116,11 @@ nnoremap ; :
 " Add balloon tips for folded lines and mispelled words
 autocmd BufEnter *.txt set spell
 
-"Vimdiff use c-j and c-k to navigate
-nnoremap <C-j> ]c
-nnoremap <C-k> [c
+if &diff
+    "Vimdiff use c-j and c-k to navigate
+    nnoremap <C-j> ]c
+    nnoremap <C-k> [c
+endif
 
 "ERROR line below does not work
 "autocmd BufEnter *.txt so $HOME/.vim/balloon.vim
