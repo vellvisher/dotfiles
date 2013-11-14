@@ -16,6 +16,9 @@ set smartindent
 """ set autoindent
 xnoremap p pgvy
 
+set visualbell                  "No sounds
+set autoread                    "Reload files changed outside vim
+
 " Mouse and backspace
 set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
@@ -121,6 +124,14 @@ if &diff
     nnoremap <C-j> ]c
     nnoremap <C-k> [c
 endif
+
+" ================ Persistent Undo ==================
+" " Keep undo history across sessions, by storing in file.
+" " Only works all the time.
+"
+silent !mkdir ~/.vim/backups > /dev/null 2>&1
+set undodir=~/.vim/backups
+set undofile
 
 "ERROR line below does not work
 "autocmd BufEnter *.txt so $HOME/.vim/balloon.vim
