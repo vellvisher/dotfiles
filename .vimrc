@@ -144,3 +144,7 @@ source $HOME/.vim/keybindings.vim
 
 " Add omnicomplete for filetypes
 source $HOME/.vim/languages_omni.vim
+
+" Fix vim autocomplete
+" Prevent vim from inserting the word automatically
+set completeopt=longest,menuone
