@@ -35,3 +35,6 @@ alias edit='vim'
 
 # color tree
 alias tree='tree -C'
+
+# git alias
+alias g=git

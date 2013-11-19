@@ -148,3 +148,7 @@ source $HOME/.vim/languages_omni.vim
 " Fix vim autocomplete
 " Prevent vim from inserting the word automatically
 set completeopt=longest,menuone
+
+let mapleader = ","
+
+so $HOME/.vim/settings.vim
