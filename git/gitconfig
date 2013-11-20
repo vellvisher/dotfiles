@@ -1,0 +1,15 @@
+[user]
+	email = vaarnan@gmail.com
+	name = Vaarnan Drolia
+[push]
+	default = simple
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	d = difftool
+[core]
+  autocrlf = input
+  editor = vim
+  excludesfile = ~/.gitignore_global
