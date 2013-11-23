@@ -11,6 +11,14 @@
 	prompt = false
 [alias]
 	d = difftool
+
+    # log
+    l = log --graph --oneline --date=short
+    changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
+    short = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
+    changelog = log --pretty=format:\" * %s\"
+    shortnocolor = log --pretty=format:\"%h %cr %cn %s\"
+
 [core]
   autocrlf = input
   editor = vim

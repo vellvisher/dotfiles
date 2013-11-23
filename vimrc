@@ -55,6 +55,9 @@ vmap <S-Tab> <gv
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/ 
 
+" Look for tags recursively
+set tags=tags;/
+
 " Showing line numbers and length
 set number  " show line numbers
 set tw=79   " width of document (used by gd)
@@ -118,12 +121,6 @@ nnoremap ; :
 
 " Add balloon tips for folded lines and mispelled words
 autocmd BufEnter *.txt set spell
-
-if &diff
-    "Vimdiff use c-j and c-k to navigate
-    nnoremap <C-j> ]c
-    nnoremap <C-k> [c
-endif
 
 " ================ Persistent Undo ==================
 " " Keep undo history across sessions, by storing in file.

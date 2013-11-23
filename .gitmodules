@@ -22,3 +22,9 @@
 [submodule "vim/bundle/vim-misc"]
 	path = vim/bundle/vim-misc
 	url = git@github.com:xolox/vim-misc.git
+[submodule "vim/bundle/vim-autotag"]
+	path = vim/bundle/vim-autotag
+	url = git://github.com/craigemery/vim-autotag.git
+[submodule "vim/bundle/splitjoin"]
+	path = vim/bundle/splitjoin
+	url = git://github.com/AndrewRadev/splitjoin.vim.git
