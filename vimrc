@@ -146,3 +146,5 @@ set completeopt=longest,menuone
 let mapleader = ","
 
 so $HOME/.vim/settings.vim
+
+:let g:session_autosave = 'no'
