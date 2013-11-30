@@ -38,3 +38,7 @@ alias tree='tree -C'
 
 # git alias
 alias g=git
+
+dev() {
+    cd $HOME/dev/$1
+}
