@@ -22,9 +22,6 @@ set laststatus=2
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
-:nmap <C-t> :tabnew<CR>
-:imap <C-t> <Esc>:tabnew<CR>
-
 "Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -90,7 +87,7 @@ set noswapfile
 " " curl -so ~/.vim/autoload/pathogen.vim
 " https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
 " " Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-call pathogen#infect()
+execute pathogen#infect()
 syntax on
 filetype off
 filetype plugin indent on
