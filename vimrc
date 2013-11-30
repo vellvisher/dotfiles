@@ -4,11 +4,6 @@
 "" Remove vi compatibility
 set nocompatible
 
-filetype on
-filetype off
-filetype plugin indent on
-syntax on
-
 set ruler
 set showcmd
 set smartindent
@@ -96,6 +91,10 @@ set noswapfile
 " https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
 " " Now you can install any plugin into a .vim/bundle/plugin-name/ folder
 call pathogen#infect()
+syntax on
+filetype off
+filetype plugin indent on
+
 """au FileType javascript call JavaScriptFold()
 
 " map control-backspace to delete the previous word
@@ -138,10 +137,7 @@ source $HOME/.vim/abbreviations.vim
 
 " Add omnicomplete for filetypes
 source $HOME/.vim/languages_omni.vim
-
-" Fix vim autocomplete
-" Prevent vim from inserting the word automatically
-set completeopt=longest,menuone
+set completeopt-=preview
 
 let mapleader = ","
 
