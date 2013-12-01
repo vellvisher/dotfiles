@@ -42,3 +42,6 @@ alias g=git
 dev() {
     cd $HOME/dev/$1
 }
+
+# tmux
+alias tmux="TERM=screen-256color-bce tmux"
