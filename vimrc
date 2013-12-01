@@ -140,4 +140,4 @@ let mapleader = ","
 
 so $HOME/.vim/settings.vim
 
-:let g:session_autosave = 'no'
+let g:session_autosave = 'no'
