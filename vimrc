@@ -58,10 +58,6 @@ set fo-=t   " don't automatically wrap text when typing
 set colorcolumn=80
 highlight ColorColumn guibg=#FFF
 
-set t_Co=256
-let g:molokai_original = 1
-color molokai
-
 " Real programmers don't use TABs but spaces
 
 set tabstop=4
@@ -87,10 +83,14 @@ set noswapfile
 " " curl -so ~/.vim/autoload/pathogen.vim
 " https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
 " " Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-execute pathogen#infect()
+call pathogen#infect()
+set t_Co=256
 syntax on
 filetype off
 filetype plugin indent on
+
+let g:molokai_original = 0
+colorscheme molokai
 
 """au FileType javascript call JavaScriptFold()
 
