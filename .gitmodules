@@ -52,3 +52,9 @@
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
+[submodule "/home/v/dev/dotfiles/vim/bundle/vim-autoclose"]
+	path = /home/v/dev/dotfiles/vim/bundle/vim-autoclose
+	url = git@github.com:Townk/vim-autoclose.git
+[submodule "/home/v/dev/dotfiles/vim/bundle/vim-yankstack"]
+	path = /home/v/dev/dotfiles/vim/bundle/vim-yankstack
+	url = git@github.com:maxbrunsfeld/vim-yankstack
