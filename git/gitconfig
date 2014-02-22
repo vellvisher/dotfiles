@@ -10,8 +10,12 @@
 [difftool]
 	prompt = false
 [alias]
+    b = branch
+    ci = commit
+    co = checkout
 	d = difftool
-    s = status -s
+    s = status
+    ss = status -s
 
     # log
     l = log --graph --oneline --date=short
