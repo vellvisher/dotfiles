@@ -52,9 +52,15 @@
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
-[submodule "/home/v/dev/dotfiles/vim/bundle/vim-autoclose"]
-	path = /home/v/dev/dotfiles/vim/bundle/vim-autoclose
+[submodule "vim/bundle/vim-autoclose"]
+	path = vim/bundle/vim-autoclose
 	url = git@github.com:Townk/vim-autoclose.git
-[submodule "/home/v/dev/dotfiles/vim/bundle/vim-yankstack"]
-	path = /home/v/dev/dotfiles/vim/bundle/vim-yankstack
+[submodule "vim/bundle/vim-yankstack"]
+	path = vim/bundle/vim-yankstack
 	url = git@github.com:maxbrunsfeld/vim-yankstack
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = git@github.com:scrooloose/nerdtree.git
+[submodule "vim/bundle/vim-matchit"]
+	path = vim/bundle/vim-matchit
+	url = git@github.com:tsaleh/vim-matchit.git
