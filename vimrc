@@ -141,4 +141,11 @@ let mapleader = ","
 
 so $HOME/.vim/settings.vim
 
+if has("unix")
+  let s:uname = system("uname")
+  if system("uname") == "Darwin\n"
+    so $HOME/.vim/settings_mac.vim
+  endif
+endif
+
 let g:session_autosave = 'no'
