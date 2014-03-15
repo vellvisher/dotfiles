@@ -29,11 +29,6 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " Better copy & paste
-" When you want to paste large blocks of code into vim, press F2 before you
-" paste. At the bottom you should see ``-- INSERT (paste) --``.
-
-" TODO: Remove after testing paste_fix plugin
-" set pastetoggle=<F2>
 set clipboard=unnamed
 
 " easier moving of code blocks
