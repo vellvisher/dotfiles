@@ -30,7 +30,7 @@ alias diff='colordiff'
 # vim as default
 alias vi='vim'
 alias svi='sudo vi'
-alias vis='vim "+set si"'
+# alias vis='vim "+set si"'
 alias edit='vim'
 
 # color tree
