@@ -22,12 +22,6 @@ set laststatus=2
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
-"Easy window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
 " Better copy & paste
 set clipboard=unnamed
 
