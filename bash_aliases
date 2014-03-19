@@ -38,6 +38,8 @@ alias tree='tree -C'
 
 # git alias
 alias g=git
+alias gr='if [ "`git rev-parse --show-cdup`" != "" ]; then cd `git rev-parse --show-cdup`; fi'
+
 
 dev() {
     cd $HOME/dev/$1
