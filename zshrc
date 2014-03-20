@@ -30,4 +30,3 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 source ~/.aliases
-export TERM=screen-256color
