@@ -1,9 +1,9 @@
 # ls
-if [ "$(uname)" == "Darwin" ]; then
+if [[ "$(uname)" == "Darwin" ]]; then
     export CLICOLOR=1
     export LSCOLORS=GxFxCxDxBxegedabagaced
     COLOR_COMMAND=' -G'
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
     COLOR_COMMAND=' --color=auto'
 fi
 DEFAULT_LS=' -Fh'$COLOR_COMMAND
@@ -34,7 +34,7 @@ alias svi='sudo vi'
 alias edit='vim'
 
 # color tree
-alias tree='tree -C'
+# alias tree='tree -C'
 
 # git alias
 alias g=git
