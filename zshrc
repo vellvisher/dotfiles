@@ -24,9 +24,20 @@ export ZSH_THEME="vellvisher"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx brew)
+plugins=(git osx brew battery vi-mode virtualenvwrapper web-search tmux)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 source ~/.aliases
+
+# Enable autocorrect only for commands, not arguments
+unsetopt correct_all
+setopt correct
+
+# Unicode support for vim
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# Add brew path earlier for exuberant ctags to work
+export PATH=/usr/local/bin:$PATH
