@@ -24,7 +24,7 @@ export ZSH_THEME="vellvisher"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx brew battery vi-mode virtualenvwrapper web-search tmux)
+plugins=(git osx brew battery vi-mode virtualenvwrapper web-search)
 
 source $ZSH/oh-my-zsh.sh
 
