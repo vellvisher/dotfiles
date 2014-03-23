@@ -41,3 +41,6 @@ export LANG=en_US.UTF-8
 
 # Add brew path earlier for exuberant ctags to work
 export PATH=/usr/local/bin:$PATH
+
+# Change timeout for vi-mode to 0.1s
+export KEYTIMEOUT=1
