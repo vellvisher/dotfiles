@@ -1,5 +1,5 @@
 " ============================
 " SplitJoin plugin
 " ============================
-nmap sj :SplitjoinSplit<cr>
-nmap sk :SplitjoinJoin<cr>
+nnoremap sj :SplitjoinSplit<cr>
+nnoremap sk :SplitjoinJoin<cr>

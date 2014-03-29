@@ -25,13 +25,6 @@ autocmd! bufwritepost .vimrc source %
 " Better copy & paste
 set clipboard=unnamed
 
-" easier moving of code blocks
-" Try to go into visual mode (v), thenselect several lines of code here and
-" then press ``>`` several times.
-" vnoremap < <gv  " better indentation
-" vnoremap > >gv  " better indentation
-vmap <Tab> >gv
-vmap <S-Tab> <gv
 " Show whitespace
 " MUST be inserted BEFORE the colorscheme command
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
