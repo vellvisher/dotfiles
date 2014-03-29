@@ -88,7 +88,7 @@ colorscheme molokai
 :imap <C-BS> <C-W>
 
 " Disabe ex mode
-:map Q <Nop>
+noremap Q <Nop>
 
 " Gvim settings 
 if has('gui_running')

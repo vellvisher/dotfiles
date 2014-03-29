@@ -1,1 +1,1 @@
-map <Leader>m :w<CR>:make!<CR> 
+noremap <Leader>m :w<CR>:make!<CR> 

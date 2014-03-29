@@ -1,1 +1,1 @@
-map <Leader>s :w<CR>
+noremap <Leader>s :w<CR>
