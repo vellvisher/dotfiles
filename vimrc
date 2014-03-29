@@ -102,9 +102,6 @@ set cursorline
 "Spell checker options
 set spellsuggest=5
 
-"Remap : to ;
-nnoremap ; :
-
 " Add balloon tips for folded lines and mispelled words
 autocmd BufEnter *.txt set spell
 
