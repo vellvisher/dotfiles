@@ -1,1 +1,1 @@
-map <Leader>e :Explore<CR>
+noremap <Leader>e :Explore<CR>
