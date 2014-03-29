@@ -126,5 +126,3 @@ if has("unix")
     so $HOME/.vim/settings_mac.vim
   endif
 endif
-
-let g:session_autosave = 'no'
