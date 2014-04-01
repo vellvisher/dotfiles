@@ -80,10 +80,6 @@ colorscheme molokai
 " map control-backspace to delete the previous word
 :imap <C-BS> <C-W>
 
-" Disabe ex mode
-noremap Q <Nop>
-
-" Gvim settings 
 if has('gui_running')
     source $HOME/.vim/gui_settings.vim
 endif
@@ -117,6 +113,11 @@ source $HOME/.vim/languages_omni.vim
 set completeopt-=preview
 
 let mapleader = ","
+
+" Replace Ex-Mode with ,
+noremap Q ,
+
+" Gvim settings 
 
 so $HOME/.vim/settings.vim
 
