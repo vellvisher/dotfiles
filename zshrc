@@ -29,6 +29,14 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 source ~/.aliases
 
+if [ -f ~/.aliases_linux ]; then
+    source ~/.aliases_linux
+fi
+
+if [ -f ~/.aliases_osx ]; then
+    source ~/.aliases_osx
+fi
+
 # Enable autocorrect only for commands, not arguments
 unsetopt correct_all
 setopt correct
