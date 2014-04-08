@@ -25,11 +25,6 @@ autocmd! bufwritepost .vimrc source %
 " Better copy & paste
 set clipboard=unnamed
 
-" Show whitespace
-" MUST be inserted BEFORE the colorscheme command
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/ 
-
 " Look for tags recursively
 set tags=tags;/
 
