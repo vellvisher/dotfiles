@@ -62,6 +62,7 @@ set noswapfile
 " https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
 " " Now you can install any plugin into a .vim/bundle/plugin-name/ folder
 call pathogen#infect()
+Helptags
 set t_Co=256
 syntax on
 filetype off
