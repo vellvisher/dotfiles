@@ -26,6 +26,7 @@
     shortnocolor = log --pretty=format:\"%h %cr %cn %s\"
 
 [core]
-  autocrlf = input
-  editor = vim
-  excludesfile = ~/.gitignore_global
+    autocrlf = input
+    editor = vim
+    excludesfile = ~/.gitignore_global
+	pager = less -F -X
