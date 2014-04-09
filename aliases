@@ -39,7 +39,9 @@ alias edit='vim'
 # git alias
 alias g=git
 alias gr='if [ "`git rev-parse --show-cdup`" != "" ]; then cd `git rev-parse --show-cdup`; fi'
-
+alias gg='git g'
+alias gdd='git d'
+alias gdc='git d --cached'
 
 dev() {
     cd $HOME/dev/$1
