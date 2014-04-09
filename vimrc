@@ -68,7 +68,7 @@ syntax on
 filetype off
 filetype plugin indent on
 
-let g:molokai_original = 0
+let g:molokai_original = 1
 colorscheme molokai
 
 """au FileType javascript call JavaScriptFold()
