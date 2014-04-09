@@ -22,7 +22,7 @@ export ZSH_THEME="vellvisher"
 # Uncomment following line if you want disable red dots displayed while waiting for completion
 # DISABLE_COMPLETION_WAITING_DOTS="true"
 
-plugins=(git osx brew battery vi-mode virtualenvwrapper web-search)
+plugins=(git osx brew battery pyenv vi-mode virtualenvwrapper web-search)
 
 source $ZSH/oh-my-zsh.sh
 
