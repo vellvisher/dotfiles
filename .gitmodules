@@ -82,3 +82,6 @@
 [submodule "vim/bundle/camelcasemotion"]
 	path = vim/bundle/camelcasemotion
 	url = git@github.com:vim-scripts/camelcasemotion
+[submodule "vim/bundle/tmuxline"]
+	path = vim/bundle/tmuxline
+	url = git@github.com:edkolev/tmuxline.vim.git
