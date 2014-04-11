@@ -73,9 +73,6 @@
 [submodule "vim/bundle/hardmode"]
 	path = vim/bundle/hardmode
 	url = git://github.com/wikitopian/hardmode.git
-[submodule "vim/bundle/vim-trailing-whitespace"]
-	path = vim/bundle/vim-trailing-whitespace
-	url = git@github.com:bronson/vim-trailing-whitespace.git
 [submodule "vim/bundle/delimitMate"]
 	path = vim/bundle/delimitMate
 	url = git@github.com:Raimondi/delimitMate
@@ -85,3 +82,6 @@
 [submodule "vim/bundle/tmuxline"]
 	path = vim/bundle/tmuxline
 	url = git@github.com:edkolev/tmuxline.vim.git
+[submodule "vim/bundle/vim-bad-whitespace"]
+	path = vim/bundle/vim-bad-whitespace
+	url = git@github.com:bitc/vim-bad-whitespace
