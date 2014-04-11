@@ -85,3 +85,6 @@
 [submodule "vim/bundle/vim-bad-whitespace"]
 	path = vim/bundle/vim-bad-whitespace
 	url = git@github.com:bitc/vim-bad-whitespace
+[submodule "vim/bundle/vim-unimpaired"]
+	path = vim/bundle/vim-unimpaired
+	url = git@github.com:tpope/vim-unimpaired
