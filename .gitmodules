@@ -88,3 +88,6 @@
 [submodule "vim/bundle/vim-unimpaired"]
 	path = vim/bundle/vim-unimpaired
 	url = git@github.com:tpope/vim-unimpaired
+[submodule "vim/bundle/ag"]
+	path = vim/bundle/ag
+	url = git@github.com:rking/ag.vim
