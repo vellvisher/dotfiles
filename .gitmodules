@@ -37,9 +37,6 @@
 [submodule "vim/bundle/vim-repeat"]
 	path = vim/bundle/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
-[submodule "vim/bundle/molokai"]
-	path = vim/bundle/molokai
-	url = git@github.com:vellvisher/molokai.git
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
 	url = git@github.com:altercation/vim-colors-solarized.git
@@ -91,3 +88,6 @@
 [submodule "vim/bundle/ag"]
 	path = vim/bundle/ag
 	url = git@github.com:rking/ag.vim
+[submodule "vim/bundle/molokai"]
+	path = vim/bundle/molokai
+	url = git@github.com:tomasr/molokai.git
