@@ -113,7 +113,7 @@ let mapleader = ","
 " Replace Ex-Mode with ,
 noremap Q ,
 
-" Gvim settings 
+" Gvim settings
 
 so $HOME/.vim/settings.vim
 
