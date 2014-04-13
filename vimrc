@@ -87,9 +87,6 @@ set cursorline
 "Spell checker options
 set spellsuggest=5
 
-" Add balloon tips for folded lines and mispelled words
-autocmd BufEnter *.txt set spell
-
 " ================ Persistent Undo ==================
 " " Keep undo history across sessions, by storing in file.
 " " Only works all the time.
@@ -97,9 +94,6 @@ autocmd BufEnter *.txt set spell
 silent !mkdir ~/.vim/backups > /dev/null 2>&1
 set undodir=~/.vim/backups
 set undofile
-
-"ERROR line below does not work
-"autocmd BufEnter *.txt so $HOME/.vim/balloon.vim
 
 " Add abbreviations
 source $HOME/.vim/abbreviations.vim
