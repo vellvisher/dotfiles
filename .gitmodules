@@ -88,3 +88,6 @@
 [submodule "vim/bundle/molokai"]
 	path = vim/bundle/molokai
 	url = git@github.com:tomasr/molokai.git
+[submodule "vim/bundle/ctrlp-smarttabs"]
+	path = vim/bundle/ctrlp-smarttabs
+	url = git@github.com:DavidEGx/ctrlp-smarttabs.git
