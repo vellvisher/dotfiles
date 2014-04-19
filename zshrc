@@ -56,3 +56,7 @@ source $HOME/.aliases
 source ~/.tmuxinator.zsh
 
 export EDITOR=vim
+
+# Add vi-mode up down
+bindkey '^P' up-history
+bindkey '^N' down-history
