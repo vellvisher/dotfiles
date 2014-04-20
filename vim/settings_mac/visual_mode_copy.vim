@@ -1,2 +1,2 @@
 """ Copy in visual mode using pbcopy
-vnoremap <C-c> y:call system("pbcopy", getreg("\""))<CR>
+vnoremap <C-y> y:call system("pbcopy", getreg("\""))<CR>
