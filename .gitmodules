@@ -91,3 +91,6 @@
 [submodule "vim/bundle/ctrlp-smarttabs"]
 	path = vim/bundle/ctrlp-smarttabs
 	url = git@github.com:DavidEGx/ctrlp-smarttabs.git
+[submodule "vim/bundle/vim-bracketed-paste"]
+	path = vim/bundle/vim-bracketed-paste
+	url = git@github.com:ConradIrwin/vim-bracketed-paste.git
