@@ -2,6 +2,8 @@
 # https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
 # ----------------------------------------------------------------------------------------------
 .DS_Store
+Icon
+
 # Thumbnails
 ._*
 # Files that might appear on external disk
