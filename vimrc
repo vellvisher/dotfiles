@@ -22,9 +22,6 @@ set laststatus=2
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
-" Better copy & paste
-set clipboard=unnamed
-
 " Look for tags recursively
 set tags=tags;/
 
