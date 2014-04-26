@@ -12,7 +12,7 @@ endif
 
 " Default to filename searches - so that appctrl will find application
 " controller
-let g:ctrlp_by_filename = 1
+let g:ctrlp_by_filename = 0
 let g:ctrlp_map = '<c-t>'
 
 " Open multiple files in a new tab
