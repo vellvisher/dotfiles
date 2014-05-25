@@ -94,6 +94,6 @@
 [submodule "vim/bundle/vim-bracketed-paste"]
 	path = vim/bundle/vim-bracketed-paste
 	url = git@github.com:ConradIrwin/vim-bracketed-paste.git
-[submodule "vim/plugin/tommcdo/vim-exchange"]
-	path = vim/plugin/tommcdo/vim-exchange
-	url = git@github.com:tommcdo/vim-exchange.git
+[submodule "vim/bundle/vim-exchange"]
+	path = vim/bundle/vim-exchange
+	url = git@github.com:tommcdo/vim-exchange
