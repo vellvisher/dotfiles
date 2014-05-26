@@ -36,6 +36,9 @@ alias edit='vim'
 # color tree
 # alias tree='tree -C'
 
+# better du
+alias du.='du -h -d 1'
+
 # git alias
 alias g=git
 alias gr='if [ "`git rev-parse --show-cdup`" != "" ]; then cd `git rev-parse --show-cdup`; fi'
