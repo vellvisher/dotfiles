@@ -28,6 +28,7 @@ alias mkdir='mkdir -pv'
 alias diff='colordiff'
 
 # vim as default
+alias v='vim'
 alias vi='vim'
 alias svi='sudo vi'
 # alias vis='vim "+set si"'
