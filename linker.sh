@@ -2,6 +2,7 @@
 ln -s $PWD/vim $HOME/.vim
 ln -s $PWD/vimrc $HOME/.vimrc
 ln -s $PWD/zshrc $HOME/.zshrc
+ln -s $PWD/oh-my-zsh $HOME/.oh-my-zsh
 ln -s $PWD/aliases $HOME/.aliases
 ln -s $PWD/tmux.conf $HOME/.tmux.conf
 ln -s $PWD/tmux $HOME/.tmux
