@@ -24,7 +24,7 @@ DISABLE_AUTO_TITLE="true"
 
 export QUOTE_FILE=~/Google\ Drive/quotes.txt
 
-plugins=(git quote osx brew battery pyenv vi-mode virtualenvwrapper web-search)
+plugins=(git quote tmuxinator osx brew battery pyenv vi-mode virtualenvwrapper web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -53,9 +53,6 @@ export PATH=/usr/local/bin:$PATH
 # Change timeout for vi-mode to 0.1s
 export KEYTIMEOUT=1
 source $HOME/.aliases
-
-# Tmuxinator completions
-source ~/.tmuxinator.zsh
 
 export EDITOR=vim
 
