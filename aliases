@@ -38,7 +38,7 @@ alias edit='vim'
 # alias tree='tree -C'
 
 # better du
-alias du.='du -h -d 1'
+alias du.='du -h -d 0 * . | gsort -h'
 
 # git alias
 alias g=git
