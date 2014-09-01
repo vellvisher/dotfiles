@@ -28,7 +28,7 @@ alias mkdir='mkdir -pv'
 alias diff='colordiff'
 
 # vim as default
-alias v='vim'
+alias v='/usr/local/bin/vim'
 alias vi='vim'
 alias svi='sudo vi'
 # alias vis='vim "+set si"'
@@ -60,6 +60,9 @@ alias tl='tmux list-sessions'
 
 # todotxt
 alias t="todo.sh"
+
+# exit shortcut
+alias q='exit'
 
 # zshrc
 alias zrc='source $HOME/.zshrc'

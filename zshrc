@@ -22,14 +22,14 @@ DISABLE_AUTO_TITLE="true"
 # Uncomment following line if you want disable red dots displayed while waiting for completion
 # DISABLE_COMPLETION_WAITING_DOTS="true"
 
-export QUOTE_FILE=~/Google\ Drive/quotes.txt
+export QUOTE_FILE=~/Dropbox/quotes.txt
 
 plugins=(git quote tmuxinator osx brew battery pyenv vi-mode virtualenvwrapper web-search)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-source ~/.aliases
+source ~/.aliases_disable
 
 if [ -f ~/.aliases_linux ]; then
     source ~/.aliases_linux
@@ -55,6 +55,9 @@ export KEYTIMEOUT=1
 source $HOME/.aliases
 
 export EDITOR=vim
+
+# vim as man page viewer
+export MANPAGER="col -b | vim -c 'set ft=man nomod nolist' -"
 
 # Add vi-mode up down
 bindkey '^P' up-history
