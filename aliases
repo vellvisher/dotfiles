@@ -51,6 +51,9 @@ dev() {
     cd $HOME/dev/$1
 }
 
+# rsync
+alias rsync='rsync --progress -h'
+
 # tmux
 alias tmux="TERM=screen-256color-bce tmux"
 
