@@ -52,7 +52,8 @@ dev() {
 }
 
 # rsync
-alias rsync='rsync --progress -h'
+alias cp='rsync-copy'
+alias mv='rsync-move'
 
 # tmux
 alias tmux="TERM=screen-256color-bce tmux"
