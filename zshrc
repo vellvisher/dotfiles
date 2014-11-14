@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+ZSH_CUSTOM=~/.zsh_custom
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -30,6 +31,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 source ~/.aliases_disable
+
 
 if [ -f ~/.aliases_linux ]; then
     source ~/.aliases_linux
@@ -63,4 +65,6 @@ export MANPAGER="col -b | vim -c 'set ft=man nomod nolist' -"
 bindkey '^P' up-history
 bindkey '^N' down-history
 
+# Run homebrew from home directory
+export PATH=${HOME}/homebrew/bin:${PATH}
 quote
