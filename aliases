@@ -70,3 +70,6 @@ alias q='exit'
 
 # zshrc
 alias zrc='source $HOME/.zshrc'
+
+# ps suffix
+alias p='ps -ef | grep -i'
