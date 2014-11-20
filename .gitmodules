@@ -97,3 +97,6 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = git@github.com:robbyrussell/oh-my-zsh
+[submodule "vim/bundle/colorschemes"]
+	path = vim/bundle/colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
