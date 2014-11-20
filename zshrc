@@ -32,6 +32,10 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 source ~/.aliases_disable
 
+if [ -f ~/.at_google ]; then
+    source ~/.aliases_google
+    source ~/.zshrc_google
+fi
 
 if [ -f ~/.aliases_linux ]; then
     source ~/.aliases_linux
