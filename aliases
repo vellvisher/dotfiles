@@ -73,3 +73,7 @@ alias zrc='source $HOME/.zshrc'
 
 # ps suffix
 alias p='ps -ef | grep -i'
+
+# activate zmv and give mmv
+autoload -U zmv
+alias mmv='noglob zmv -W'
