@@ -30,7 +30,9 @@ plugins=(git rsync quote tmuxinator osx brew battery pyenv vi-mode web-search)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-source ~/.aliases_disable
+if [ -f ~/.aliases_disable ]; then
+    source ~/.aliases_disable
+fi
 
 if [ -f ~/.at_google ]; then
     source ~/.aliases_google
