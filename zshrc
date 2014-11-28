@@ -65,7 +65,7 @@ source $HOME/.aliases
 export EDITOR=vim
 
 # vim as man page viewer
-export MANPAGER="col -b | vim -c 'set ft=man nomod nolist' -"
+export PAGER="sh -c \"col -b | view -c 'set ft=man nomod nolist titlestring=MANPAGE' -\""
 
 # Add vi-mode up down
 bindkey '^P' up-history
