@@ -100,3 +100,6 @@
 [submodule "vim/bundle/colorschemes"]
 	path = vim/bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "vim/bundle/vim-vinegar"]
+	path = vim/bundle/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
