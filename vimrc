@@ -60,11 +60,13 @@ set noswapfile
 " " Now you can install any plugin into a .vim/bundle/plugin-name/ folder
 call pathogen#infect()
 Helptags
+
+" Enable 256 colors
 set t_Co=256
 syntax on
 filetype off
-filetype plugin indent on
 
+set background=dark
 let g:molokai_original = 1
 colorscheme molokai
 
@@ -114,3 +116,12 @@ if has("unix")
     so $HOME/.vim/settings_mac.vim
   endif
 endif
+
+" At work, or not:
+if filereadable(expand('~/.at_google'))
+  " Google-only
+  source ~/.vimrc_local
+endif
+
+
+filetype plugin indent on
