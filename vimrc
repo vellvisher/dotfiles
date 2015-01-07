@@ -117,9 +117,8 @@ if has("unix")
   endif
 endif
 
-" At work, or not:
-if filereadable(expand('~/.at_google'))
-  " Google-only
+if filereadable(expand('~/.vimrc_local'))
+  " Local vimrc
   source ~/.vimrc_local
 endif
 
