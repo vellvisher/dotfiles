@@ -1,2 +1,7 @@
 vim/.netrwhist
 vim/backups/
+
+# tmux plugin manager specific
+tmux/READONLY
+tmux/VERSION_MAP
+tmux/plugins
