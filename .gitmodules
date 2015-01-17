@@ -58,9 +58,6 @@
 [submodule "vim/bundle/gundo"]
 	path = vim/bundle/gundo
 	url = git@github.com:sjl/gundo.vim.git
-[submodule "vim/bundle/hardmode"]
-	path = vim/bundle/hardmode
-	url = git://github.com/wikitopian/hardmode.git
 [submodule "vim/bundle/delimitMate"]
 	path = vim/bundle/delimitMate
 	url = git@github.com:Raimondi/delimitMate
