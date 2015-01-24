@@ -34,6 +34,8 @@ alias svi='sudo vi'
 # alias vis='vim "+set si"'
 alias edit='vim'
 
+alias e='emacs'
+
 # color tree
 # alias tree='tree -C'
 
