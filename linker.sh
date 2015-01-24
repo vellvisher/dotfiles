@@ -1,6 +1,7 @@
 #!/bin/sh
 ln -s $PWD/vim $HOME/.vim
 ln -s $PWD/vimrc $HOME/.vimrc
+ln -s $PWD/emacs $HOME/.emacs
 ln -s $PWD/zshrc $HOME/.zshrc
 ln -s $PWD/zshenv $HOME/.zshenv
 ln -s $PWD/oh-my-zsh_custom $HOME/.zsh_custom

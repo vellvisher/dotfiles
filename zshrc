@@ -25,7 +25,7 @@ DISABLE_AUTO_TITLE="true"
 
 export QUOTE_FILE=~/Dropbox/quotes.txt
 
-plugins=(git rsync quote tmuxinator osx brew battery pyenv vi-mode web-search)
+plugins=(git rsync quote tmuxinator osx brew battery pyenv web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -62,11 +62,7 @@ export PATH=/usr/local/bin:$PATH
 export KEYTIMEOUT=1
 source $HOME/.aliases
 
-export EDITOR=vim
-
-# Add vi-mode up down
-bindkey '^P' up-history
-bindkey '^N' down-history
+export EDITOR=emacs
 
 # Run homebrew from home directory
 export PATH=${HOME}/homebrew/bin:${PATH}
