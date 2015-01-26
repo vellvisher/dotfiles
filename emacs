@@ -21,3 +21,27 @@
 
 ;; enable line numbers
 (global-linum-mode t)
+(setq linum-format (lambda (line) (propertize (format (let ((w (length (number-to-string (count-lines (point-min) (point-max)))))) (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
+
+;; enable shift+arrow keys to navigate splits
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+
+;; change yes-no to y-n
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; spaces everywhere no tabs
+(setq-default indent-tabs-mode nil)
+
+;; show matching parentheses with no delay
+(show-paren-mode 1)
+(setq show-paren-delay 0)
+
+;; deal with backups by storing them elsewhere
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
+  backup-by-copying t    ; Don't delink hardlinks
+  version-control t      ; Use version numbers on backups
+  delete-old-versions t  ; Automatically delete excess backups
+  kept-new-versions 20   ; how many of the newest versions to keep
+  kept-old-versions 5    ; and how many of the old
+  )
