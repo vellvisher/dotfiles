@@ -5,6 +5,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     COLOR_COMMAND=' -G'
 elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
     COLOR_COMMAND=' --color=auto'
+    alias gsort='sort'
 fi
 DEFAULT_LS=' -Fh'$COLOR_COMMAND
 
