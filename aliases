@@ -54,10 +54,6 @@ dev() {
     cd $HOME/dev/$1
 }
 
-# rsync
-alias cp='rsync-copy'
-alias mv='rsync-move'
-
 # tmux
 alias tmux="TERM=screen-256color-bce tmux"
 

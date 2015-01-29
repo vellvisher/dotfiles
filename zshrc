@@ -25,7 +25,7 @@ DISABLE_AUTO_TITLE="true"
 
 export QUOTE_FILE=~/Dropbox/quotes.txt
 
-plugins=(git rsync quote tmuxinator osx brew battery pyenv web-search)
+plugins=(git quote tmuxinator osx brew battery pyenv web-search)
 
 source $ZSH/oh-my-zsh.sh
 
