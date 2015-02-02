@@ -64,6 +64,9 @@ source $HOME/.aliases
 
 export EDITOR=emacs
 
+# Kill line backwards
+bindkey \^U backward-kill-line
+
 # Run homebrew from home directory
 export PATH=${HOME}/homebrew/bin:${PATH}
 quote
