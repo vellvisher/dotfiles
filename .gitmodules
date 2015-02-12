@@ -100,3 +100,6 @@
 [submodule "vim/bundle/vimacs"]
 	path = vim/bundle/vimacs
 	url = git@github.com:andrep/vimacs
+[submodule "vim/bundle/rainbow_parentheses"]
+	path = vim/bundle/rainbow_parentheses
+	url = git@github.com:kien/rainbow_parentheses.vim
