@@ -62,7 +62,7 @@ export PATH=/usr/local/bin:$PATH
 export KEYTIMEOUT=1
 source $HOME/.aliases
 
-export EDITOR=emacs
+export EDITOR=vim
 
 # Kill line backwards
 bindkey \^U backward-kill-line
