@@ -103,3 +103,6 @@
 [submodule "vim/bundle/rainbow_parentheses"]
 	path = vim/bundle/rainbow_parentheses
 	url = git@github.com:kien/rainbow_parentheses.vim
+[submodule "vim/bundle/vim-scratch"]
+	path = vim/bundle/vim-scratch
+	url = git@github.com:duff/vim-scratch
