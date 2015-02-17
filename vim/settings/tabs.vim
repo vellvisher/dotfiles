@@ -1,4 +1,2 @@
-" Settings related to tsabs in vim
-nnoremap <C-w> :tabclose<CR>
-
+" Settings related to tabs in vim
 set tabpagemax=50
