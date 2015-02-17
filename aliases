@@ -62,7 +62,7 @@ alias ts='tmux new-session -s'
 alias tl='tmux list-sessions'
 
 # todotxt
-alias t="todo.sh"
+alias t="tmux"
 
 # exit shortcut
 alias q='exit'
@@ -72,6 +72,9 @@ alias zrc='source $HOME/.zshrc'
 
 # ps suffix
 alias p='ps -ef | grep -i'
+
+# grep global alias
+alias -g G='|& grep -i'
 
 # activate zmv and give mmv
 autoload -U zmv
