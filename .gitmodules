@@ -106,3 +106,6 @@
 [submodule "vim/bundle/YankRing"]
 	path = vim/bundle/YankRing
 	url = git@github.com:vim-scripts/YankRing.vim
+[submodule "vim/bundle/vim-windowswap"]
+	path = vim/bundle/vim-windowswap
+	url = git@github.com:wesQ3/vim-windowswap
