@@ -106,3 +106,6 @@
 [submodule "vim/bundle/vim-windowswap"]
 	path = vim/bundle/vim-windowswap
 	url = git@github.com:wesQ3/vim-windowswap
+[submodule "vim/bundle/matchit"]
+	path = vim/bundle/matchit
+	url = git@github.com:tmhedberg/matchit
