@@ -25,7 +25,7 @@ DISABLE_AUTO_TITLE="true"
 
 export QUOTE_FILE=~/Dropbox/quotes.txt
 
-plugins=(git quote tmuxinator osx brew battery pyenv web-search)
+plugins=(git quote tmuxinator osx brew battery pyenv vi-mode web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -64,8 +64,19 @@ source $HOME/.aliases
 
 export EDITOR=vim
 
+# Add vi-mode up down
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^W' backward-kill-word
+bindkey '^D' delete-char
+
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
+
 # Kill line backwards
-bindkey \^U backward-kill-line
+bindkey '^U' backward-kill-line
 
 # Run homebrew from home directory
 export PATH=${HOME}/homebrew/bin:${PATH}
