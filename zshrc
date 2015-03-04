@@ -77,6 +77,7 @@ bindkey '^S' history-incremental-search-forward
 
 # Kill line backwards
 bindkey '^U' backward-kill-line
+bindkey '^K' kill-line
 
 # Run homebrew from home directory
 export PATH=${HOME}/homebrew/bin:${PATH}
