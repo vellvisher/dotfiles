@@ -82,3 +82,7 @@ bindkey '^K' kill-line
 # Run homebrew from home directory
 export PATH=${HOME}/homebrew/bin:${PATH}
 quote
+
+# Disable hang due to ctrl-s
+stty stop undef
+stty start undef
