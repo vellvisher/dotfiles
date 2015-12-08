@@ -1,2 +1,6 @@
-set relativenumber
-set number
+if &diff
+  set norelativenumber
+else
+  set relativenumber
+  set number
+endif
