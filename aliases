@@ -3,6 +3,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export CLICOLOR=1
     export LSCOLORS=GxFxCxDxBxegedabagaced
     COLOR_COMMAND=' -G'
+    alias ctags="`brew --prefix`/bin/ctags"
 elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
     COLOR_COMMAND=' --color=auto'
     alias gsort='sort'
