@@ -112,3 +112,9 @@
 [submodule "vim/bundle/vim-yankstack"]
 	path = vim/bundle/vim-yankstack
 	url = git@github.com:maxbrunsfeld/vim-yankstack
+[submodule "vim/bundle/vim-dispatch"]
+	path = vim/bundle/vim-dispatch
+	url = git@github.com:tpope/vim-dispatch
+[submodule "vim/bundle/vim-glaive"]
+	path = vim/bundle/vim-glaive
+	url = git@github.com:google/vim-glaive

@@ -36,6 +36,8 @@ alias svi='sudo vi'
 # alias vis='vim "+set si"'
 alias edit='vim'
 
+alias vd='vimdiff'
+
 alias e='emacs'
 
 # color tree
@@ -80,3 +82,5 @@ alias -g G='|& grep -i'
 # activate zmv and give mmv
 autoload -U zmv
 alias mmv='noglob zmv -W'
+
+alias c="cat"
