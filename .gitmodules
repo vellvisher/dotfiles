@@ -118,3 +118,6 @@
 [submodule "vim/bundle/vim-glaive"]
 	path = vim/bundle/vim-glaive
 	url = git@github.com:google/vim-glaive
+[submodule "vim/bundle/vim-emacs-bindings"]
+	path = vim/bundle/vim-emacs-bindings
+	url = git@github.com:maxbrunsfeld/vim-emacs-bindings
