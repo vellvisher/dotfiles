@@ -39,7 +39,7 @@ if [ -f ~/.zshrc_local ]; then
 fi
 
 if [ -f ~/.aliases_local ]; then
-    source ~/.aliases_google
+    source ~/.aliases_local
 fi
 
 if [ -f ~/.aliases_linux ]; then
