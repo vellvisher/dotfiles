@@ -48,10 +48,12 @@ alias du.='du -h -d 0 * . | gsort -h'
 
 # git alias
 alias g=git
+alias gc='git commit'
 alias gr='if [ "`git rev-parse --show-cdup`" != "" ]; then cd `git rev-parse --show-cdup`; fi'
 alias gg='git g'
 alias gdd='git d'
 alias gdc='git d --cached'
+alias gss='git status -s'
 
 dev() {
     cd $HOME/dev/$1
