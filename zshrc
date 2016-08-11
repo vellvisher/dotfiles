@@ -23,7 +23,7 @@ DISABLE_AUTO_TITLE="true"
 # Uncomment following line if you want disable red dots displayed while waiting for completion
 # DISABLE_COMPLETION_WAITING_DOTS="true"
 
-export QUOTE_FILE=~/Dropbox/quotes.txt
+export QUOTE_FILE=~/.quotes.txt
 
 plugins=(git quote tmuxinator osx brew battery pyenv vi-mode web-search)
 
@@ -34,9 +34,12 @@ if [ -f ~/.aliases_disable ]; then
     source ~/.aliases_disable
 fi
 
-if [ -f ~/.at_google ]; then
-    source ~/.aliases_google
-    source ~/.zshrc_google
+if [ -f ~/.zshrc_local ]; then
+    source ~/.zshrc_local
+fi
+
+if [ -f ~/.aliases_local ]; then
+    source ~/.aliases_local
 fi
 
 if [ -f ~/.aliases_linux ]; then
