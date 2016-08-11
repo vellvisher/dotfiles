@@ -53,6 +53,7 @@ alias gr='if [ "`git rev-parse --show-cdup`" != "" ]; then cd `git rev-parse --s
 alias gg='git g'
 alias gdd='git d'
 alias gdc='git d --cached'
+alias gmc='git diff --name-only --diff-filter=U'
 alias gss='git status -s'
 
 dev() {
