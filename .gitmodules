@@ -124,3 +124,6 @@
 [submodule "vim/bundle/vim-emacs-bindings"]
 	path = vim/bundle/vim-emacs-bindings
 	url = git@github.com:maxbrunsfeld/vim-emacs-bindings
+[submodule "vim/bundle/vim-maktaba"]
+	path = vim/bundle/vim-maktaba
+	url = https://github.com/google/vim-maktaba.git
