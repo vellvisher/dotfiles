@@ -32,3 +32,5 @@
 	pager = less -F -X
 [merge]
 	tool = vimdiff
+[rerere]
+	enabled = true
