@@ -30,7 +30,8 @@ if [ -f ~/.aliases_osx ]; then
     source ~/.aliases_osx
 fi
 
-export EDITOR=vim
+export EDITOR='vim'
+export VISUAL='vim'
 
 # Add vi-mode up down
 bindkey '^P' up-history
