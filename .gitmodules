@@ -85,9 +85,6 @@
 [submodule "vim/bundle/vim-exchange"]
 	path = vim/bundle/vim-exchange
 	url = git@github.com:tommcdo/vim-exchange
-[submodule "oh-my-zsh"]
-	path = oh-my-zsh
-	url = git@github.com:robbyrussell/oh-my-zsh
 [submodule "vim/bundle/colorschemes"]
 	path = vim/bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
