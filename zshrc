@@ -29,27 +29,6 @@ plugins=(git quote tmuxinator osx brew battery pyenv vi-mode web-search)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-if [ -f ~/.aliases_disable ]; then
-    source ~/.aliases_disable
-fi
-
-if [ -f ~/.zshrc_local ]; then
-    source ~/.zshrc_local
-fi
-
-if [ -f ~/.aliases_local ]; then
-    source ~/.aliases_local
-fi
-
-if [ -f ~/.aliases_linux ]; then
-    source ~/.aliases_linux
-fi
-
-if [ -f ~/.aliases_osx ]; then
-    source ~/.aliases_osx
-fi
-
 # Enable autocorrect only for commands, not arguments
 unsetopt correct_all
 setopt correct
