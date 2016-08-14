@@ -54,6 +54,8 @@ set noswapfile
 
 call plug#begin()
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'duff/vim-scratch'
+Plug 'tomtom/tcomment_vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'rking/ag.vim'
