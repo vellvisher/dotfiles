@@ -1,4 +1,7 @@
 #!/bin/sh
+if [ ! -d "~/.tmux" ]; then
+  ln -s $PWD/tmux $HOME/.tmux
+fi
 ln -s $PWD/vim $HOME/.vim
 ln -s $PWD/vimrc $HOME/.vimrc
 ln -s $PWD/emacs $HOME/.emacs
