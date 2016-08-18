@@ -43,3 +43,7 @@ bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 
 bindkey '^D' delete-char
+
+# Larger history size.
+export HISTSIZE=1000000
+export SAVHIST=1000000
