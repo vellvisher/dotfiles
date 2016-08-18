@@ -46,4 +46,4 @@ bindkey '^D' delete-char
 
 # Larger history size.
 export HISTSIZE=1000000
-export SAVHIST=1000000
+export SAVEHIST=1000000
