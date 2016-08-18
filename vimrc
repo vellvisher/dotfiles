@@ -54,12 +54,14 @@ set noswapfile
 
 call plug#begin()
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'conradIrwin/vim-bracketed-paste'
 Plug 'duff/vim-scratch'
-Plug 'tomtom/tcomment_vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'rking/ag.vim'
 Plug 'sjl/gundo.vim'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
