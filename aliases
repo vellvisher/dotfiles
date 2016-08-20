@@ -17,9 +17,6 @@ alias la='ls -a'$DEFAULT_LS
 alias lla='ls -la'$DEFAULT_LS
 alias lh='ls -d'$DEFAULT_LS' .*'
 
-# cd
-alias ..='cd ..'
-
 # grep
 alias grep='grep --color=auto'
 
