@@ -53,9 +53,11 @@ set nowritebackup
 set noswapfile
 
 call plug#begin()
+Plug 'b4winckler/vim-objc'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'conradIrwin/vim-bracketed-paste'
 Plug 'duff/vim-scratch'
+Plug 'eraserhd/vim-ios'
 Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/goyo.vim'
 Plug 'kien/ctrlp.vim'
