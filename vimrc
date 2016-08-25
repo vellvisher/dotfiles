@@ -87,7 +87,7 @@ colorscheme molokai
 " map control-backspace to delete the previous word
 :imap <C-BS> <C-W>
 
-if has('gui_running')
+if has('gui_running') || has('gui_macvim')
     source $HOME/.vim/gui_settings.vim
 endif
 
