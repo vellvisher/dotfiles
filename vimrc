@@ -53,9 +53,9 @@ set nowritebackup
 set noswapfile
 
 call plug#begin()
+Plug 'Rip-Rip/clang_complete'
 Plug 'b4winckler/vim-objc'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'conradIrwin/vim-bracketed-paste'
 Plug 'duff/vim-scratch'
 Plug 'eraserhd/vim-ios'
 Plug 'flazz/vim-colorschemes'
@@ -71,6 +71,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/camelcasemotion'
+Plug 'vim-scripts/matchit.zip'
 call plug#end()
 
 " Enable 256 colors
