@@ -6,3 +6,5 @@ set guioptions-=e
 
 " No side bar on splits
 set guioptions-=L
+
+set clipboard=unnamed

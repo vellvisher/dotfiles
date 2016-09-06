@@ -79,3 +79,7 @@ autoload -U zmv
 alias mmv='noglob zmv -W'
 
 alias c="cat"
+
+function agr() {
+    ag -sl "$1" | xargs perl -pi.bak -e "s/$1/$2/"
+}
