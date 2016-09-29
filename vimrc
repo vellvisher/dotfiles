@@ -52,12 +52,18 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Function to conditionally disable plugins used below
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
 call plug#begin()
 Plug 'Rip-Rip/clang_complete'
 Plug 'b4winckler/vim-objc'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'duff/vim-scratch'
-Plug 'eraserhd/vim-ios'
+Plug 'eraserhd/vim-ios', Cond(has('gui_macvim'))
 Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/goyo.vim'
 Plug 'kien/ctrlp.vim'
