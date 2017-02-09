@@ -9,4 +9,4 @@ set guioptions-=L
 
 set clipboard=unnamed
 
-set guifont="Monaco h:14"
+set guifont=Monaco:h16
