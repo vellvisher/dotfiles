@@ -11,8 +11,7 @@ if executable('ag')
       \ -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
-  " let g:ctrlp_use_caching = 0
-  let g:ctrlp_clear_cache_on_exit = 0
+  let g:ctrlp_use_caching = 0
 else
   " Fall back to using git ls-files if Ag is not available
   let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'

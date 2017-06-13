@@ -60,6 +60,7 @@ endfunction
 
 call plug#begin()
 Plug 'Rip-Rip/clang_complete'
+Plug 'fatih/vim-go'
 Plug 'b4winckler/vim-objc'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'duff/vim-scratch'
