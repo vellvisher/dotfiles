@@ -8,6 +8,7 @@ ln -s $PWD/emacs $HOME/.emacs
 ln -s $PWD/emacs.d $HOME/.emacs.d
 ln -s $PWD/zshrc $HOME/.zshrc
 ln -s $PWD/zshenv $HOME/.zshenv
+ln -s $PWD/zpreztorc $HOME/.zpreztorc
 ln -s $PWD/aliases $HOME/.aliases
 ln -s $PWD/aliases_disable $HOME/.aliases_disable
 ln -s $PWD/tmux.conf $HOME/.tmux.conf
