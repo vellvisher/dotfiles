@@ -19,3 +19,7 @@ ln -s $PWD/git/gitconfig $HOME/.gitconfig
 . $HOME/.zshrc
 git submodule init
 git submodule update
+
+# Link vimrc for NVim
+mkdir -p $HOME/.config/nvim
+ln -s $PWD/init.vim $HOME/.config/nvim/init.vim
