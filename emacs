@@ -35,3 +35,5 @@
 (load-theme 'solarized-dark)
 
 (set-face-attribute 'default nil :height 165)
+
+(global-set-key "\C-w" 'backward-kill-word)
