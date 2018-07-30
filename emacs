@@ -33,3 +33,5 @@
 (setq auto-save-default nil) ; stop creating #autosave# files
 
 (load-theme 'solarized-dark)
+
+(set-face-attribute 'default nil :height 165)
