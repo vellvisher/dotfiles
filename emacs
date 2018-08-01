@@ -29,7 +29,9 @@
  '(custom-safe-themes
    (quote
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
- '(package-selected-packages (quote (magit expand-region use-package solarized-theme))))
+ '(package-selected-packages
+   (quote
+    (smartparens smart-parens magit expand-region use-package solarized-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -57,6 +59,10 @@
 (set-face-attribute 'default nil :height 165)
 
 (global-set-key "\C-w" 'backward-kill-word)
+
+(use-package smartparens
+  :init
+  (require 'smartparens-config))
 
 ;; Remap META to CMD
 (setq mac-option-modifier 'super)
