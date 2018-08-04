@@ -69,6 +69,10 @@
   :init
   (require 'smartparens-config))
 
+(use-package cc-mode
+  :config
+  (add-hook 'before-save-hook 'clang-format-save-hook))
+
 ;; Remap META to CMD
 (setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
