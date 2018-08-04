@@ -16,6 +16,11 @@
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 
+;; Needed for 'https' for MELPA after running on mac:
+;; brew install libressl
+(require 'gnutls)
+(add-to-list 'gnutls-trustfiles "/usr/local/etc/openssl/cert.pem")
+
 ;; Install use-package
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -31,7 +36,7 @@
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (smartparens smart-parens magit expand-region use-package solarized-theme))))
+    (smartparens magit expand-region use-package solarized-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
