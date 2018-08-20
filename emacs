@@ -36,8 +36,7 @@
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (objc-mode dummy-h-mode wgrep smex counsel ivy fullframe paradox smartparens magit expand-region use-package solarized-theme)))
- '(paradox-github-token t))
+    (wgrep smex ivy counsel swiper paradox fullframe objc-mode smartparens magit expand-region use-package solarized-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -82,4 +81,5 @@
 (load "~/.emacs.d/features/navigation.el")
 (load "~/.emacs.d/features/ivy.el")
 (load "~/.emacs.d/features/ui.el")
+(load "~/.emacs.d/features/editing.el")
 ;; (load "~/.emacs.d/features/obc.el")
