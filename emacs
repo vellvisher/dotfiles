@@ -36,7 +36,8 @@
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (smartparens magit expand-region use-package solarized-theme))))
+    (objc-mode dummy-h-mode wgrep smex counsel ivy fullframe paradox smartparens magit expand-region use-package solarized-theme)))
+ '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -76,3 +77,9 @@
 ;; Remap META to CMD
 (setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
+
+(load "~/.emacs.d/features/paradox.el")
+(load "~/.emacs.d/features/navigation.el")
+(load "~/.emacs.d/features/ivy.el")
+(load "~/.emacs.d/features/ui.el")
+;; (load "~/.emacs.d/features/obc.el")
