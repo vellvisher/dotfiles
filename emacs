@@ -16,6 +16,31 @@
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Hide UI (early on) ;;;;
+
+;; Don't want a mode line while loading init.
+(setq mode-line-format nil)
+
+;; No scrollbar by default.
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+;; No nenubar by default.
+(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+;; No toolbar by default.
+(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+
+;; No tooltip by default.
+(when (fboundp 'tooltip-mode) (tooltip-mode -1))
+
+;; No Alarms by default.
+(setq ring-bell-function 'ignore)
+
+;; Get rid of splash screens.
+(setq inhibit-splash-screen t)
+(setq initial-scratch-message nil)
+
 ;; Needed for 'https' for MELPA after running on mac:
 ;; brew install libressl
 (require 'gnutls)
