@@ -59,7 +59,6 @@ function! Cond(cond, ...)
 endfunction
 
 call plug#begin()
-Plug 'Rip-Rip/clang_complete'
 Plug 'fatih/vim-go'
 Plug 'b4winckler/vim-objc'
 Plug 'christoomey/vim-tmux-navigator'
@@ -71,7 +70,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'rhysd/vim-clang-format'
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 Plug 'sjl/gundo.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-dispatch'
