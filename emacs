@@ -41,6 +41,8 @@
 (setq inhibit-splash-screen t)
 (setq initial-scratch-message nil)
 
+(toggle-frame-fullscreen)
+
 ;; Needed for 'https' for MELPA after running on mac:
 ;; brew install libressl
 (require 'gnutls)
