@@ -8,4 +8,5 @@
 ;; http://mbork.pl/2018-06-10_Git_diff_in_Eshell
 (setenv "PAGER" "cat")
 
-  
+(use-package eshell
+  :hook ((eshell-mode . goto-address-mode)))
