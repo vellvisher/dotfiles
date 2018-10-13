@@ -4,7 +4,6 @@ if [ ! -d "~/.tmux" ]; then
 fi
 ln -s $PWD/vim $HOME/.vim
 ln -s $PWD/vimrc $HOME/.vimrc
-ln -s $PWD/emacs $HOME/.emacs
 ln -s $PWD/emacs.d $HOME/.emacs.d
 ln -s $PWD/zshrc $HOME/.zshrc
 ln -s $PWD/zshenv $HOME/.zshenv
