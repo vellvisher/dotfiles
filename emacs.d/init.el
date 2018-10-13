@@ -43,7 +43,6 @@
 
 ;; Get rid of splash screens.
 (setq inhibit-splash-screen t)
-(setq initial-scratch-message nil)
 
 (toggle-frame-fullscreen)
 
@@ -91,6 +90,7 @@
 (setq mac-command-modifier 'meta)
 
 (load "~/.emacs.d/features/eshell.el")
+(load "~/.emacs.d/features/scratch.el")
 (load "~/.emacs.d/features/paradox.el")
 (load "~/.emacs.d/features/navigation.el")
 (load "~/.emacs.d/features/ivy.el")
