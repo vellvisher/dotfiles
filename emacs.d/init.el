@@ -93,6 +93,7 @@
 (setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
 
+(load "~/.emacs.d/features/libs.el")
 (load "~/.emacs.d/features/eshell.el")
 (load "~/.emacs.d/features/scratch.el")
 (load "~/.emacs.d/features/paradox.el")
