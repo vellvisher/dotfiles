@@ -20,6 +20,10 @@
     (add-to-list 'package-archives '("gnu" . (concat proto "://elpa.gnu.org/packages/")))))
 (package-initialize)
 
+;; Match theme color early on (smoother transition).
+;; Theme loaded in features/ui.el.
+(set-background-color "#073642")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Hide UI (early on) ;;;;
 
