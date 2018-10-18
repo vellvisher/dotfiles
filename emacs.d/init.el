@@ -104,4 +104,5 @@
 (load "~/.emacs.d/features/git.el")
 (load "~/.emacs.d/features/projectile.el")
 (load "~/.emacs.d/features/server.el")
+(load "~/.emacs.d/features/files.el")
 ;; (load "~/.emacs.d/features/obc.el")
