@@ -74,9 +74,6 @@
 
 (use-package expand-region)
 
-(setq make-backup-files nil) ; stop creating backup~ files
-(setq auto-save-default nil) ; stop creating #autosave# files
-
 (set-face-attribute 'default nil :height 165)
 
 (global-set-key "\C-w" 'backward-kill-word)
