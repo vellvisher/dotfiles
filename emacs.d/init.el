@@ -74,8 +74,6 @@
   :init
   (setq clang-format-executable "/usr/local/bin/clang-format"))
 
-(use-package expand-region)
-
 (set-face-attribute 'default nil :height 165)
 
 (global-set-key "\C-w" 'backward-kill-word)
