@@ -23,3 +23,5 @@
   ;; line below instead:
   ;; :hook (eshell-mode-hook . esh-autosuggest-mode)
   :ensure t)
+
+(setq-local imenu-generic-expression '(("Prompt" " $ \\(.*\\)" 1)))
