@@ -65,10 +65,12 @@
 (setq use-package-always-ensure t)
 
 (use-package solarized-theme
+  :ensure t
   :init
   (load-theme 'solarized-dark t))
 
 (use-package clang-format
+  :ensure t
   :init
   (setq clang-format-executable "/usr/local/bin/clang-format"))
 
@@ -79,6 +81,7 @@
 (global-set-key "\C-w" 'backward-kill-word)
 
 (use-package smartparens
+  :ensure t
   :init
   (require 'smartparens-config))
 
