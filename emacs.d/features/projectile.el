@@ -4,9 +4,10 @@
   :config
   (setq projectile-enable-caching t)
   (setq projectile-completion-system 'ivy)
+  (setq projectile-indexing-method 'alien)
   ;; fd is super fast. Use it if available.
   (when (executable-find "fd")
-    (let ((fd-command "fd . --print0 --absolute-path"))
+    (let ((fd-command "fd . --print0"))
       (setq projectile-hg-command fd-command)
       (setq projectile-git-command fd-command)
       (setq projectile-fossil-command fd-command)
