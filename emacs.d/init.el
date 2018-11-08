@@ -1,9 +1,18 @@
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.
+(setq load-prefer-newer t)
+
 (require 'package)
+
+;; Don't auto-initialize.
+(setq package-enable-at-startup nil)
 
 ;; Don't add that `custom-set-variables' block to init.
 (setq package--init-file-ensured t)
+
+;; Point custom variable to empty file.
+(setq custom-file "~/.emacs-custom.el")
+(load custom-file)
 
 ;; load emacs 24's package system. Add MELPA repository.
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -54,9 +63,10 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(eval-when-compile
-  (require 'use-package))
-(setq use-package-always-ensure t)
+;; use-package-enable-imenu-support must be
+;; set before requiring use-package.
+(setq use-package-enable-imenu-support t)
+(require 'use-package)
 
 (use-package solarized-theme
   :ensure t
@@ -76,10 +86,6 @@
   :ensure t
   :init
   (require 'smartparens-config))
-
-(use-package cc-mode
-  :config
-  (add-hook 'before-save-hook 'clang-format-save-hook))
 
 ;; Remap META to CMD
 (setq mac-option-modifier 'super)
