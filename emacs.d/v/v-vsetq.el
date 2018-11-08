@@ -6,8 +6,7 @@
 
 ;;; Code:
 
-(use-package validate
-  :ensure t)
+(require 'validate)
 
 (defalias 'v/vsetq 'validate-setq)
 
