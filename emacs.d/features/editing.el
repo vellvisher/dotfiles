@@ -1,3 +1,8 @@
+(require 'v-vsetq)
+
+;; Show keystrokes earlier (ie. C-x)
+(v/vsetq echo-keystrokes 0.1)
+
 (use-package expand-region
   :ensure t
   :bind ("C-c w" . er/expand-region))
