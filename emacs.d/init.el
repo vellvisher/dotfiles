@@ -91,6 +91,11 @@
 (setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
 
+;; Additional load paths.
+(add-to-list 'load-path "~/.emacs.d/v")
+(add-to-list 'load-path "~/.emacs.d/local")
+(add-to-list 'load-path "~/.emacs.d/external")
+
 (load "~/.emacs.d/features/libs.el")
 (load "~/.emacs.d/features/eshell.el")
 (load "~/.emacs.d/features/scratch.el")
