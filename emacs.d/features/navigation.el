@@ -1,3 +1,5 @@
+(require 'v-vsetq)
+
 (use-package swiper
   :ensure t
   :bind ("M-s" . swiper))
@@ -6,4 +8,6 @@
 
 (global-set-key (kbd "M-i") 'imenu)
 
-(setq next-screen-context-lines 10)
+(v/vsetq next-screen-context-lines 10)
+;; M-a and M-e respect single-spaced sentences.
+(v/vsetq sentence-end-double-space nil)
