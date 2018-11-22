@@ -109,6 +109,7 @@
 (load "~/.emacs.d/features/projectile.el")
 (load "~/.emacs.d/features/server.el")
 (load "~/.emacs.d/features/files.el")
+(load "~/.emacs.d/features/dired.el")
 (load "~/.emacs.d/features/prog.el")
 (load "~/.emacs.d/features/protobuf.el")
 (load "~/.emacs.d/features/objc.el")
