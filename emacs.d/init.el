@@ -114,3 +114,4 @@
 (load "~/.emacs.d/features/protobuf.el")
 (load "~/.emacs.d/features/objc.el")
 (load "~/.emacs.d/features/web.el")
+(load "~/.emacs.d/features/org.el")
