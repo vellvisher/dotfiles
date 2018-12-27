@@ -31,3 +31,7 @@
   ;; line below instead:
   ;; :hook (eshell-mode-hook . esh-autosuggest-mode)
   :ensure t)
+(use-package term
+  :bind (:map term-mode-map
+	      ;; Make same shortcut DWIM to switch between line and char.
+  	      ("C-x C-j" . 'term-char-mode)))
