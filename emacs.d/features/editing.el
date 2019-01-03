@@ -52,3 +52,5 @@
   :config
   ;; Override selection with new text.
   (delete-selection-mode +1))
+
+(global-set-key [remap dabbrev-expand] 'hippie-expand)
