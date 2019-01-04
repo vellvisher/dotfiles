@@ -22,8 +22,7 @@
   :after region-bindings-mode
   :init
   (global-unset-key (kbd "M-<down-mouse-1>"))
-  :bind (("C-c a" . mc/mark-all-like-this)
-         ("C-c n" . mc/mark-more-like-this-extended)
+  :bind (("C-c n" . mc/mark-more-like-this-extended)
          ("M-1" . mc/mark-next-like-this)
          ("M-!" . mc/unmark-next-like-this)
          ("M-2" . mc/mark-previous-like-this)
