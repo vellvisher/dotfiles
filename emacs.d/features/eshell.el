@@ -34,4 +34,9 @@
 (use-package term
   :bind (:map term-mode-map
 	      ;; Make same shortcut DWIM to switch between line and char.
-  	      ("C-x C-j" . 'term-char-mode)))
+  	      ("C-x C-j" . 'term-char-mode))
+  :config
+  ;; https://stackoverflow.com/a/23691628
+  (defadvice term-handle-exit
+    (after term-kill-buffer-on-exit activate)
+    (kill-buffer)))
