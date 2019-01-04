@@ -34,7 +34,10 @@
 (use-package term
   :bind (:map term-mode-map
 	      ;; Make same shortcut DWIM to switch between line and char.
-  	      ("C-x C-j" . 'term-char-mode))
+  	      ("C-x C-j" . term-char-mode)
+	      :map term-raw-map
+	      ;; Prefix is actually C-x.
+	      ("C-c C-y" . term-paste))
   :config
   ;; https://stackoverflow.com/a/23691628
   (defadvice term-handle-exit
