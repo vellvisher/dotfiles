@@ -44,3 +44,7 @@ already narrowed."
         (t (narrow-to-defun))))
 
 (bind-key "C-x n n" #'v/narrow-or-widen-dwim)
+
+;; Selectively enable for consistency with Mac movement.
+(bind-key "s-b" 'backward-word)
+(bind-key "s-f" 'forward-word)
