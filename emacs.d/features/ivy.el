@@ -1,3 +1,5 @@
+(require 'v-vsetq)
+
 (use-package counsel
   :ensure t
   :defer 0.1
@@ -17,10 +19,10 @@
 	 :map ivy-minibuffer-map
 	 ("C-g" . v/ivy-keyboard-quit-dwim))
   :config
-  (setq ivy-height 40)
-  (setq ivy-count-format "")
-  (setq ivy-use-virtual-buffers t)
-  (setq enable-recursive-minibuffers t)
+  (v/vsetq ivy-height 40)
+  (v/vsetq ivy-count-format "")
+  (v/vsetq ivy-use-virtual-buffers t)
+  (v/vsetq enable-recursive-minibuffers t)
   (defun v/ivy-keyboard-quit-dwim () 
     "If region active, deactivate. If there's content, minibuffer. Otherwise quit." 
     (interactive) 
