@@ -17,4 +17,4 @@
   
   (setq org-capture-templates
       '(("t" "TODO" entry (file "")
-         "* TODO %?\nSCHEDULED:%^t"))))
+         "* TODO %?\nSCHEDULED: %^t"))))
