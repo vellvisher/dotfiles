@@ -3,6 +3,16 @@
 ;; Show keystrokes earlier (ie. C-x)
 (v/vsetq echo-keystrokes 0.1)
 
+;; No need to keep duplicates in prompt history.
+(v/vsetq history-delete-duplicates t)
+
+;; Always use spaces.
+(setq-default indent-tabs-mode nil)
+
+(use-package simple
+  :config
+  (v/vsetq kill-ring-max 1000))
+
 (use-package expand-region
   :ensure t
   :bind ("C-c w" . er/expand-region))
