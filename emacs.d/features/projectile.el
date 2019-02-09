@@ -1,6 +1,7 @@
 (use-package projectile
   :ensure t
   :defer 2
+  :bind (("C-c s" . counsel-projectile-ag))
   :config
   (setq projectile-enable-caching t)
   (setq projectile-completion-system 'ivy)
