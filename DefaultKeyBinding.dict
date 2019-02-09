@@ -48,5 +48,5 @@
     "~w"      = "copy:";
     "^w"      = "cut:";
     // > defaults write -g NSTextKillRingSize -int 6
-    "^y"      = (yankAndSelect:);
+    "^y"      = (paste:);
 }
