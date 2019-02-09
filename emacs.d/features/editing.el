@@ -52,4 +52,7 @@
   ;; Override selection with new text.
   (delete-selection-mode +1))
 
+;; see if replace with easy-kill
+(global-set-key "\C-w" 'backward-kill-word)
+
 (global-set-key [remap dabbrev-expand] 'hippie-expand)

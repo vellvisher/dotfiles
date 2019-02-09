@@ -80,8 +80,6 @@
 
 (set-face-attribute 'default nil :height 165)
 
-(global-set-key "\C-w" 'backward-kill-word)
-
 (use-package smartparens
   :ensure t
   :init
