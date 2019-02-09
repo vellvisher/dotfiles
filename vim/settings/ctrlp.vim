@@ -1,6 +1,7 @@
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --path-to-ignore ~/.agignore
       \ --ignore .git
       \ --ignore .svn
       \ --ignore .hg
@@ -21,7 +22,6 @@ endif
 " Default to filename searches - so that appctrl will find application
 " controller
 let g:ctrlp_by_filename = 0
-let g:ctrlp_map = '<c-t>'
 
 " Open multiple files in a new tab
 let g:ctrlp_open_multiple_files = 't'
