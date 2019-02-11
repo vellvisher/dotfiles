@@ -1,0 +1,33 @@
+# example user config (see 'hg help config' for more info)
+[ui]
+username = vaarnan
+
+# (see 'hg help color' for details)
+color = always
+
+# We recommend enabling tweakdefaults to get slight improvements to
+# the UI over time. Make sure to set HGPLAIN in the environment when
+# writing scripts!
+# tweakdefaults = True
+
+
+# uncomment to disable command output pagination
+# (see 'hg help pager' for details)
+# paginate = never
+merge = emacs
+editor = emacsclient
+
+[extensions]
+# uncomment these lines to enable some popular extensions
+# (see 'hg help extensions' for more info)
+#
+# churn =
+strip =
+# unicode graph
+# hgext.beautifygraph=
+
+[merge-tools]
+emacs.args = -q --eval "(ediff-merge-with-ancestor \""$local"\" \""$other"\" \""$base"\" nil \""$output"\")"
+
+[trainingwheels]
+# prevent-push-dirty=false
