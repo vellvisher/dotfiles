@@ -41,3 +41,10 @@
 
 (use-package ivy-hydra 
   :ensure t)
+
+(use-package ivy-rich
+  :ensure t
+  :config
+  (ivy-rich-mode 1)
+  (v/vsetq ivy-format-function #'ivy-format-function-line)
+)
