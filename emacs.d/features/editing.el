@@ -66,3 +66,9 @@
 (global-set-key "\C-w" 'backward-kill-word)
 
 (global-set-key [remap dabbrev-expand] 'hippie-expand)
+
+(use-package region-state
+  :ensure t
+  :defer 2
+  :config
+  (region-state-mode +1))
