@@ -45,6 +45,9 @@
 (use-package ivy-rich
   :ensure t
   :config
-  (ivy-rich-mode 1)
-  (v/vsetq ivy-format-function #'ivy-format-function-line)
-)
+  (setq ivy-rich--display-transformers-list
+        '(counsel-M-x
+          (:columns
+           ((counsel-M-x-transformer (:width 80))  ; the original transfomer
+            (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))))
+  (ivy-rich-mode +1))
