@@ -7,3 +7,9 @@
   :ensure t
   :config
   (use-package v-vsetq))
+
+(use-package s
+  :ensure t)
+
+(use-package dash
+  :ensure t)
