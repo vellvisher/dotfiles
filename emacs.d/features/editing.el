@@ -72,3 +72,19 @@
   :defer 2
   :config
   (region-state-mode +1))
+
+(use-package whitespace
+  :defer 5
+  ;; Automatically remove whitespace on saving.
+  :hook ((before-save . whitespace-cleanup)
+         (prog-mode . whitespace-mode))
+  :config
+  ;; When nil, fill-column is used instead.
+  (v/vsetq whitespace-line-column nil)
+  ;; Highlight empty lines, TABs, blanks at beginning/end, lines
+  ;; longer than fill-column, and trailing blanks.
+  (v/vsetq whitespace-style '(face empty tabs lines-tail trailing))
+  (v/vsetq show-trailing-whitespace t)
+  (set-face-attribute 'whitespace-line nil
+                      :foreground "DarkOrange1"
+                      :background nil))
