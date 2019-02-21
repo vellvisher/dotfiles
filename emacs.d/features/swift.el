@@ -6,6 +6,5 @@
   :init
   (defun v/swift-mode-hook ()
     "Called when entering `swift-mode'."
-    (v/vsetq show-trailing-whitespace t)
     (v/vsetq swift-mode:basic-offset 2)
 ))
