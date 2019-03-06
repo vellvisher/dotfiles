@@ -16,14 +16,15 @@
     (org-display-inline-images)
     (v/vsetq show-trailing-whitespace t)
     (set-fill-column 1000)
-    (flyspell-mode +1))
+    (flyspell-mode +1)
+
+    (v/vsetq org-agenda-sticky t))
   :config
   (v/vsetq org-directory "~/beorg")
   (v/vsetq org-default-notes-file (concat org-directory "/inbox.org"))
   (v/vsetq org-agenda-files (-list org-directory "~/GoogleDrive/org"))
   (v/vsetq org-return-follows-link t)
   (v/vsetq org-catch-invisible-edits 'error)
-  (v/vsetq org-agenda-sticky t)
 
   (setq org-capture-templates
       '(("t" "TODO" entry (file "")
