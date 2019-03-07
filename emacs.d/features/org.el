@@ -31,3 +31,8 @@
   (setq org-capture-templates
       '(("t" "TODO" entry (file "")
          "* TODO %?\nSCHEDULED: %^t"))))
+
+(use-package ob
+  :config
+  (use-package ob-swift
+    :ensure t))
