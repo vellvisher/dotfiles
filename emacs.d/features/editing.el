@@ -56,20 +56,20 @@
   :bind (("M-p" . v/drag-stuff-up)
          ("M-n" . v/drag-stuff-down)))
 
-;; org-subtree-up/down when doing movement with empty selection on org headings
+;; org-metaup/down in org-mode
 (defun v/drag-stuff-down (arg)
   (interactive "p")
   "Drag stuff ARG lines down."
-  (if (and (org-at-heading-p) (not mark-active))
-      (org-move-subtree-down)
+  (if (eq major-mode 'org-mode)
+      (org-metadown)
     (drag-stuff-down arg)))
 
-;; org-subtree-up/down when doing movement with empty selection on org headings
+;; org-metaup/down in org-mode
 (defun v/drag-stuff-up (arg)
   (interactive "p")
   "Drag stuff ARG lines up."
-  (if (and (org-at-heading-p) (not mark-active))
-      (org-move-subtree-up)
+  (if (eq major-mode 'org-mode)
+      (org-metaup)
     (drag-stuff-up arg)))
 
 (use-package delsel
