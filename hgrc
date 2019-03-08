@@ -25,9 +25,18 @@ editor = emacsclient
 strip =
 # unicode graph
 # hgext.beautifygraph=
+extdiff =
 
 [merge-tools]
 emacs.args = -q --eval "(ediff-merge-with-ancestor \""$local"\" \""$other"\" \""$base"\" nil \""$output"\")"
 
 [trainingwheels]
 # prevent-push-dirty=false
+
+[google]
+presubmit.default-rev=chain
+
+[extdiff]
+# add new command called ediff, runs emacs diff
+cmd.ediff = sh
+opts.ediff = -c 'if [ -d $0 ]; then emacs --eval "(ediff-directories \"$0\" \"$1\" \"\")"; else emacs --eval "(ediff-files \"$0\" \"$1\")"; fi'
