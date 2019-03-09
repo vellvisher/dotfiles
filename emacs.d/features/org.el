@@ -30,7 +30,9 @@
 
   (setq org-capture-templates
       '(("t" "TODO" entry (file "")
-         "* TODO %?\nSCHEDULED: %^t"))))
+         "* TODO %?\nSCHEDULED: %^t")
+        ("b" "Buy" entry (file "")
+         "* TODO Buy %?  :shopping:\nSCHEDULED: %^t"))))
 
 (use-package ob
   :config
