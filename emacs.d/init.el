@@ -116,3 +116,4 @@
 (load "~/.emacs.d/features/swift.el")
 (load "~/.emacs.d/features/kotlin.el")
 (load "~/.emacs.d/features/org.el")
+(load "~/.emacs.d/features/help.el")
