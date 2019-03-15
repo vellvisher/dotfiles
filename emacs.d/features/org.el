@@ -32,7 +32,9 @@
       '(("t" "TODO" entry (file "")
          "* TODO %?\nSCHEDULED: %^t")
         ("b" "Buy" entry (file "")
-         "* TODO Buy %?  :shopping:\nSCHEDULED: %^t"))))
+         "* TODO Buy %?  :shopping:\nSCHEDULED: %^t")
+        ("w" "Work" entry (file "~/GoogleDrive/org/work.org")
+         "* TODO %?\nSCHEDULED: %^t"))))
 
 (use-package ob
   :config
