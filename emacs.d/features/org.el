@@ -20,6 +20,7 @@
     (flyspell-mode +1))
   (defun v/org-agenda-mode-hook-function ()
     (hl-line-mode +1)
+    (goto-address-mode +1)
     (v/vsetq org-agenda-sticky t))
   :config
   (v/vsetq org-directory "~/beorg")
