@@ -104,3 +104,6 @@
   (set-face-attribute 'whitespace-line nil
                       :foreground "DarkOrange1"
                       :background nil))
+
+(use-package smartparens
+  :ensure t)
