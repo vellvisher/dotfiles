@@ -48,3 +48,8 @@ already narrowed."
 ;; Selectively enable for consistency with Mac movement.
 (bind-key "s-b" 'backward-word)
 (bind-key "s-f" 'forward-word)
+
+(use-package goto-line-preview
+  :ensure t
+  :config
+  (global-set-key [remap goto-line] 'goto-line-preview))
