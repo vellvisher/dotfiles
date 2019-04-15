@@ -47,4 +47,5 @@
 (use-package org-journal
   :config
   (v/vsetq org-journal-dir "~/beorg/journal")
-  (v/vsetq org-journal-file-type 'weekly))
+  (v/vsetq org-journal-file-type 'weekly)
+  (v/vsetq org-journal-date-format "%a %d %b, %Y"))
