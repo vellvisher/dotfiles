@@ -43,3 +43,8 @@
   :config
   (use-package ob-swift
     :ensure t))
+
+(use-package org-journal
+  :config
+  (v/vsetq org-journal-dir "~/beorg/journal")
+  (v/vsetq org-journal-file-type 'weekly))
