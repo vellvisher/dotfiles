@@ -2,7 +2,7 @@
 
 (use-package swift-mode
   :ensure t
-  :mode ("\\.swift\\'" . kotlin-mode)
+  :mode ("\\.swift\\'" . swift-mode)
   :hook (swift-mode . v/swift-mode-hook)
   :init
   (defun v/swift-mode-hook ()
