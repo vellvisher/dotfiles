@@ -45,6 +45,7 @@
     :ensure t))
 
 (use-package org-journal
+  :ensure t
   :config
   (v/vsetq org-journal-dir "~/beorg/journal")
   (v/vsetq org-journal-file-type 'weekly)
