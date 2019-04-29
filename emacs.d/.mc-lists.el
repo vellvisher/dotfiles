@@ -14,11 +14,16 @@
         electric-newline-and-maybe-indent
         hungry-delete-backward
         hungry-delete-forward
+        indent-for-tab-command
+        isearch-repeat-backward
         ivy-occur-dispatch
         kill-region
         mark-sexp
         mouse-set-region
+        org-beginning-of-line
+        org-end-of-line
         org-force-self-insert
+        org-kill-line
         org-return-indent
         org-self-insert-command
         org-yank
@@ -39,6 +44,7 @@
         goto-address-at-point
         ivy-switch-buffer
         ivy-wgrep-change-to-wgrep-mode
+        mouse-save-then-kill
         save-some-buffers
         swiper
         wgrep-finish-edit
