@@ -16,6 +16,7 @@
     (toggle-truncate-lines 0)
     (org-display-inline-images)
     (v/vsetq show-trailing-whitespace t)
+    (v/vsetq org-imenu-depth 3)
     (set-fill-column 1000)
     (flyspell-mode +1))
 
