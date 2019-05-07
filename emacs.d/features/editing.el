@@ -83,6 +83,10 @@
 
 (global-set-key [remap dabbrev-expand] 'hippie-expand)
 
+(defun insert-british-pound ()
+  (insert "£"))
+(global-set-key (kbd "s-3") `(lambda()(interactive)(insert-british-pound)))
+
 (use-package region-state
   :ensure t
   :defer 2
