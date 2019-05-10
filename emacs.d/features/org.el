@@ -50,7 +50,7 @@
   :custom ((org-journal-file-format "%Y%m%d.org")
            (org-journal-dir "~/beorg/journal")
            (org-journal-file-type 'weekly)
-           (org-journal-date-format "%a %d %b, %Y")))
+           (org-journal-date-format "%a %d %b, %Y"))
   :config
   (v/vsetq org-journal-dir "~/beorg/journal")
   (v/vsetq org-journal-file-type 'weekly)
