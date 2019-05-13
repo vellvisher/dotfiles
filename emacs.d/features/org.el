@@ -41,6 +41,7 @@
            "* TODO %?\nSCHEDULED: %^t"))))
 
 (use-package ob
+  :custom (org-confirm-babel-evaluate nil)
   :config
   (use-package ob-swift
     :ensure t))
