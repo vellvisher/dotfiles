@@ -118,3 +118,4 @@
 (load "~/.emacs.d/features/org.el")
 (load "~/.emacs.d/features/help.el")
 (load "~/.emacs.d/features/work.el")
+(load "~/.emacs.d/features/bazel.el")
