@@ -114,4 +114,7 @@
         ("C-=" . text-scale-decrease)))
 
 (use-package smartparens
-  :ensure t)
+  :ensure t
+  :hook ((prog-mode . smartparens-mode)
+         (protobuf-mode . smartparens-mode)
+         (org-mode . smartparens-mode)))
