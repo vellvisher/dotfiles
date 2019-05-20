@@ -118,3 +118,24 @@
   :hook ((prog-mode . smartparens-mode)
          (protobuf-mode . smartparens-mode)
          (org-mode . smartparens-mode)))
+
+(use-package indent
+  :bind ("C-M-\\" . v/indent-region-or-buffer)
+  :init
+  ;; https://emacsredux.com/blog/2013/03/27/indent-region-or-buffer/
+  (defun v/indent-buffer ()
+    "Indent the currently visited buffer."
+    (interactive)
+    (indent-region (point-min) (point-max)))
+
+  (defun v/indent-region-or-buffer ()
+    "Indent a region if selected, otherwise the whole buffer."
+    (interactive)
+    (save-excursion
+      (if (region-active-p)
+          (progn
+            (indent-region (region-beginning) (region-end))
+            (message "Indented selected region."))
+        (progn
+          (v/indent-buffer)
+          (message "Indented buffer."))))))

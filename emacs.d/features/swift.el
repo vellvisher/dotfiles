@@ -14,4 +14,4 @@
     ;; since whitespace-mode gets loaded before swift-mode.
     (whitespace-mode -1)
     (whitespace-mode +1)
-))
+    (add-hook 'before-save-hook #'v/indent-region-or-buffer t t)))
