@@ -7,6 +7,8 @@
   :bind (("C-c c" . org-capture)
          ("C-c a" . org-agenda-list)
          ("C-c l" . org-store-link)
+         ("C-c t" . org-set-tags-command)
+         ("C-c p" . org-priority)
          :map org-mode-map
          ("C-c C-l" . org-insert-link))
   :hook((org-mode . v/org-mode-hook-function))
