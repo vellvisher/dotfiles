@@ -45,7 +45,11 @@
 (use-package ob
   :custom (org-confirm-babel-evaluate nil)
   :config
+  ;; TODO: Add lazy instantiation.
   (use-package ob-swift
+    :ensure t)
+  ;; TODO: Add lazy instantiation.
+  (use-package ob-kotlin
     :ensure t))
 
 (use-package org-journal
