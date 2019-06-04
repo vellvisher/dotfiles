@@ -2,7 +2,9 @@
 
 (use-package swiper
   :ensure t
-  :bind ("M-s" . swiper))
+  :bind (("C-s" . swiper-isearch)
+         :map swiper-isearch-map
+         ("C-r" . ivy-previous-line)))
 
 (global-subword-mode 1)
 
