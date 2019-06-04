@@ -139,3 +139,6 @@
         (progn
           (v/indent-buffer)
           (message "Indented buffer."))))))
+
+(use-package rectangular-region-mode
+ :bind ("C-c r" . set-rectangular-region-anchor))
