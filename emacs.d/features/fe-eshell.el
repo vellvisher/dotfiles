@@ -28,6 +28,7 @@
                     (v/vsetq eshell-error-if-no-glob t)
                     (v/vsetq eshell-glob-case-insensitive t)
                     (v/vsetq eshell-list-files-after-cd nil)
+                    (v/vsetq eshell-save-history-index t)
 
                     (v/vsetq eshell-banner-message "Welcome back V
 
