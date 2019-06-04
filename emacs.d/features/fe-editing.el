@@ -109,10 +109,6 @@
                       :foreground "DarkOrange1"
                       :background nil))
 
-(use-package face-remap
-  :bind(("M-=" . text-scale-increase)
-        ("C-=" . text-scale-decrease)))
-
 (use-package smartparens
   :ensure t
   :hook ((prog-mode . smartparens-mode)
