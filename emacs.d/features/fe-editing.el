@@ -60,6 +60,7 @@
   (defun v/drag-stuff-down (arg)
     (interactive "p")
     "Drag stuff ARG lines down."
+    ;; TODO: Fix moving sections for Markdown.
     (if (eq major-mode 'org-mode)
         (org-metadown)
       (drag-stuff-down arg)))
