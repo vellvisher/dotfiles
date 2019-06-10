@@ -4,6 +4,7 @@
   :ensure t)
 
 (use-package org
+  :ensure org-plus-contrib ;; Ensure latest org installed from elpa
   :bind (("C-c c" . org-capture)
          ("C-c a" . org-agenda-list)
          ("C-c l" . org-store-link)
