@@ -60,6 +60,7 @@
   (defun v/drag-stuff-down (arg)
     (interactive "p")
     "Drag stuff ARG lines down."
+    ;; TODO: Fix moving sections for Markdown.
     (if (eq major-mode 'org-mode)
         (org-metadown)
       (drag-stuff-down arg)))
@@ -108,10 +109,6 @@
   (set-face-attribute 'whitespace-line nil
                       :foreground "DarkOrange1"
                       :background nil))
-
-(use-package face-remap
-  :bind(("M-=" . text-scale-increase)
-        ("C-=" . text-scale-decrease)))
 
 (use-package smartparens
   :ensure t

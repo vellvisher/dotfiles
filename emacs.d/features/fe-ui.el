@@ -19,3 +19,7 @@
 
 ;; Display column numbers.
 (setq-default column-number-mode t)
+
+(use-package face-remap
+  :bind(("M-=" . text-scale-increase)
+        ("C-=" . text-scale-decrease)))
