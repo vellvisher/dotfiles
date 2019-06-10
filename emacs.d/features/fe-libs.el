@@ -13,3 +13,7 @@
 
 (use-package dash
   :ensure t)
+
+(use-package drag-stuff
+  :config
+  (use-package v-drag-stuff))
