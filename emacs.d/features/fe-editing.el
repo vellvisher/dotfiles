@@ -1,4 +1,5 @@
 (require 'v-vsetq)
+(require 'v-drag-stuff)
 
 ;; Show keystrokes earlier (ie. C-x)
 (v/vsetq echo-keystrokes 0.1)
@@ -54,24 +55,7 @@
 (use-package drag-stuff
   :ensure t
   :bind (("M-p" . v/drag-stuff-up)
-         ("M-n" . v/drag-stuff-down))
-  :config
-  ;; org-metaup/down in org-mode
-  (defun v/drag-stuff-down (arg)
-    (interactive "p")
-    "Drag stuff ARG lines down."
-    ;; TODO: Fix moving sections for Markdown.
-    (if (eq major-mode 'org-mode)
-        (org-metadown)
-      (drag-stuff-down arg)))
-
-  ;; org-metaup/down in org-mode
-  (defun v/drag-stuff-up (arg)
-    (interactive "p")
-    "Drag stuff ARG lines up."
-    (if (eq major-mode 'org-mode)
-        (org-metaup)
-      (drag-stuff-up arg))))
+         ("M-n" . v/drag-stuff-down)))
 
 (use-package delsel
   :defer 5

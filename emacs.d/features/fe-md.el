@@ -1,5 +1,4 @@
-(require 'v/drag-stuff-up)
-(require 'v/drag-stuff-down)
+(require 'v-drag-stuff)
 
 (use-package markdown-mode
   :bind (:map markdown-mode-map
