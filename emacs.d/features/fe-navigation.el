@@ -55,3 +55,13 @@ already narrowed."
   :ensure t
   :config
   (global-set-key [remap goto-line] 'goto-line-preview))
+
+(use-package window
+  :bind ("M-`" . v/switch-to-previous-buffer)
+  :init
+  ;; From http://emacsredux.com/blog/2013/04/28/switch-to-previous-buffer
+  (defun v/switch-to-previous-buffer ()
+    "Switch to previously open buffer.
+Repeated invocations toggle between the two most recently open buffers."
+    (interactive)
+    (switch-to-buffer (other-buffer (current-buffer) 1))))
