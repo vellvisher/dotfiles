@@ -6,6 +6,12 @@
     ;; http://debbugs.gnu.org/cgi/bugreport.cgi?bug=16759
     (unless (boundp 'objc-mode-hook-did-run)
       (set-fill-column 100)
+
+      ;; Need to enable/disable to pickup fill-column value
+      ;; since whitespace-mode gets loaded before objc-mode.
+      (whitespace-mode -1)
+      (whitespace-mode +1)
+
       ;; Useful for camel-case Objective-C.
       (subword-mode +1)
 
