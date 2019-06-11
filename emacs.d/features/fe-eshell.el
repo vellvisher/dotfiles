@@ -1,12 +1,5 @@
+(require 'v-vcsetq)
 (require 'v-vsetq)
-
-;; https://oremacs.com/2015/01/17/setting-up-ediff
-;; Macro for setting custom variables.
-;; Similar to custom-set-variables, but more like setq.
-;; TODO(vaarnan): Move to v/csetq.
-(defmacro csetq (variable value)
-  `(funcall (or (get ',variable 'custom-set)
-                'set-default) ',variable ,value))
 
 ;; Ask shell for PATH, MANPATH, and exec-path and update Emacs environment.
 (use-package exec-path-from-shell
@@ -42,10 +35,10 @@
                     (setenv "PAGER" "cat")))
 
   ;; Must use custom set for these.
-  (csetq shell-pop-window-position "full")
-  (csetq shell-pop-shell-type '("eshell" "*eshell*" (lambda ()
+  (v/csetq shell-pop-window-position "full")
+  (v/csetq shell-pop-shell-type '("eshell" "*eshell*" (lambda ()
                                                       (eshell))))
-  (csetq shell-pop-term-shell "eshell")
+  (v/csetq shell-pop-term-shell "eshell")
   (defun v/shell-pop (shell-pop-autocd-to-working-dir)
     "Shell pop with arg to cd to working dir. Else use existing location."
     (interactive "P")
