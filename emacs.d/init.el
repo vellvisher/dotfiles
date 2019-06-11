@@ -124,3 +124,4 @@
 (load "~/.emacs.d/features/fe-help.el")
 (load "~/.emacs.d/features/fe-work.el")
 (load "~/.emacs.d/features/fe-bazel.el")
+(load "~/.emacs.d/features/fe-tags.el")

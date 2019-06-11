@@ -5,6 +5,9 @@ ln -s $PWD/emacs.d $HOME/.emacs.d
 ln -s $PWD/aliases $HOME/.aliases
 ln -s $PWD/aliases_disable $HOME/.aliases_disable
 
+ln -s $PWD/globalrc $HOME/.globalrc
+ln -s $PWD/ctags $HOME/.ctags
+
 ln -s $PWD/git/gitconfig $HOME/.gitconfig
 
 ln -s $PWD/git/gitignore_global $HOME/.gitignore_global
