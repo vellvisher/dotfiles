@@ -27,6 +27,9 @@
 
                     ")
 
+                    (bind-keys :map eshell-mode-map
+                               ("M-i" . v/eshell-counsel-history))
+
                     ;; https://www.reddit.com/r/emacs/comments/799qq3/helmeshpcomplete_like_behavior_with_ivy_in_eshell/
                     (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)
 
@@ -39,6 +42,16 @@
   (v/csetq shell-pop-shell-type '("eshell" "*eshell*" (lambda ()
                                                       (eshell))))
   (v/csetq shell-pop-term-shell "eshell")
+  (defun v/eshell-counsel-history ()
+      (interactive)
+      (let ((history eshell-history-ring)
+            (selection nil))
+        (with-temp-buffer
+          (setq eshell-history-ring history)
+          (counsel-esh-history)
+          (setq selection (buffer-string)))
+        (delete-region eshell-last-output-end (line-end-position))
+        (insert selection)))
   (defun v/shell-pop (shell-pop-autocd-to-working-dir)
     "Shell pop with arg to cd to working dir. Else use existing location."
     (interactive "P")
