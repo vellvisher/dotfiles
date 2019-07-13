@@ -11,7 +11,8 @@
          ("C-c t" . org-set-tags-command)
          ("C-c p" . org-priority)
          :map org-mode-map
-         ("C-c C-l" . org-insert-link))
+         ("C-c C-l" . org-insert-link)
+         ("<" . v/org-insert-char-dwim))
   :hook((org-mode . v/org-mode-hook-function))
   :hook((org-agenda-mode . v/org-agenda-mode-hook-function))
   :config
@@ -27,6 +28,12 @@
     (hl-line-mode +1)
     (goto-address-mode +1)
     (v/vsetq org-agenda-sticky t))
+  (defun v/org-insert-char-dwim ()
+    (interactive)
+    ;; Display org-insert-structure-template if < inserted at BOL.
+    (if (looking-back "^")
+        (call-interactively #'org-insert-structure-template)
+      (self-insert-command 1)))
   (v/vsetq org-directory "~/beorg")
   (v/vsetq org-default-notes-file (concat org-directory "/inbox.org"))
   (v/vsetq org-agenda-files (-list org-directory "~/GoogleDrive/org"))
