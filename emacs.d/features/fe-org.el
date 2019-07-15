@@ -60,6 +60,11 @@
   (use-package ob-kotlin
     :ensure t))
 
+;; TODO: Add lazy instantiation.
+;; https://stackoverflow.com/questions/41517257/execute-java-code-block-in-org-mode
+;; (require 'ob-java)
+;; (add-to-list 'org-babel-load-languages '(java . t))
+
 (use-package org-journal
   :ensure t
   :custom ((org-journal-file-format "%Y%m%d.org")
