@@ -17,7 +17,7 @@
     "~F"      = "moveWordForwardAndModifySelection:";   /* s-f */
     "~b"      = "moveWordBackward:";             /* s-b */
     "~B"      = "moveWordBackwardAndModifySelection:"; 	/* s-f */
-    "@<"      = "moveToBeginningOfDocument:";    /* M-< */	
+    "@<"      = "moveToBeginningOfDocument:";    /* M-< */
     "@>"      = "moveToEndOfDocument:";          /* M-> */
     "~v"      = "pageUp:";                       /* M-v */
     "^v"      = "pageDown:";                     /* C-v */
