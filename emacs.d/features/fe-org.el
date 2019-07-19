@@ -42,6 +42,11 @@
   (v/vsetq org-return-follows-link t)
   (v/vsetq org-catch-invisible-edits 'error)
 
+  ;; Cleaner outline for org.
+  (v/vsetq org-hide-leading-stars t)
+  (v/vsetq org-odd-levels-only t)
+  (v/vsetq org-ellipsis "…")
+
   (setq org-capture-templates
         '(("t" "TODO" entry (file "")
            "* TODO %?\nSCHEDULED: %^t")
