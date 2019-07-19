@@ -126,3 +126,5 @@
 (load "~/.emacs.d/features/fe-bazel.el")
 (load "~/.emacs.d/features/fe-tags.el")
 (load "~/.emacs.d/features/fe-ediff.el")
+(load "~/.emacs.d/features/fe-gcal.el")
+(load "~/.emacs.d/features/fe-qrcode.el")
