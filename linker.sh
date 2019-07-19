@@ -19,3 +19,6 @@ git submodule update
 ln -s $PWD/hgrc $HOME/.hgrc
 
 touch ~/.emacs-custom.el
+
+mkdir ~/Library/KeyBindings
+ln -s $PWD/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
