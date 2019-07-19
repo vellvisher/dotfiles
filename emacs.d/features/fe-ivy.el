@@ -16,6 +16,7 @@
   :ensure t
   :defer 0.1
   :bind (("C-x C-b" . ivy-switch-buffer)
+         ("C-c C-r" . ivy-resume)
          :map ivy-minibuffer-map
          ("C-g" . v/ivy-keyboard-quit-dwim))
   :config
