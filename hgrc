@@ -28,7 +28,7 @@ strip =
 extdiff =
 
 [merge-tools]
-emacs.args = -q --eval "(ediff-merge-with-ancestor \""$local"\" \""$other"\" \""$base"\" nil \""$output"\")"
+emacs.args = --eval "(ediff-merge-with-ancestor \""$local"\" \""$other"\" \""$base"\" nil \""$output"\")"
 
 [trainingwheels]
 # prevent-push-dirty=false
