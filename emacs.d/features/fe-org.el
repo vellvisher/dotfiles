@@ -47,6 +47,9 @@
   (v/vsetq org-odd-levels-only t)
   (v/vsetq org-ellipsis "…")
 
+  ;; Replace with ivy-reveal.
+  (bind-key "C-c C-r" nil org-mode-map)
+
   (setq org-capture-templates
         '(("t" "TODO" entry (file "")
            "* TODO %?\nSCHEDULED: %^t")
