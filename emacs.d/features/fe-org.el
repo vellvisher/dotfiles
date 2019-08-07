@@ -50,6 +50,8 @@
   ;; Replace with ivy-reveal.
   (bind-key "C-c C-r" nil org-mode-map)
 
+  (v/vsetq org-enforce-todo-dependencies t)
+
   (setq org-capture-templates
         '(("t" "TODO" entry (file "")
            "* TODO %?\nSCHEDULED: %^t")
