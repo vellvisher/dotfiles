@@ -1,3 +1,5 @@
+(require 'v-vcsetq)
+
 (use-package fullframe
   :ensure t
   :commands fullframe)
@@ -23,3 +25,15 @@
 (use-package face-remap
   :bind(("M-=" . text-scale-increase)
         ("C-=" . text-scale-decrease)))
+
+(use-package time
+  :config
+  (v/csetq display-time-24hr-format t)
+  (v/csetq display-time-day-and-date t)
+
+  (v/csetq display-time-string-forms
+            '((format "%s %s %s, %s:%s"
+                      dayname
+                      monthname day
+                      24-hours minutes)))
+  (display-time))
