@@ -13,7 +13,6 @@
          ("C-c C-l" . org-insert-link)
          ("<" . v/org-insert-char-dwim))
   :hook((org-mode . v/org-mode-hook-function))
-  :hook((org-agenda-mode . v/org-agenda-mode-hook-function))
   :config
   (defun v/org-mode-hook-function ()
     (toggle-truncate-lines 0)
@@ -23,10 +22,6 @@
     (set-fill-column 1000)
     (flyspell-mode +1))
 
-  (defun v/org-agenda-mode-hook-function ()
-    (hl-line-mode +1)
-    (goto-address-mode +1)
-    (v/vsetq org-agenda-sticky t))
   (defun v/org-insert-char-dwim ()
     (interactive)
     ;; Display org-insert-structure-template if < inserted at BOL.
@@ -87,6 +82,12 @@
   (v/vsetq org-journal-file-format "%Y%m%d.org"))
 
 (use-package org-agenda
+  :hook((org-agenda-mode . v/org-agenda-mode-hook-function))
   ;; Suggestion from:
   ;; https://blog.aaronbieber.com/2016/09/25/agenda-interactions-primer.html
-  :bind (("S-SPC" . org-agenda-list)))
+  :bind (("S-SPC" . org-agenda-list))
+  :config
+  (defun v/org-agenda-mode-hook-function ()
+    (hl-line-mode +1)
+    (goto-address-mode +1)
+    (v/vsetq org-agenda-sticky t)))
