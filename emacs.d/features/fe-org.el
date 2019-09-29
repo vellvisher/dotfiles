@@ -6,7 +6,6 @@
 (use-package org
   :ensure org-plus-contrib ;; Ensure latest org installed from elpa
   :bind (("C-c c" . org-capture)
-         ("C-c a" . org-agenda-list)
          ("C-c l" . org-store-link)
          ("C-c t" . org-set-tags-command)
          ("C-c p" . org-priority)
@@ -86,3 +85,8 @@
   (v/vsetq org-journal-file-type 'weekly)
   (v/vsetq org-journal-date-format "%a %d %b, %Y")
   (v/vsetq org-journal-file-format "%Y%m%d.org"))
+
+(use-package org-agenda
+  ;; Suggestion from:
+  ;; https://blog.aaronbieber.com/2016/09/25/agenda-interactions-primer.html
+  :bind (("S-SPC" . org-agenda-list)))
