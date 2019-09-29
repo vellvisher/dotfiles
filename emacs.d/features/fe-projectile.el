@@ -1,3 +1,6 @@
+(use-package ag
+  :ensure t)
+
 (use-package projectile
   :ensure t
   :defer 2
