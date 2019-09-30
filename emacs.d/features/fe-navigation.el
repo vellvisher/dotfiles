@@ -65,3 +65,10 @@ already narrowed."
 Repeated invocations toggle between the two most recently open buffers."
     (interactive)
     (switch-to-buffer (other-buffer (current-buffer) 1))))
+
+(use-package xref
+  :config
+  ;; I accidentally press these when I meant "global-map M->"
+  ;; for end-of-buffer. Unsetting.
+  (unbind-key "M-?" global-map)
+  (unbind-key "M-?" global-map))
