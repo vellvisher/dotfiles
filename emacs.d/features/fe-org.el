@@ -84,9 +84,66 @@
   :hook((org-agenda-mode . v/org-agenda-mode-hook-function))
   ;; Suggestion from:
   ;; https://blog.aaronbieber.com/2016/09/25/agenda-interactions-primer.html
-  :bind (("S-SPC" . org-agenda-list))
+  :bind (("S-SPC" . v-pop-to-org-agenda)
+         :map org-agenda-mode-map
+         ("P" . v-org-agenda-previous-header)
+         ("N" . v-org-agenda-next-header))
+  :custom
+  ((org-agenda-custom-commands
+    '(("d" "Daily agenda and all TODOs"
+       ((tags "PRIORITY=\"A\""
+              ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+               (org-agenda-overriding-header "High-priority unfinished tasks:")))
+        (agenda "" ((org-agenda-span 1)))
+        (alltodo ""
+                 ((org-agenda-overriding-header "Unscheduled:")
+                  (org-agenda-skip-function
+                   '(or (v-org-skip-category-not-inbox)
+                        (org-agenda-skip-entry-if 'todo '("DONE" "OBSOLETE" "CANCELLED"))
+                        (org-agenda-skip-if nil '(scheduled deadline))))))))))
+   (org-agenda-compact-blocks t))
+
   :config
+  (defun v-org-skip-category-not-inbox ()
+    "Skip an agenda entry if it has a CATEGORY property not equal to \"inbox\"."
+    (let ((subtree-end (save-excursion (org-end-of-subtree t))))
+      (if (string= (org-entry-get nil "CATEGORY") "inbox")
+          nil
+        subtree-end)))
+  (defun v-pop-to-org-agenda (&optional split)
+    "Visit the org agenda, in the current window or a SPLIT."
+    (interactive "P")
+    (org-agenda nil "d"))
   (defun v/org-agenda-mode-hook-function ()
     (hl-line-mode +1)
     (goto-address-mode +1)
-    (v/vsetq org-agenda-sticky t)))
+    (v/vsetq org-agenda-sticky nil))
+  (defun v-org-agenda-next-header ()
+    "Jump to the next header in an agenda series."
+    (interactive)
+    (v--org-agenda-goto-header))
+
+  (defun v-org-agenda-previous-header ()
+    "Jump to the previous header in an agenda series."
+    (interactive)
+    (v--org-agenda-goto-header t))
+
+  (defun v--org-agenda-goto-header (&optional backwards)
+    "Find the next agenda series header forwards or BACKWARDS."
+    (let ((pos (save-excursion
+                 (goto-char (if backwards
+                                (line-beginning-position)
+                              (line-end-position)))
+                 (let* ((find-func (if backwards
+                                       'previous-single-property-change
+                                     'next-single-property-change))
+                        (end-func (if backwards
+                                      'max
+                                    'min))
+                        (all-pos-raw (list (funcall find-func (point) 'org-agenda-structural-header)
+                                           (funcall find-func (point) 'org-agenda-date-header)))
+                        (all-pos (cl-remove-if-not 'numberp all-pos-raw))
+                        (prop-pos (if all-pos (apply end-func all-pos) nil)))
+                   prop-pos))))
+      (if pos (goto-char pos))
+      (if backwards (goto-char (line-beginning-position))))))
