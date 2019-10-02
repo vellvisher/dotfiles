@@ -92,7 +92,9 @@
   ((org-agenda-custom-commands
     '(("d" "Daily agenda and all TODOs"
        ((tags "PRIORITY=\"A\""
-              ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+              ;; Skip if does not have 'TODO'.
+              ((org-agenda-skip-function '(or (v-org-skip-category-not-inbox)
+                                              (org-agenda-skip-entry-if 'nottodo 'todo)))
                (org-agenda-overriding-header "High-priority unfinished tasks:")))
         (agenda "" ((org-agenda-span 1)))
         (alltodo ""
