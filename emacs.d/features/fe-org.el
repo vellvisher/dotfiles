@@ -4,6 +4,12 @@
   :ensure t)
 
 ;; Like org-bullets but for priorities.
+(use-package org-bullets
+  :ensure t
+  :hook
+  (org-mode . org-bullets-mode))
+
+;; Like org-bullets but for priorities.
 (use-package org-fancy-priorities
   :ensure t
   :hook
