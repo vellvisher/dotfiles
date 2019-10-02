@@ -3,6 +3,14 @@
 (use-package org-web-tools
   :ensure t)
 
+;; Like org-bullets but for priorities.
+(use-package org-fancy-priorities
+  :ensure t
+  :hook
+  (org-mode . org-fancy-priorities-mode)
+  :custom
+  (org-fancy-priorities-list '("HIGH" "MID" "LOW" "OPTIONAL")))
+
 (use-package org
   :ensure org-plus-contrib ;; Ensure latest org installed from elpa
   :bind (("C-c c" . org-capture)
@@ -13,6 +21,11 @@
          ("C-c C-l" . org-insert-link)
          ("<" . v/org-insert-char-dwim))
   :hook((org-mode . v/org-mode-hook-function))
+  :custom
+  (org-priority-faces '((?A . "#ff2600")
+                        (?B . "#ff9200")
+                        (?C . "#747474")))
+  (org-default-priority ?C)
   :config
   (defun v/org-mode-hook-function ()
     (toggle-truncate-lines 0)
@@ -31,7 +44,6 @@
   (v/vsetq org-directory "~/beorg")
   (v/vsetq org-default-notes-file (concat org-directory "/inbox.org"))
   (v/vsetq org-agenda-files (-list org-directory "~/GoogleDrive/org"))
-  (v/vsetq org-default-priority ?C)
   (v/vsetq org-return-follows-link t)
   (v/vsetq org-catch-invisible-edits 'error)
 
