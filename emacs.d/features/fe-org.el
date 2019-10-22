@@ -102,7 +102,7 @@
   :hook((org-agenda-mode . v/org-agenda-mode-hook-function))
   ;; Suggestion from:
   ;; https://blog.aaronbieber.com/2016/09/25/agenda-interactions-primer.html
-  :bind (("S-SPC" . v-pop-to-org-agenda)
+  :bind (("C-c a" . v-pop-to-org-agenda)
          :map org-agenda-mode-map
          ("P" . v-org-agenda-previous-header)
          ("N" . v-org-agenda-next-header))
