@@ -17,3 +17,8 @@
     (advice-add 'helpful-update
                 :after
                 #'elisp-demos-advice-helpful-update)))
+
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
