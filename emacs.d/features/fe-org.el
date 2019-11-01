@@ -39,7 +39,8 @@
     (v/vsetq show-trailing-whitespace t)
     (v/vsetq org-imenu-depth 4)
     (set-fill-column 1000)
-    (flyspell-mode +1))
+    (flyspell-mode +1)
+    (org-indent-mode +1))
 
   (defun v/org-insert-char-dwim ()
     (interactive)
@@ -52,6 +53,10 @@
   (v/vsetq org-agenda-files (-list org-directory "~/GoogleDrive/org"))
   (v/vsetq org-return-follows-link t)
   (v/vsetq org-catch-invisible-edits 'error)
+
+  ;; org-goto
+  ;; (v/vsetq org-goto-interface 'outline-path-completionp)
+  ;; (v/vsetq org-outline-path-complete-in-steps nil)
 
   ;; Cleaner outline for org.
   (v/vsetq org-hide-leading-stars t)
