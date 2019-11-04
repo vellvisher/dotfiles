@@ -3,7 +3,6 @@
 (use-package org-web-tools
   :ensure t)
 
-;; Like org-bullets but for priorities.
 (use-package org-bullets
   :ensure t
   :hook
