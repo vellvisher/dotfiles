@@ -1,5 +1,8 @@
 (require 'v-vsetq)
 
+(use-package dired-filter
+  :ensure t)
+
 ;; Helps when loading files with very long lines
 ;; https://emacs.stackexchange.com/a/38295
 (defun v/dired-find-file-conservatively ()
