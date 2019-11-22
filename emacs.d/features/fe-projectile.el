@@ -8,7 +8,7 @@
   :config
   (setq projectile-enable-caching t)
   (setq projectile-completion-system 'ivy)
-  (setq projectile-indexing-method 'alien)
+  (setq projectile-indexing-method 'hybrid)
   ;; fd is super fast. Use it if available.
   (when (executable-find "fd")
     (let ((fd-command "fd . --print0"))
