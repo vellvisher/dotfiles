@@ -123,3 +123,22 @@
 
 (use-package rectangular-region-mode
  :bind ("C-c r" . set-rectangular-region-anchor))
+
+;; Remember history of things across launches (ie. kill ring).
+;; From https://www.wisdomandwonder.com/wp-content/uploads/2014/03/C3F.html
+(use-package savehist
+  :defer 2
+  :custom
+  (savehist-file "~/.emacs.d/savehist")
+  (savehist-save-minibuffer-history t)
+  (history-length 20000)
+  (savehist-additional-variables
+   '(kill-ring
+     search-ring
+     regexp-search-ring
+     last-kbd-macro
+     shell-command-history
+     compile-history
+     log-edit-comment-ring))
+  :config
+  (savehist-mode +1))
