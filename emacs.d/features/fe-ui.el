@@ -37,3 +37,9 @@
                       monthname day
                       24-hours minutes)))
   (display-time))
+
+;; Move `mode-line-modes` to the end of the mode-line.
+(v/csetq mode-line-format
+'("%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification mode-line-buffer-identification "   " mode-line-position
+ (vc-mode vc-mode)
+ "  " mode-line-misc-info mode-line-modes mode-line-end-spaces))
