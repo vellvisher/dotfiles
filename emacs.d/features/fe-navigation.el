@@ -72,3 +72,9 @@ Repeated invocations toggle between the two most recently open buffers."
   ;; for end-of-buffer. Unsetting.
   (unbind-key "M-?" global-map)
   (unbind-key "M-?" global-map))
+
+(use-package avy
+  :ensure t
+  :bind (("M-." . avy-goto-char-timer))
+  :config
+  (setq avy-background t))
