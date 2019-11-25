@@ -1,6 +1,7 @@
 (require 'v-vsetq)
 
 (use-package help
+  :hook (help-mode . goto-address-mode)
   :config
   ;; Select help window by default.
   (v/vsetq help-window-select t))
