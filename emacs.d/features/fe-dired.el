@@ -3,38 +3,50 @@
 (use-package dired-filter
   :ensure t)
 
+(use-package dired-collapse
+  :ensure t)
+
 ;; Helps when loading files with very long lines
 ;; https://emacs.stackexchange.com/a/38295
 (defun v/dired-find-file-conservatively ()
-   (interactive)
-   (let ((auto-mode-alist nil))
-     (dired-find-file)
-     ;; disable costly modes
-     (fundamental-mode)
-     (setq-local bidi-display-reordering nil)
-     (when (boundp 'smartparens-mode)
-       (smartparens-mode -1))))
-
+  (interactive)
+  (let ((auto-mode-alist nil))
+    (dired-find-file)
+    ;; disable costly modes
+    (fundamental-mode)
+    (setq-local bidi-display-reordering nil)
+    (when (boundp 'smartparens-mode)
+      (smartparens-mode -1))))
 (use-package dired
-  :hook (dired-mode . dired-hide-details-mode)
+  :hook ((dired-mode . dired-hide-details-mode)
+         (dired-mode . dired-collapse-mode))
   :bind (:map dired-mode-map
               ("i" . dired-hide-details-mode)
-	      ("M-<return>" . v/dired-find-file-conservatively))
-              ;; ("M" . ar/dired-mark-all)
-              ;; ("P" . peep-dired)
+              ("M-<return>" . v/dired-find-file-conservatively))
+  ;; ("M" . ar/dired-mark-all)
+  ;; ("P" . peep-dired)
   :commands (dired-mode)
-             ;; ar/find-all-dired-current-dir
-             ;; ar/dired-mark-all
-             ;; ar/file-find-alternate-parent-dir)
+  ;; ar/find-all-dired-current-dir
+  ;; ar/dired-mark-all
+  ;; ar/file-find-alternate-parent-dir)
   :init
   :config
-  ;; For dired-jump.
-  ;; (use-package dired-x)
+  ;; Helps when loading files with very long lines
+  ;; https://emacs.stackexchange.com/a/38295
+  (defun dired-mkdir ()
+    (interactive)
+    (dired-create-directory))
 
-  ;; (use-package peep-dired
-  ;;   :ensure t
-  ;;   :bind (:map dired-mode-map
-  ;;               ("P" . peep-dired)))
+  ;; For dired-jump.
+  (use-package dired-x)
+
+  ;; Omit ".", ".."
+  (v/vsetq dired-omit-mode t)
+
+  (use-package peep-dired
+    :ensure t
+    :bind (:map dired-mode-map
+                ("P" . peep-dired)))
 
   ;; (use-package dired-subtree :ensure t
   ;;   :bind (:map dired-mode-map
@@ -42,7 +54,7 @@
   ;;               ("<backtab>" . dired-subtree-cycle)))
 
   ;; Adding human readable units and sorted by date.
-  ;; (ar/vsetq dired-listing-switches "-Alht") ;
+  (v/vsetq dired-listing-switches "-Alhtc")
 
   ;; Try to guess the target directory for operations.
   (v/vsetq dired-dwim-target t)
@@ -53,7 +65,16 @@
   ;; Automatically refresh dired buffers when contents changes.
   (v/vsetq dired-auto-revert-buffer t))
 
-  ;; Hide some files
-  ;; (setq dired-omit-files "^\\..*$\\|^\\.\\.$")
-  ;; (setq dired-omit-mode t)
+(use-package ivy-dired-history
+  :ensure t)
 
+(with-eval-after-load 'dired
+  (require 'ivy-dired-history)
+  ;; if you are using ido,you'd better disable ido for dired
+  ;; (define-key (cdr ido-minor-mode-map-entry) [remap dired] nil) ;in ido-setup-hook
+  (define-key dired-mode-map "," 'dired))
+
+(use-package dired-recent
+  :ensure t
+  :init
+  (dired-recent-mode 1))
