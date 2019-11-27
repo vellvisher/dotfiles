@@ -48,6 +48,9 @@
     :bind (:map dired-mode-map
                 ("P" . peep-dired)))
 
+  (use-package ivy-dired-history
+    :ensure t)
+
   ;; (use-package dired-subtree :ensure t
   ;;   :bind (:map dired-mode-map
   ;;               ("<tab>" . dired-subtree-toggle)
@@ -64,15 +67,6 @@
 
   ;; Automatically refresh dired buffers when contents changes.
   (v/vsetq dired-auto-revert-buffer t))
-
-(use-package ivy-dired-history
-  :ensure t)
-
-(with-eval-after-load 'dired
-  (require 'ivy-dired-history)
-  ;; if you are using ido,you'd better disable ido for dired
-  ;; (define-key (cdr ido-minor-mode-map-entry) [remap dired] nil) ;in ido-setup-hook
-  (define-key dired-mode-map "," 'dired))
 
 (use-package dired-recent
   :ensure t

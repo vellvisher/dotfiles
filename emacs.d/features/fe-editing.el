@@ -139,6 +139,7 @@
      last-kbd-macro
      shell-command-history
      compile-history
+     ivy-dired-history-variable
      log-edit-comment-ring))
   :config
   (savehist-mode +1))
