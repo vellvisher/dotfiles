@@ -12,3 +12,6 @@
  :config
  (setq git-gutter:handled-backends '(git bzr svn)))
 
+(use-package git-link
+  :ensure t
+  :defer 5)
