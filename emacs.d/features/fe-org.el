@@ -41,8 +41,8 @@
     (v/vsetq show-trailing-whitespace t)
     (v/vsetq org-imenu-depth 4)
     (set-fill-column 1000)
-    (v/vsetq prettify-symbols-alist '(("lambda" . 955)
-                                      ("->" . 8594))))
+    (v/vsetq prettify-symbols-alist '(("lambda" . ?λ)
+                                      ("->" . ?→))))
 
   (defun v/org-insert-char-dwim ()
     (interactive)

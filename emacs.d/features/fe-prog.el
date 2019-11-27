@@ -21,5 +21,5 @@
   (use-package rainbow-mode
     :ensure t)
   (defun v/prog-mode-hook-function ()
-    (v/vsetq prettify-symbols-alist '(("lambda" . 955)
-                                      ("->" . 8594)))))
+    (v/vsetq prettify-symbols-alist '(("lambda" . ?λ)
+                                      ("->" . ?→)))))
