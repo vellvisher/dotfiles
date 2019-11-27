@@ -25,7 +25,10 @@
          :map org-mode-map
          ("C-c C-l" . org-insert-link)
          ("<" . v/org-insert-char-dwim))
-  :hook((org-mode . v/org-mode-hook-function))
+  :hook ((org-mode . prettify-symbols-mode)
+         (org-mode . org-indent-mode)
+         (org-mode . flyspell-mode)
+         (org-mode . v/org-mode-hook-function))
   :custom
   (org-priority-faces '((?A . "#ff2600")
                         (?B . "#ff9200")
@@ -38,8 +41,8 @@
     (v/vsetq show-trailing-whitespace t)
     (v/vsetq org-imenu-depth 4)
     (set-fill-column 1000)
-    (flyspell-mode +1)
-    (org-indent-mode +1))
+    (v/vsetq prettify-symbols-alist '(("lambda" . 955)
+                                      ("->" . 8594))))
 
   (defun v/org-insert-char-dwim ()
     (interactive)
