@@ -79,3 +79,7 @@ Repeated invocations toggle between the two most recently open buffers."
   :config
   (v/vsetq avy-background t)
   (v/vsetq avy-timeout-seconds 0.3))
+
+(use-package frame
+  :bind (("C-x o" . other-frame)
+         ("C-x c" . make-frame)))
