@@ -98,7 +98,8 @@
   :ensure t
   :hook ((prog-mode . smartparens-mode)
          (protobuf-mode . smartparens-mode)
-         (org-mode . smartparens-mode)))
+         (org-mode . smartparens-mode)
+         (tex-mode . smartparens-mode)))
 
 (use-package indent
   :bind ("C-M-\\" . v/indent-region-or-buffer)
