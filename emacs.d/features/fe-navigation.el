@@ -75,7 +75,7 @@ Repeated invocations toggle between the two most recently open buffers."
 
 (use-package avy
   :ensure t
-  :bind (("M-." . avy-goto-char-timer))
+  :bind (("M-u" . avy-goto-char-timer))
   :config
   (v/vsetq avy-background t)
   (v/vsetq avy-timeout-seconds 0.3))
