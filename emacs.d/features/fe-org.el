@@ -1,13 +1,5 @@
 (require 'v-vsetq)
 
-(use-package org-web-tools
-  :ensure t)
-
-(use-package org-bullets
-  :ensure t
-  :hook
-  (org-mode . org-bullets-mode))
-
 ;; Like org-bullets but for priorities.
 (use-package org-fancy-priorities
   :ensure t
@@ -174,3 +166,13 @@
                    prop-pos))))
       (if pos (goto-char pos))
       (if backwards (goto-char (line-beginning-position))))))
+
+(use-package org-web-tools
+  :after org
+  :ensure t)
+
+(use-package org-bullets
+  :ensure t
+  :after org
+  :hook
+  (org-mode . org-bullets-mode))
