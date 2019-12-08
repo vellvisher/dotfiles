@@ -104,7 +104,8 @@
   :bind (("C-c a" . v-pop-to-org-agenda)
          :map org-agenda-mode-map
          ("P" . v-org-agenda-previous-header)
-         ("N" . v-org-agenda-next-header))
+         ("N" . v-org-agenda-next-header)
+         ("G" . org-agenda-goto-date))
   :custom
   ((org-agenda-custom-commands
     '(("d" "Daily agenda and all TODOs"
@@ -136,6 +137,7 @@
   (defun v/org-agenda-mode-hook-function ()
     (hl-line-mode +1)
     (goto-address-mode +1)
+    (v/vsetq org-agenda-use-time-grid nil)
     (v/vsetq org-agenda-sticky nil))
   (defun v-org-agenda-next-header ()
     "Jump to the next header in an agenda series."
