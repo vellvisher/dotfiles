@@ -144,3 +144,18 @@
      log-edit-comment-ring))
   :config
   (savehist-mode +1))
+
+;; Highlight matching parenthesis.
+(use-package paren
+  :ensure t
+  :defer 5
+  :config
+  (show-paren-mode +1)
+  ;; Without this matching parens aren't highlighted in region.
+  (v/vsetq show-paren-priority -50)
+  (v/vsetq show-paren-delay 0)
+  ;; Highlight entire bracket expression.
+  (v/vsetq show-paren-style 'expression)
+  (set-face-attribute 'show-paren-match nil
+                      :background nil
+                      :foreground "#FA009A"))
