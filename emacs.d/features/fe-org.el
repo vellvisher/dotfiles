@@ -120,7 +120,10 @@
                   (org-agenda-skip-function
                    '(or (v-org-skip-category-not-inbox)
                         (org-agenda-skip-entry-if 'todo '("DONE" "OBSOLETE" "CANCELLED"))
-                        (org-agenda-skip-if nil '(scheduled deadline))))))))))
+                        (org-agenda-skip-if nil '(scheduled deadline))))))
+        ;; Fix "Not allowed in tags-type agenda buffers"
+        ;; https://emacs.stackexchange.com/a/26303
+        (agenda "")))))
    (org-agenda-compact-blocks t))
 
   :config
