@@ -62,11 +62,20 @@
 
   (v/vsetq org-enforce-todo-dependencies t)
 
+  ;; Prompts for book name or url and returns TODO with proper link.
+  (defun v/org-capture-book-template ()
+    (let ((book (read-string "Book name or url:")))
+      (if (s-prefix? "http" book)
+          (format "* TODO %s" (org-web-tools--org-link-for-url book))
+        (format "* TODO %s" book))))
+
   (setq org-capture-templates
         '(("t" "TODO" entry (file "")
            "* TODO %?\nSCHEDULED: %^t")
-          ("b" "Buy" entry (file "")
+          ("s" "Shop" entry (file "")
            "* TODO Buy %?  :shopping:\nSCHEDULED: %^t")
+          ("b" "Book" entry (file "~/beorg/books.org")
+           (function v/org-capture-book-template))
           ("w" "Work" entry (file "~/GoogleDrive/org/work.org")
            "* TODO %?\nSCHEDULED: %^t"))))
 
