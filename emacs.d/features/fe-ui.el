@@ -43,3 +43,19 @@
 '("%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification mode-line-buffer-identification "   " mode-line-position
  (vc-mode vc-mode)
  "  " mode-line-misc-info mode-line-modes mode-line-end-spaces))
+
+(use-package golden-ratio
+  :ensure t
+  :init
+  (golden-ratio-mode 1))
+
+;; In addition to highlighting symbols, we get navigation between them.
+(use-package symbol-overlay
+  :ensure t
+  :hook (prog-mode . symbol-overlay-mode)
+  :config
+  ;; Override overlay background color with default background
+  ;; to get rid of overlay bounding box.
+  (set-face-attribute 'symbol-overlay-default-face nil
+                      :background (face-attribute 'default :background)
+                      :foreground "yellow"))
