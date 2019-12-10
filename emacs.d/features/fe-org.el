@@ -62,12 +62,29 @@
 
   (v/vsetq org-enforce-todo-dependencies t)
 
+  ;; Checks if clipboard has url, converts to org-link then.
+  ;; Otherwise, asks for string with prompt.
+  (defun v/org-clipboard-link-or-prompt-for-input (prompt)
+    (let ((value (if (s-prefix? "http" (current-kill 0))
+                         (org-web-tools--org-link-for-url (current-kill 0))
+                   (read-string prompt))))
+      (format "* TODO %s" value)))
+
   ;; Prompts for book name or url and returns TODO with proper link.
   (defun v/org-capture-book-template ()
-    (let ((book (read-string "Book name or url:")))
-      (if (s-prefix? "http" book)
-          (format "* TODO %s" (org-web-tools--org-link-for-url book))
-        (format "* TODO %s" book))))
+    (v/org-clipboard-link-or-prompt-for-input "Book name or url:"))
+
+  ;; Prompts for movie name or url and returns TODO with proper link.
+  (defun v/org-capture-movie-template ()
+    (v/org-clipboard-link-or-prompt-for-input "Movie name or url:"))
+
+  ;; Prompts for article name or url and returns TODO with proper link.
+  (defun v/org-capture-article-template ()
+    (v/org-clipboard-link-or-prompt-for-input "Article name or url:"))
+
+  ;; Prompts for emacs url or function.
+  (defun v/org-capture-emacs-template ()
+    (v/org-clipboard-link-or-prompt-for-input "Emacs resource:"))
 
   (setq org-capture-templates
         '(("t" "TODO" entry (file "")
@@ -76,6 +93,12 @@
            "* TODO Buy %?  :shopping:\nSCHEDULED: %^t")
           ("b" "Book" entry (file "~/beorg/books.org")
            (function v/org-capture-book-template))
+          ("e" "Emacs resource" entry (file "~/beorg/emacs.org")
+           (function v/org-capture-emacs-template))
+          ("a" "Article" entry (file "~/beorg/articles.org")
+           (function v/org-capture-article-template))
+          ("m" "Movies" entry (file "~/beorg/movies.org")
+           (function v/org-capture-movie-template))
           ("w" "Work" entry (file "~/GoogleDrive/org/work.org")
            "* TODO %?\nSCHEDULED: %^t"))))
 
