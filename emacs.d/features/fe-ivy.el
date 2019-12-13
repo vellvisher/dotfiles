@@ -23,7 +23,10 @@
   (v/vsetq ivy-height 15)
   (v/vsetq ivy-count-format "")
   (v/vsetq ivy-use-virtual-buffers t)
+  (v/csetq ivy-display-style 'fancy)
+  (v/csetq ivy-wrap t)
   (v/vsetq enable-recursive-minibuffers t)
+
   (defun v/ivy-keyboard-quit-dwim ()
     "If region active, deactivate. If there's content, minibuffer. Otherwise quit."
     (interactive)
