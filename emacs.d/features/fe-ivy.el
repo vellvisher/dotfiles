@@ -46,7 +46,7 @@
 (use-package ivy-rich
   :ensure t
   :config
-  (setq ivy-rich--display-transformers-list
+  (v/csetq ivy-rich--display-transformers-list
         '(counsel-M-x
           (:columns
            ((counsel-M-x-transformer (:width 80))  ; the original transfomer
