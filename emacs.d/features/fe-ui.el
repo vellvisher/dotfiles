@@ -59,3 +59,18 @@
   (set-face-attribute 'symbol-overlay-default-face nil
                       :background (face-attribute 'default :background)
                       :foreground "yellow"))
+
+;; Highlight matching parenthesis.
+(use-package paren
+  :ensure t
+  :defer 5
+  :config
+  (show-paren-mode +1)
+  ;; Without this matching parens aren't highlighted in region.
+  (v/vsetq show-paren-priority -50)
+  (v/vsetq show-paren-delay 0)
+  ;; Highlight entire bracket expression.
+  (v/vsetq show-paren-style 'mixed)
+  (set-face-attribute 'show-paren-match nil
+                      :background nil
+                      :foreground "#FA009A"))
