@@ -32,6 +32,7 @@
     (org-display-inline-images)
     (v/vsetq show-trailing-whitespace t)
     (v/vsetq org-imenu-depth 4)
+    (v/csetq org-use-speed-commands t)
     (set-fill-column 1000)
     (v/vsetq prettify-symbols-alist '(("lambda" . ?λ)
                                       ("->" . ?→))))
