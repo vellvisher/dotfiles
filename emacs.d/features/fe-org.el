@@ -55,7 +55,6 @@
 
   ;; Cleaner outline for org.
   (v/vsetq org-hide-leading-stars t)
-  (v/vsetq org-odd-levels-only t)
   (v/vsetq org-ellipsis "…")
 
   ;; Replace with ivy-reveal.
