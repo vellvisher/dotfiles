@@ -27,6 +27,7 @@
                         (?C . "#747474")))
   (org-default-priority ?C)
   (org-use-speed-commands t)
+  (org-list-use-circular-motion t)
   :config
   (defun v/org-mode-hook-function ()
     (toggle-truncate-lines 0)
