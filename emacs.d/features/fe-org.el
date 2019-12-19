@@ -67,7 +67,7 @@
   ;; Otherwise, asks for string with prompt.
   (defun v/org-clipboard-link-or-prompt-for-input (prompt)
     (let ((value (if (s-prefix? "http" (current-kill 0))
-                         (org-web-tools--org-link-for-url (current-kill 0))
+                     (org-web-tools--org-link-for-url (current-kill 0))
                    (read-string prompt))))
       (format "* TODO %s" value)))
 
@@ -87,19 +87,47 @@
   (defun v/org-capture-emacs-template ()
     (v/org-clipboard-link-or-prompt-for-input "Emacs resource:"))
 
+  (defun v/org-capture-packing-list nil "* TODO packing list
+SCHEDULED: <2019-12-21 Sat>
+[2019-11-01 Fri 09:43]
+
++ [ ] Toothbrush
++ [ ] satin floss
++ [ ] underwear
++ [ ] vest
++ [ ] t shirts
++ [ ] trousers
++ [ ] night wear
++ [ ] passport
++ [ ] residence permit
++ [ ] dance shoes
++ [ ] perfume
++ [ ] mint
++ [ ] cosmetics
++ [ ] swimming shorts
++ [ ] spike ball
++ [ ] condoms
++ [ ] iPhone charger
++ [ ] Bose headphones
++ [ ] eye mask
++ [ ] traveling pillow
++ [ ] empty water bottle")
+
   (setq org-capture-templates
         '(("t" "TODO" entry (file "")
            "* TODO %?\nSCHEDULED: %^t")
           ("s" "Shop" entry (file "")
            "* TODO Buy %?  :shopping:\nSCHEDULED: %^t")
           ("b" "Book" entry (file "~/beorg/books.org")
-           (function v/org-capture-book-template))
+           #'v/org-capture-book-template)
           ("e" "Emacs resource" entry (file "~/beorg/emacs.org")
-           (function v/org-capture-emacs-template))
+           #'v/org-capture-emacs-template)
           ("a" "Article" entry (file "~/beorg/articles.org")
-           (function v/org-capture-article-template))
+           #'v/org-capture-article-template)
           ("m" "Movies" entry (file "~/beorg/movies.org")
-           (function v/org-capture-movie-template))
+           #'v/org-capture-movie-template)
+          ("p" "Packing list" entry (file "~/beorg/inbox.org")
+           #'v/org-capture-packing-list)
           ("w" "Work" entry (file "~/GoogleDrive/org/work.org")
            "* TODO %?\nSCHEDULED: %^t"))))
 
