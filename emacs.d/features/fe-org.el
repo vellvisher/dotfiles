@@ -50,9 +50,9 @@
   (v/vsetq org-return-follows-link t)
   (v/vsetq org-catch-invisible-edits 'error)
 
-  ;; org-goto
-  ;; (v/vsetq org-goto-interface 'outline-path-completionp)
-  ;; (v/vsetq org-outline-path-complete-in-steps nil)
+  ;; org-goto (C-c C-j)
+  (v/vsetq org-goto-interface 'outline-path-completion)
+  (v/vsetq org-outline-path-complete-in-steps nil)
 
   ;; Cleaner outline for org.
   (v/vsetq org-hide-leading-stars t)
