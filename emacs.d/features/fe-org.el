@@ -26,13 +26,14 @@
                         (?B . "#ff9200")
                         (?C . "#747474")))
   (org-default-priority ?C)
+  (org-use-speed-commands t)
+  (org-list-use-circular-motion t)
   :config
   (defun v/org-mode-hook-function ()
     (toggle-truncate-lines 0)
     (org-display-inline-images)
     (v/vsetq show-trailing-whitespace t)
     (v/vsetq org-imenu-depth 4)
-    (v/csetq org-use-speed-commands t)
     (set-fill-column 1000)
     (v/vsetq prettify-symbols-alist '(("lambda" . ?λ)
                                       ("->" . ?→))))
@@ -49,13 +50,12 @@
   (v/vsetq org-return-follows-link t)
   (v/vsetq org-catch-invisible-edits 'error)
 
-  ;; org-goto
-  ;; (v/vsetq org-goto-interface 'outline-path-completionp)
-  ;; (v/vsetq org-outline-path-complete-in-steps nil)
+  ;; org-goto (C-c C-j)
+  (v/vsetq org-goto-interface 'outline-path-completion)
+  (v/vsetq org-outline-path-complete-in-steps nil)
 
   ;; Cleaner outline for org.
   (v/vsetq org-hide-leading-stars t)
-  (v/vsetq org-odd-levels-only t)
   (v/vsetq org-ellipsis "…")
 
   ;; Replace with ivy-reveal.
