@@ -100,6 +100,7 @@ SCHEDULED: <2019-12-21 Sat>
 + [ ] perfume
 + [ ] mint
 + [ ] cosmetics
++ [ ] shaving kit
 + [ ] swimming shorts
 + [ ] spike ball
 + [ ] condoms
