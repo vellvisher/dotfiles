@@ -85,7 +85,6 @@
 
   (defun v/org-capture-packing-list nil "* TODO packing list
 SCHEDULED: <2019-12-21 Sat>
-[2019-11-01 Fri 09:43]
 
 + [ ] Toothbrush
 + [ ] satin floss
@@ -110,6 +109,16 @@ SCHEDULED: <2019-12-21 Sat>
 + [ ] traveling pillow
 + [ ] empty water bottle")
 
+  (defun v/org-capture-flight-checklist nil
+    (let ((code (read-string "Dest airport code:"))
+          (ref (read-string "Booking reference:")))
+      (format "* TODO <%s> Booked flight checklist
+Booking reference: %s
++ [ ] select seat
++ [ ] check in reminder
++ [ ] book special meal
+" code ref)))
+
   (setq org-capture-templates
         '(("t" "TODO" entry (file "")
            "* TODO %?\nSCHEDULED: %^t")
@@ -125,6 +134,8 @@ SCHEDULED: <2019-12-21 Sat>
            #'v/org-capture-movie-template)
           ("p" "Packing list" entry (file "~/beorg/inbox.org")
            #'v/org-capture-packing-list)
+          ("f" "Flight checklist" entry (file "~/beorg/inbox.org")
+           #'v/org-capture-flight-checklist)
           ("w" "Work" entry (file "~/GoogleDrive/org/work.org")
            "* TODO %?\nSCHEDULED: %^t"))))
 
