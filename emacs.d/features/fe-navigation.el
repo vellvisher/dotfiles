@@ -84,3 +84,8 @@ Repeated invocations toggle between the two most recently open buffers."
 (use-package frame
   :bind (("C-x o" . other-frame)
          ("C-x c" . make-frame)))
+
+
+(use-package simple
+  :config
+  (v/vsetq set-mark-command-repeat-pop t))
