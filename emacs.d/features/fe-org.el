@@ -83,7 +83,8 @@
   (defun v/org-capture-emacs-template ()
     (v/org-clipboard-link-or-prompt-for-input "Emacs resource:"))
 
-  (defun v/org-capture-packing-list nil "* TODO packing list
+  (defun v/org-capture-packing-list nil (let ((code (read-string "Dest or airport code:")))
+                                          (format "* TODO <%s> packing list
 SCHEDULED: <2019-12-21 Sat>
 
 + [ ] Toothbrush
@@ -107,7 +108,7 @@ SCHEDULED: <2019-12-21 Sat>
 + [ ] Bose headphones
 + [ ] eye mask
 + [ ] traveling pillow
-+ [ ] empty water bottle")
++ [ ] empty water bottle" code)))
 
   (defun v/org-capture-flight-checklist nil
     (let ((code (read-string "Dest airport code:"))
