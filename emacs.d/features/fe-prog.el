@@ -20,6 +20,8 @@
   ;; Highlight hex strings in respective color.
   (use-package rainbow-mode
     :ensure t)
+  (use-package string-inflection
+    :ensure t)
   (defun v/prog-mode-hook-function ()
     (v/vsetq prettify-symbols-alist '(("lambda" . ?λ)
                                       ("->" . ?→)))))
