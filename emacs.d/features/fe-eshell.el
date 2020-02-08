@@ -7,8 +7,7 @@
   :config (exec-path-from-shell-initialize))
 (use-package shell-pop
   :ensure t
-  :bind (([f5] . v/shell-pop)
-         ("C-c C-h" . v/shell-pop))
+  :bind (("C-c C-h" . v/shell-pop))
   :config (use-package eshell
             :hook ((eshell-mode . goto-address-mode)
                    (eshell-mode . v/eshell-mode-hook-function))
