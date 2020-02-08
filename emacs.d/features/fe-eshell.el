@@ -7,7 +7,8 @@
   :config (exec-path-from-shell-initialize))
 (use-package shell-pop
   :ensure t
-  :bind (([f5] . v/shell-pop))
+  :bind (([f5] . v/shell-pop)
+         ("C-c C-h" . v/shell-pop))
   :config (use-package eshell
             :hook ((eshell-mode . goto-address-mode)
                    (eshell-mode . v/eshell-mode-hook-function))
@@ -71,7 +72,7 @@
 (use-package term
   :bind (:map term-mode-map
               ;; Make same shortcut DWIM to switch between line and char.
-              ("C-x C-j" . term-char-mode)
+              ("C-c C-j" . term-char-mode)
               :map term-raw-map
               ;; Prefix is actually C-x.
               ("C-c C-y" . term-paste))
