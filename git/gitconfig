@@ -27,7 +27,6 @@
 
 [core]
     autocrlf = input
-    editor = vim
     excludesfile = ~/.gitignore_global
 	pager = less -F -X
 [merge]
