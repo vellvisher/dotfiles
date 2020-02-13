@@ -15,3 +15,9 @@
 (use-package git-link
   :ensure t
   :defer 5)
+
+(use-package with-editor
+  :ensure t
+  :hook ((eshell-mode . with-editor-export-editor)
+         (term-exec . with-editor-export-editor)
+         (shell-mode . with-editor-export-editor)))
