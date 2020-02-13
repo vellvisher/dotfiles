@@ -99,7 +99,18 @@
   :hook ((prog-mode . smartparens-mode)
          (protobuf-mode . smartparens-mode)
          (org-mode . smartparens-mode)
-         (tex-mode . smartparens-mode)))
+         (tex-mode . smartparens-mode))
+  :config
+  (defun v/create-newline-and-enter-sexp (&rest _ignored)
+    "Open a new brace or bracket expression, with relevant newlines and indent. "
+    (newline)
+    (indent-according-to-mode)
+    (forward-line -1)
+    (indent-according-to-mode))
+
+  (sp-local-pair 'prog-mode "{" nil :post-handlers '((v/create-newline-and-enter-sexp "RET")))
+  (sp-local-pair 'prog-mode "[" nil :post-handlers '((v/create-newline-and-enter-sexp "RET")))
+  (sp-local-pair 'prog-mode "(" nil :post-handlers '((v/create-newline-and-enter-sexp "RET"))))
 
 (use-package indent
   :bind ("C-M-\\" . v/indent-region-or-buffer)
@@ -123,7 +134,7 @@
           (message "Indented buffer."))))))
 
 (use-package rectangular-region-mode
- :bind ("C-c r" . set-rectangular-region-anchor))
+  :bind ("C-c r" . set-rectangular-region-anchor))
 
 ;; Remember history of things across launches (ie. kill ring).
 ;; From https://www.wisdomandwonder.com/wp-content/uploads/2014/03/C3F.html
