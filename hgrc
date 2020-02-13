@@ -14,7 +14,7 @@ color = always
 # uncomment to disable command output pagination
 # (see 'hg help pager' for details)
 # paginate = never
-merge = emacs
+merge = emacsclient
 editor = emacsclient
 
 [extensions]
