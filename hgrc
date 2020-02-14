@@ -31,10 +31,11 @@ extdiff =
 emacs.args = --eval "(ediff-merge-with-ancestor \""$local"\" \""$other"\" \""$base"\" nil \""$output"\")"
 
 [trainingwheels]
-# prevent-push-dirty=false
+prevent-push-dirty=false
 
 [google]
 presubmit.default-rev=chain
+changes.autoresolve=true
 
 [extdiff]
 # add new command called ediff, runs emacs diff
