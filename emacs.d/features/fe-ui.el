@@ -46,6 +46,8 @@
 
 (use-package golden-ratio
   :ensure t
+  :config
+  (v/csetq golden-ratio-auto-scale t)
   :init
   (golden-ratio-mode 1))
 
