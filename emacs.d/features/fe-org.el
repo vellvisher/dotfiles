@@ -157,15 +157,11 @@ Booking reference: %s
 
 (use-package org-journal
   :ensure t
+  :hook (org-journal-mode . org-indent-mode)
   :custom ((org-journal-file-format "%Y%m%d.org")
            (org-journal-dir "~/beorg/journal")
            (org-journal-file-type 'weekly)
-           (org-journal-date-format "%a %d %b, %Y"))
-  :config
-  (v/vsetq org-journal-dir "~/beorg/journal")
-  (v/vsetq org-journal-file-type 'weekly)
-  (v/vsetq org-journal-date-format "%a %d %b, %Y")
-  (v/vsetq org-journal-file-format "%Y%m%d.org"))
+           (org-journal-date-format "%a %d %b, %Y")))
 
 (use-package org-agenda
   :hook((org-agenda-mode . v/org-agenda-mode-hook-function))
