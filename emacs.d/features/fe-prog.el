@@ -22,6 +22,10 @@
     :ensure t)
   (use-package string-inflection
     :ensure t)
+
+  (use-package reformatter
+    :ensure t)
+
   (defun v/prog-mode-hook-function ()
     (v/vsetq prettify-symbols-alist '(("lambda" . ?λ)
                                       ("->" . ?→)))))

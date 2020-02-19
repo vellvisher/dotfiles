@@ -14,4 +14,18 @@
     ;; since whitespace-mode gets loaded before swift-mode.
     (whitespace-mode -1)
     (whitespace-mode +1)
-    (add-hook 'before-save-hook #'v/indent-region-or-buffer t t)))
+
+    :config
+    (when (require 'reformatter nil 'noerror)
+      (reformatter-define swift-format
+                          :program "swift-format"
+                          :args (let ((buffer (current-buffer))
+                                      (config-file (locate-dominating-file (buffer-file-name)
+                                                                           ".swift-format.json"))
+                                      (temp-file-path (make-temp-file "swift-format-")))
+                                  (with-temp-file temp-file-path
+                                    (insert-buffer buffer))
+                                  (if config-file
+                                      (list "--configuration" config-file "-m" "format" temp-file-path))
+                                  (list "-m" "format" temp-file-path)))
+      (add-hook 'swift-mode-hook 'swift-format-on-save-mode))))
