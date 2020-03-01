@@ -78,6 +78,11 @@
   :init
   (load-theme 'solarized-dark t))
 
+(use-package doom-themes
+  :ensure t
+  :init
+  (load-theme 'doom-palenight t))
+
 (use-package clang-format
   :ensure t
   :init
