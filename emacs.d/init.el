@@ -128,3 +128,4 @@
 (load "~/.emacs.d/features/fe-ediff.el")
 (load "~/.emacs.d/features/fe-gcal.el")
 (load "~/.emacs.d/features/fe-qrcode.el")
+(load "~/.emacs.d/features/fe-compile.el")
