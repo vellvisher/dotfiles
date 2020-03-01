@@ -149,7 +149,12 @@ Booking reference: %s
     :ensure t)
   ;; TODO: Add lazy instantiation.
   (use-package ob-kotlin
-    :ensure t))
+    :ensure t)
+  (use-package ob-async
+    :ensure t)
+  (org-babel-do-load-languages
+   'org-babel-load-languages '((shell . t)
+                               (emacs-lisp . t))))
 
 ;; TODO: Add lazy instantiation.
 ;; https://stackoverflow.com/questions/41517257/execute-java-code-block-in-org-mode
