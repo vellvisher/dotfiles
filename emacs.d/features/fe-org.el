@@ -28,6 +28,7 @@
   (org-default-priority ?C)
   (org-use-speed-commands t)
   (org-list-use-circular-motion t)
+  (org-log-done 'time)
   :config
   (defun v/org-mode-hook-function ()
     (toggle-truncate-lines 0)
