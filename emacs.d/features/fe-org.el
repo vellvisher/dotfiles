@@ -163,7 +163,8 @@ Booking reference: %s
 
 (use-package org-journal
   :ensure t
-  :hook (org-journal-mode . org-indent-mode)
+  :hook ((org-journal-mode . org-indent-mode)
+         (org-journal-after-entry-create . org-indent-mode))
   :custom ((org-journal-file-format "%Y%m%d.org")
            (org-journal-dir "~/beorg/journal")
            (org-journal-file-type 'weekly)
