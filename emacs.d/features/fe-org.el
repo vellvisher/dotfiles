@@ -260,3 +260,11 @@ Booking reference: %s
   :custom
   (org-goto-interface 'outline-path-completion)
   (org-outline-path-complete-in-steps nil))
+
+;; https://emacs.stackexchange.com/questions/5465/how-to-migrate-markdown-files-to-emacs-org-mode-format
+(defun v/markdown-convert-buffer-to-org ()
+  "Convert the current buffer's content from markdown to orgmode format and save it with the current buffer's file name but with .org extension."
+  (interactive)
+  (shell-command-on-region (point-min) (point-max)
+                           (format "pandoc -f markdown -t org -o \"%s\""
+                                   (concat (file-name-sans-extension (buffer-file-name)) ".org"))))
