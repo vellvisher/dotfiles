@@ -44,6 +44,13 @@
  (vc-mode vc-mode)
  "  " mode-line-misc-info mode-line-modes mode-line-end-spaces))
 
+(use-package minions
+    :ensure t
+    :config
+    (v/csetq minions-mode-line-lighter "…")
+    (v/csetq minions-mode-line-delimiters '("" . ""))
+    (minions-mode +1))
+
 (use-package golden-ratio
   :ensure t
   :config
