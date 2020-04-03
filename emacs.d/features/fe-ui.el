@@ -10,6 +10,10 @@
 ;; Display time in modeline.
 (display-time-mode 1)
 
+(use-package which-func
+  :config
+  (which-function-mode +1))
+
 ;; Display battery level in modeline.
 (use-package battery
   :config
