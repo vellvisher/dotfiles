@@ -10,6 +10,7 @@
 ;; Display time in modeline.
 (display-time-mode 1)
 
+;; Display which function in modeline.
 (use-package which-func
   :config
   (which-function-mode +1))
