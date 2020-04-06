@@ -99,7 +99,8 @@
   :hook ((prog-mode . smartparens-mode)
          (protobuf-mode . smartparens-mode)
          (org-mode . smartparens-mode)
-         (tex-mode . smartparens-mode))
+         (tex-mode . smartparens-mode)
+         (eshell-mode . smartparens-mode))
   :config
   (defun v/create-newline-and-enter-sexp (&rest _ignored)
     "Open a new brace or bracket expression, with relevant newlines and indent. "
