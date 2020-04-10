@@ -1,4 +1,8 @@
+;; TODO(vaarnan): See if we can remove ag altogether.
 (use-package ag
+  :ensure t)
+
+(use-package ripgrep
   :ensure t)
 
 (use-package projectile
