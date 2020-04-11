@@ -1,6 +1,11 @@
 (require 'v-vsetq)
 (require 'v-drag-stuff)
 
+(use-package smartparens
+  :ensure t
+  :init
+  (require 'smartparens-config))
+
 ;; Show keystrokes earlier (ie. C-x)
 (v/vsetq echo-keystrokes 0.1)
 

@@ -90,11 +90,6 @@
 
 (set-face-attribute 'default nil :height 165)
 
-(use-package smartparens
-  :ensure t
-  :init
-  (require 'smartparens-config))
-
 ;; Remap META to CMD
 (setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
