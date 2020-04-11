@@ -47,7 +47,7 @@
       (self-insert-command 1)))
   (v/vsetq org-directory "~/beorg")
   (v/vsetq org-default-notes-file (concat org-directory "/inbox.org"))
-  (v/vsetq org-agenda-files (-list org-directory "~/GoogleDrive/org"))
+  (v/vsetq org-agenda-files (-list org-directory "~/GoogleDriveGmail/org"))
   (v/vsetq org-return-follows-link t)
   (v/vsetq org-catch-invisible-edits 'error)
 
