@@ -42,8 +42,6 @@
 ;; Get rid of splash screens.
 (setq inhibit-splash-screen t)
 
-(toggle-frame-fullscreen)
-
 (set-face-attribute 'default nil :height 165)
 
 ;; Resizing the Emacs frame can be a terribly expensive part of changing the
