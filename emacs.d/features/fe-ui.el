@@ -1,5 +1,15 @@
 (require 'v-vcsetq)
 
+;; (use-package solarized-theme
+;;   :ensure t
+;;   :init
+;;   (load-theme 'solarized-dark t))
+
+(use-package doom-themes
+  :ensure t
+  :init
+  (load-theme 'doom-palenight t))
+
 (use-package fullframe
   :ensure t
   :commands fullframe)

@@ -73,16 +73,6 @@
 (setq use-package-enable-imenu-support t)
 (require 'use-package)
 
-(use-package solarized-theme
-  :ensure t
-  :init
-  (load-theme 'solarized-dark t))
-
-(use-package doom-themes
-  :ensure t
-  :init
-  (load-theme 'doom-palenight t))
-
 (set-face-attribute 'default nil :height 165)
 
 ;; Remap META to CMD
