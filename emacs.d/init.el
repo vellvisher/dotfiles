@@ -83,11 +83,6 @@
   :init
   (load-theme 'doom-palenight t))
 
-(use-package clang-format
-  :ensure t
-  :init
-  (setq clang-format-executable "/usr/local/bin/clang-format"))
-
 (set-face-attribute 'default nil :height 165)
 
 ;; Remap META to CMD
