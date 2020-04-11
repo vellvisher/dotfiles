@@ -1,6 +1,8 @@
 (require 'v-vsetq)
 (require 'v-drag-stuff)
 
+(setq-default fill-column 100)
+
 (use-package smartparens
   :ensure t
   :init
