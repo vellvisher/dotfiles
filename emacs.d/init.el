@@ -1,3 +1,57 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Init.el GC values (faster loading) ;;;;
+
+(setq gc-cons-threshold (* 384 1024 1024)
+      gc-cons-percentage 0.6)
+
+;; Default of 800 was too low.
+;; Avoid Lisp nesting exceeding in swift-mode.
+(setq max-lisp-eval-depth 3000)
+(setq max-specpdl-size 3000)
+
+;;; Temporarily avoid loading any modes during init (undone at end).
+(defvar v/init--file-name-handler-alist file-name-handler-alist)
+
+(setq file-name-handler-alist nil)
+
+;;;; UI (early on) ;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Match theme color early on (smoother transition).
+;; Theme loaded in features/fe-ui.el.
+(set-background-color "#073642")
+
+;; Don't want a mode line while loading init.
+(setq mode-line-format nil)
+
+;; No scrollbar by default.
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+;; No nenubar by default.
+(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+;; No toolbar by default.
+(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+
+;; No tooltip by default.
+(when (fboundp 'tooltip-mode) (tooltip-mode -1))
+
+;; No Alarms by default.
+(setq ring-bell-function 'ignore)
+
+;; Get rid of splash screens.
+(setq inhibit-splash-screen t)
+
+(toggle-frame-fullscreen)
+
+(set-face-attribute 'default nil :height 165)
+
+;; Resizing the Emacs frame can be a terribly expensive part of changing the
+;; font. By inhibiting this, we easily halve startup times with fonts that are
+;; larger than the system default.
+;; https://github.com/hlissner/doom-emacs/blob/develop/early-init.el
+(setq frame-inhibit-implied-resize t)
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.
 (setq load-prefer-newer t)
@@ -26,37 +80,8 @@
         ("org" . 2)
         ("gnu" . 1)))
 
-(package-initialize)
-
-;; Match theme color early on (smoother transition).
-;; Theme loaded in features/fe-ui.el.
-(set-background-color "#073642")
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Hide UI (early on) ;;;;
-
-;; Don't want a mode line while loading init.
-(setq mode-line-format nil)
-
-;; No scrollbar by default.
-(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-
-;; No nenubar by default.
-(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-
-;; No toolbar by default.
-(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-
-;; No tooltip by default.
-(when (fboundp 'tooltip-mode) (tooltip-mode -1))
-
-;; No Alarms by default.
-(setq ring-bell-function 'ignore)
-
-;; Get rid of splash screens.
-(setq inhibit-splash-screen t)
-
-(toggle-frame-fullscreen)
+(unless package--initialized
+  (package-initialize))
 
 ;; Needed for 'https' for MELPA after running on mac:
 ;; brew install libressl
@@ -73,44 +98,69 @@
 (setq use-package-enable-imenu-support t)
 (require 'use-package)
 
-(set-face-attribute 'default nil :height 165)
-
 ;; Remap META to CMD
 (setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
 
-;; Additional load paths.
-(add-to-list 'load-path "~/.emacs.d/v")
-(add-to-list 'load-path "~/.emacs.d/local")
-(add-to-list 'load-path "~/.emacs.d/external")
+(defun v/load-non-core-init ()
+  "Load non-core initialisation."
+  ;; Undo GC values post init.el.
+  (setq gc-cons-threshold 16777216
+        gc-cons-percentage 0.1)
+  (run-with-idle-timer 5 t #'garbage-collect)
+  (setq garbage-collection-messages t)
+  (setq file-name-handler-alist v/init--file-name-handler-alist)
 
-(load "~/.emacs.d/features/fe-libs.el")
+  ;; Done loading core init.el. Announce it and let the heavy loading begin.
+  (message "Emacs ready in %s with %d garbage collections."
+           (format "%.2f seconds" (float-time
+                                   (time-subtract after-init-time before-init-time)))
+           gcs-done)
 
-(load "~/.emacs.d/features/fe-eshell.el")
-(load "~/.emacs.d/features/fe-scratch.el")
-(load "~/.emacs.d/features/fe-paradox.el")
-(load "~/.emacs.d/features/fe-navigation.el")
-(load "~/.emacs.d/features/fe-ivy.el")
-(load "~/.emacs.d/features/fe-ui.el")
-(load "~/.emacs.d/features/fe-editing.el")
-(load "~/.emacs.d/features/fe-git.el")
-(load "~/.emacs.d/features/fe-projectile.el")
-(load "~/.emacs.d/features/fe-server.el")
-(load "~/.emacs.d/features/fe-files.el")
-(load "~/.emacs.d/features/fe-dired.el")
-(load "~/.emacs.d/features/fe-prog.el")
-(load "~/.emacs.d/features/fe-protobuf.el")
-(load "~/.emacs.d/features/fe-objc.el")
-(load "~/.emacs.d/features/fe-web.el")
-(load "~/.emacs.d/features/fe-md.el")
-(load "~/.emacs.d/features/fe-swift.el")
-(load "~/.emacs.d/features/fe-kotlin.el")
-(load "~/.emacs.d/features/fe-org.el")
-(load "~/.emacs.d/features/fe-help.el")
-(load "~/.emacs.d/features/fe-work.el")
-(load "~/.emacs.d/features/fe-bazel.el")
-(load "~/.emacs.d/features/fe-tags.el")
-(load "~/.emacs.d/features/fe-ediff.el")
-(load "~/.emacs.d/features/fe-gcal.el")
-(load "~/.emacs.d/features/fe-qrcode.el")
-(load "~/.emacs.d/features/fe-compile.el")
+  ;; Additional load paths.
+  (add-to-list 'load-path "~/.emacs.d/v")
+  (add-to-list 'load-path "~/.emacs.d/local")
+  (add-to-list 'load-path "~/.emacs.d/external")
+
+  ;; Need these loaded ASAP (many subsequent libraries depend on them).
+  ;; (load "~/.emacs.d/features/fe-package-extensions.el")
+  (load "~/.emacs.d/features/fe-libs.el")
+
+  ;; Load non-core features.
+  (load "~/.emacs.d/features/fe-eshell.el")
+  (load "~/.emacs.d/features/fe-scratch.el")
+  (load "~/.emacs.d/features/fe-paradox.el")
+  (load "~/.emacs.d/features/fe-navigation.el")
+  (load "~/.emacs.d/features/fe-ivy.el")
+  (load "~/.emacs.d/features/fe-ui.el")
+  (load "~/.emacs.d/features/fe-editing.el")
+  (load "~/.emacs.d/features/fe-git.el")
+  (load "~/.emacs.d/features/fe-projectile.el")
+  (load "~/.emacs.d/features/fe-server.el")
+  (load "~/.emacs.d/features/fe-files.el")
+  (load "~/.emacs.d/features/fe-dired.el")
+  (load "~/.emacs.d/features/fe-prog.el")
+  (load "~/.emacs.d/features/fe-protobuf.el")
+  (load "~/.emacs.d/features/fe-objc.el")
+  (load "~/.emacs.d/features/fe-web.el")
+  (load "~/.emacs.d/features/fe-md.el")
+  (load "~/.emacs.d/features/fe-swift.el")
+  (load "~/.emacs.d/features/fe-kotlin.el")
+  (load "~/.emacs.d/features/fe-org.el")
+  (load "~/.emacs.d/features/fe-help.el")
+  (load "~/.emacs.d/features/fe-work.el")
+  (load "~/.emacs.d/features/fe-bazel.el")
+  (load "~/.emacs.d/features/fe-tags.el")
+  (load "~/.emacs.d/features/fe-ediff.el")
+  (load "~/.emacs.d/features/fe-gcal.el")
+  (load "~/.emacs.d/features/fe-qrcode.el")
+  (load "~/.emacs.d/features/fe-compile.el"))
+
+;;; Set to t to debug (load synchronously).
+(defvar v/init-debug-init nil)
+
+(if v/init-debug-init
+    (v/load-non-core-init)
+  (add-hook
+   'emacs-startup-hook
+   #'v/load-non-core-init))
