@@ -1,5 +1,10 @@
 (require 'v-vsetq)
 
+(use-package clang-format
+  :ensure t
+  :init
+  (setq clang-format-executable "/usr/local/bin/clang-format"))
+
 (use-package prog-mode
   ;; :bind (:map
   ;;        prog-mode-map
