@@ -151,7 +151,8 @@
   (load "~/.emacs.d/features/fe-bazel.el")
   (load "~/.emacs.d/features/fe-tags.el")
   (load "~/.emacs.d/features/fe-ediff.el")
-  (load "~/.emacs.d/features/fe-gcal.el")
+  ;; disabled since unused
+  ;; (load "~/.emacs.d/features/fe-gcal.el")
   (load "~/.emacs.d/features/fe-qrcode.el")
   (load "~/.emacs.d/features/fe-compile.el")
   (load "~/.emacs.d/features/fe-flyspell.el"))
