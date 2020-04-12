@@ -131,6 +131,7 @@
   (load "~/.emacs.d/features/fe-navigation.el")
   (load "~/.emacs.d/features/fe-ivy.el")
   (load "~/.emacs.d/features/fe-ui.el")
+  (load "~/.emacs.d/features/fe-mc.el")
   (load "~/.emacs.d/features/fe-editing.el")
   (load "~/.emacs.d/features/fe-git.el")
   (load "~/.emacs.d/features/fe-projectile.el")
