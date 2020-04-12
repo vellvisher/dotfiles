@@ -143,6 +143,7 @@ Booking reference: %s
 
 (use-package ob
   :custom (org-confirm-babel-evaluate nil)
+  :after org
   :config
   ;; TODO: Add lazy instantiation.
   (use-package ob-swift
@@ -251,6 +252,7 @@ Booking reference: %s
 
 (use-package org-web-tools
   :after org
+  :defer 5
   :ensure t)
 
 (use-package org-bullets
