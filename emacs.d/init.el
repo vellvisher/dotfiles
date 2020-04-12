@@ -9,6 +9,14 @@
 (setq max-lisp-eval-depth 3000)
 (setq max-specpdl-size 3000)
 
+;; Debug startup times
+;;; Set to t to debug (load synchronously).
+(defvar v/init-debug-init nil)
+
+;; Uncomment lines
+;; (setq use-package-compute-statistics t)
+;; (load "~/.emacs.d/features/fe-debug.el"))
+
 ;;; Temporarily avoid loading any modes during init (undone at end).
 (defvar v/init--file-name-handler-alist file-name-handler-alist)
 
@@ -156,9 +164,6 @@
   (load "~/.emacs.d/features/fe-qrcode.el")
   (load "~/.emacs.d/features/fe-compile.el")
   (load "~/.emacs.d/features/fe-flyspell.el"))
-
-;;; Set to t to debug (load synchronously).
-(defvar v/init-debug-init nil)
 
 (if v/init-debug-init
     (v/load-non-core-init)
