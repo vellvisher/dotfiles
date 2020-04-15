@@ -159,7 +159,9 @@ Booking reference: %s
   (org-babel-do-load-languages
    'org-babel-load-languages '((shell . t)
                                (emacs-lisp . t)
-                               (sqlite . t))))
+                               (sqlite . t)
+                               ;; #+BEGIN_SRC python :results output
+                               (python . t))))
 
 ;; TODO: Add lazy instantiation.
 ;; https://stackoverflow.com/questions/41517257/execute-java-code-block-in-org-mode
