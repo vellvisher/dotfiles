@@ -276,3 +276,18 @@ Booking reference: %s
   (shell-command-on-region (point-min) (point-max)
                            (format "pandoc -f markdown -t org -o \"%s\""
                                    (concat (file-name-sans-extension (buffer-file-name)) ".org"))))
+
+(use-package org-super-agenda
+  :ensure t
+  :after org-agenda
+  :custom
+  (org-super-agenda-groups
+   '((:name "Category: inbox"
+            :category "inbox")
+     (:name "Category: work"
+            :category "work")
+     (:name "Category: habit"
+            :tag "daily")))
+
+  :config
+  (org-super-agenda-mode +1))
