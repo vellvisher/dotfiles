@@ -162,6 +162,7 @@
   ;; disabled since unused
   ;; (load "~/.emacs.d/features/fe-gcal.el")
   (load "~/.emacs.d/features/fe-qrcode.el")
+  (load "~/.emacs.d/features/fe-writing.el")
   (load "~/.emacs.d/features/fe-compile.el")
   (load "~/.emacs.d/features/fe-flyspell.el"))
 
