@@ -96,3 +96,16 @@
 ;;                   (setq-local transient-mark-mode nil)
 ;;                   (auto-fill-mode -1)
 ;;                   (setq tab-width 8 ))))
+
+(use-package eshell-up
+  :ensure t
+  :config
+  (defalias 'eshell/up #'eshell-up))
+
+(use-package em-smart
+  :hook
+  ((eshell-mode . eshell-smart-initialize)))
+  ;; :validate-custom
+  ;; (eshell-smart-space-goes-to-end t)
+  ;; (eshell-where-to-jump 'begin)
+  ;; (eshell-review-quick-commands nil))
