@@ -10,11 +10,16 @@
   :bind (("C-c C-h" . v/shell-pop))
   :config (use-package eshell
             :hook ((eshell-mode . goto-address-mode)
-                   (eshell-mode . v/eshell-mode-hook-function))
+                   (eshell-mode . v/eshell-mode-hook-function)
+                   (term-exec . view-mode))
             :init (defun v/eshell-mode-hook-function ()
                     ;; Turn off semantic mode in eshell
                     (semantic-mode -1)
                     (add-to-list 'eshell-visual-commands "ssh")
+                    (add-to-list 'eshell-visual-commands "adb")
+
+                    (add-to-list 'eshell-visual-subcommands '("hg" "log" "diff" "split"))
+
                     (setq-local imenu-generic-expression '(("Prompt" " $ \\(.*\\)" 1)))
                     (v/vsetq eshell-history-size (* 10 1024))
                     (v/vsetq eshell-hist-ignoredups t)
@@ -40,22 +45,34 @@
                     ;; Avoid "WARNING: terminal is not fully functional."
                     ;; http://mbork.pl/2018-06-10_Git_diff_in_Eshell
                     (setenv "PAGER" "cat")))
+  (defun adviced:eshell-exec-visual (orig-fun &rest r)
+    ;; Don't let visual commands keep creating multiple buffers.
+    ;; Kill it first if it already exists.
+    (cl-letf (((symbol-function #'generate-new-buffer)
+               (lambda (name)
+                 (when (get-buffer name)
+                   (kill-buffer name))
+                 (get-buffer-create (generate-new-buffer-name name)))))
+      (apply orig-fun r)))
 
+  (advice-add #'eshell-exec-visual
+              :around
+              #'adviced:eshell-exec-visual)
   ;; Must use custom set for these.
   (v/csetq shell-pop-window-position "full")
   (v/csetq shell-pop-shell-type '("eshell" "*eshell*" (lambda ()
-                                                      (eshell))))
+                                                        (eshell))))
   (v/csetq shell-pop-term-shell "eshell")
   (defun v/eshell-counsel-history ()
-      (interactive)
-      (let ((history eshell-history-ring)
-            (selection nil))
-        (with-temp-buffer
-          (setq eshell-history-ring history)
-          (counsel-esh-history)
-          (setq selection (buffer-string)))
-        (delete-region eshell-last-output-end (line-end-position))
-        (insert selection)))
+    (interactive)
+    (let ((history eshell-history-ring)
+          (selection nil))
+      (with-temp-buffer
+        (setq eshell-history-ring history)
+        (counsel-esh-history)
+        (setq selection (buffer-string)))
+      (delete-region eshell-last-output-end (line-end-position))
+      (insert selection)))
   (defun v/shell-pop (shell-pop-autocd-to-working-dir)
     "Shell pop with arg to cd to working dir. Else use existing location."
     (interactive "P")
@@ -73,17 +90,27 @@
   :ensure t)
 
 (use-package term
-  :bind (:map term-mode-map
-              ;; Make same shortcut DWIM to switch between line and char.
-              ("C-c C-j" . term-char-mode)
-              :map term-raw-map
-              ;; Prefix is actually C-x.
-              ("C-c C-y" . term-paste))
+  :bind (:map
+         term-mode-map
+         ("C-c C-j" . v/term-toggle-mode)
+         ("C-c C-k" . v/term-toggle-mode)
+         :map
+         term-raw-map
+         ("C-c C-j" . v/term-toggle-mode)
+         ("C-c C-k" . v/term-toggle-mode))
   :config
-  ;; https://stackoverflow.com/a/23691628
-  (defadvice term-handle-exit
-      (after term-kill-buffer-on-exit activate)
-    (kill-buffer)))
+  ;; https://joelmccracken.github.io/entries/switching-between-term-mode-and-line-mode-in-emacs-term
+  (defun v/term-toggle-mode ()
+    "Toggle term between line mode and char mode."
+    (interactive)
+    (if (term-in-line-mode)
+        (term-char-mode)
+      (term-line-mode))))
+;; :config
+;; https://stackoverflow.com/a/23691628
+;; (defadvice term-handle-exit
+;;     (after term-kill-buffer-on-exit activate)
+;;   (kill-buffer)))
 ;; (use-package term
 ;;   :init
 ;;   (v/vsetq explicit-shell-file-name "/bin/bash"))
@@ -105,7 +132,3 @@
 (use-package em-smart
   :hook
   ((eshell-mode . eshell-smart-initialize)))
-  ;; :validate-custom
-  ;; (eshell-smart-space-goes-to-end t)
-  ;; (eshell-where-to-jump 'begin)
-  ;; (eshell-review-quick-commands nil))
