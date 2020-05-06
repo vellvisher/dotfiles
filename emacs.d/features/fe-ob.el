@@ -15,6 +15,7 @@
     :defer 10)
   (org-babel-do-load-languages
    'org-babel-load-languages '((shell . t)
+                               (sqlite . t)
                                (emacs-lisp . t)
                                (sqlite . t))))
 

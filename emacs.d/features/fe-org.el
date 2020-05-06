@@ -162,12 +162,7 @@ Booking reference: %s
   :custom
   ((org-agenda-custom-commands
     '(("d" "Daily agenda and all TODOs"
-       ((tags "PRIORITY=\"A\""
-              ;; Skip if does not have 'TODO'.
-              ((org-agenda-skip-function '(or (v-org-skip-category-not-inbox)
-                                              (org-agenda-skip-entry-if 'nottodo 'todo)))
-               (org-agenda-overriding-header "High-priority unfinished tasks:")))
-        (agenda "" ((org-agenda-span 1)))
+       ((agenda "" ((org-agenda-span 1)))
         (alltodo ""
                  ((org-agenda-overriding-header "Unscheduled:")
                   (org-agenda-skip-function
@@ -249,3 +244,20 @@ Booking reference: %s
   (shell-command-on-region (point-min) (point-max)
                            (format "pandoc -f markdown -t org -o \"%s\""
                                    (concat (file-name-sans-extension (buffer-file-name)) ".org"))))
+
+(use-package org-super-agenda
+  :ensure t
+  :after org-agenda
+  :custom
+  (org-super-agenda-groups
+   '((:name "High priority"
+            :and(:priority "A" :category "inbox"))
+     (:name "Category: inbox"
+            :category "inbox")
+     (:name "Category: work"
+            :category "work")
+     (:name "Category: habit"
+            :category "daily")))
+
+  :config
+  (org-super-agenda-mode +1))
