@@ -152,6 +152,7 @@
   (load "~/.emacs.d/features/fe-web.el")
   (load "~/.emacs.d/features/fe-md.el")
   (load "~/.emacs.d/features/fe-swift.el")
+  (load "~/.emacs.d/features/fe-ts.el")
   (load "~/.emacs.d/features/fe-kotlin.el")
   (load "~/.emacs.d/features/fe-org.el")
   (load "~/.emacs.d/features/fe-ob.el")
