@@ -32,10 +32,6 @@
 
                     ")
 
-                    (use-package hide-mode-line
-                      :ensure t)
-                    (hide-mode-line-mode +1)
-
                     (bind-keys :map eshell-mode-map
                                ("M-i" . v/eshell-counsel-history))
 
