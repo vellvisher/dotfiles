@@ -75,11 +75,13 @@ Repeated invocations toggle between the two most recently open buffers."
 
 (use-package avy
   :ensure t
+  :custom
+  (avy-all-windows 'all-frames)
+  (avy-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n ?s))
+  (avy-background t)
+  (avy-timeout-seconds 0.3)
   :bind (("M-u" . avy-goto-char-timer)
-         ("M-r" . avy-goto-char-in-line))
-  :config
-  (v/vsetq avy-background t)
-  (v/vsetq avy-timeout-seconds 0.3))
+         ("M-r" . avy-goto-char-in-line)))
 
 (use-package frame
   :bind (("C-x o" . other-frame)
