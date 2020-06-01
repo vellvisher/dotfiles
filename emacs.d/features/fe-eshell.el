@@ -93,7 +93,8 @@
          :map
          term-raw-map
          ("C-c C-j" . v/term-toggle-mode)
-         ("C-c C-k" . v/term-toggle-mode))
+         ("C-c C-k" . v/term-toggle-mode)
+         ("C-c C-h" . v/shell-pop))
   :config
   ;; https://joelmccracken.github.io/entries/switching-between-term-mode-and-line-mode-in-emacs-term
   (defun v/term-toggle-mode ()
