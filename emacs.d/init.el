@@ -166,7 +166,8 @@
   (load "~/.emacs.d/features/fe-qrcode.el")
   (load "~/.emacs.d/features/fe-writing.el")
   (load "~/.emacs.d/features/fe-compile.el")
-  (load "~/.emacs.d/features/fe-flyspell.el"))
+  (load "~/.emacs.d/features/fe-flyspell.el")
+  (load "~/.emacs.d/features/fe-alfred-org-capture.el"))
 
 (if v/init-debug-init
     (v/load-non-core-init)
