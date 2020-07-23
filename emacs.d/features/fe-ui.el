@@ -45,6 +45,11 @@
   :bind(("M-=" . text-scale-increase)
         ("C-=" . text-scale-decrease)))
 
+;; Emoji's: welcome back to Emacs
+;; https://github.crookster.org/emacs27-from-homebrew-on-macos-with-emoji/
+(when (>= emacs-major-version 27)
+  (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend))
+
 (use-package time
   :config
   (v/csetq display-time-24hr-format t)
