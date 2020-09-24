@@ -29,16 +29,6 @@
     :config
     ;; http://blog.binchen.org/posts/what-s-the-best-spell-check-set-up-in-emacs.html
     (cond
-     ;; if hunspell NOT installed, fallback to aspell
-     ((executable-find "hunspell")
-      ;; In addition to "brew install hunspell" download dicts to
-      ;; ~/Library/Spelling/
-      ;; https://cgit.freedesktop.org/libreoffice/dictionaries/plain/en/en_GB.aff
-      ;; https://cgit.freedesktop.org/libreoffice/dictionaries/plain/en/en_GB.dic
-      (v/csetq  "hunspell")
-      (v/csetq ispell-local-dictionary "en_GB")
-      (v/csetq ispell-local-dictionary-alist
-            '(("en_GB" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_GB") nil utf-8))))
      ((executable-find "aspell")
       (v/csetq ispell-program-name "aspell")
       (v/csetq ispell-extra-args '("--sug-mode=ultra" "--lang=en_GB")))
