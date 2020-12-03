@@ -67,9 +67,9 @@
     (if (looking-back "^")
         (call-interactively #'org-insert-structure-template)
       (self-insert-command 1)))
-  (v/vsetq org-directory "~/beorg")
+  (v/vsetq org-directory "~/GoogleDriveGmail/org")
   (v/vsetq org-default-notes-file (concat org-directory "/inbox.org"))
-  (v/vsetq org-agenda-files (-list org-directory "~/GoogleDriveGmail/org"))
+  (add-to-list 'org-agenda-files org-directory)
   (v/vsetq org-return-follows-link t)
   (v/vsetq org-catch-invisible-edits 'error)
 
@@ -148,19 +148,19 @@ Booking reference: %s
            "* TODO %?\nSCHEDULED: %^t")
           ("s" "Shop" entry (file "")
            "* TODO Buy %?  :shopping:\nSCHEDULED: %^t")
-          ("b" "Book" entry (file "~/beorg/books.org")
+          ("b" "Book" entry (file "~/GoogleDriveGmail/org/books.org")
            #'v/org-capture-book-template)
-          ("e" "Emacs resource" entry (file "~/beorg/emacs.org")
+          ("e" "Emacs resource" entry (file "~/GoogleDriveGmail/org/emacs.org")
            #'v/org-capture-emacs-template)
-          ("a" "Article" entry (file "~/beorg/articles.org")
+          ("a" "Article" entry (file "~/GoogleDriveGmail/org/articles.org")
            #'v/org-capture-article-template)
-          ("m" "Movies" entry (file "~/beorg/movies.org")
+          ("m" "Movies" entry (file "~/GoogleDriveGmail/org/movies.org")
            #'v/org-capture-movie-template)
-          ("p" "Packing list" entry (file "~/beorg/inbox.org")
+          ("p" "Packing list" entry (file+headline "~/GoogleDriveGmail/org/inbox.org" "Inbox")
            #'v/org-capture-packing-list)
-          ("f" "Flight checklist" entry (file "~/beorg/inbox.org")
+          ("f" "Flight checklist" entry (file+headline "~/GoogleDriveGmail/org/inbox.org" "Inbox")
            #'v/org-capture-flight-checklist)
-          ("w" "Work" entry (file "~/GoogleDrive/org/work.org")
+          ("w" "Work" entry (file+headline "~/GoogleDrive/org/work.org" "Inbox")
            "* TODO %?\nSCHEDULED: %^t"))))
 
 (use-package org-journal
@@ -168,7 +168,7 @@ Booking reference: %s
   :hook ((org-journal-mode . org-indent-mode)
          (org-journal-after-entry-create . org-indent-mode))
   :custom ((org-journal-file-format "%Y%m%d.org")
-           (org-journal-dir "~/beorg/journal")
+           (org-journal-dir "~/GoogleDriveGmail/org/journal")
            (org-journal-file-type 'weekly)
            (org-journal-date-format "%a %d %b, %Y")))
 
@@ -274,10 +274,10 @@ Booking reference: %s
   (org-super-agenda-groups
    '((:name "High priority"
             :and(:priority "A" :category "inbox"))
-     (:name "Category: inbox"
-            :category "inbox")
      (:name "Category: work"
             :category "work")
+     (:name "Category: inbox"
+            :category "inbox")
      (:name "Category: habit"
             :category "daily")))
 
