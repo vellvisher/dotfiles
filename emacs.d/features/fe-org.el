@@ -144,7 +144,7 @@ Booking reference: %s
 " code ref)))
 
   (setq org-capture-templates
-        '(("t" "TODO" entry (file "")
+        '(("t" "TODO" entry (file+headline "~/GoogleDriveGmail/org/inbox.org" "Inbox")
            "* TODO %?\nSCHEDULED: %^t")
           ("s" "Shop" entry (file "")
            "* TODO Buy %?  :shopping:\nSCHEDULED: %^t")
