@@ -11,3 +11,5 @@
     (interactive)
     (writegood-mode +1)
     (turn-on-auto-fill)))
+
+(defalias 'v/wc 'count-words)
