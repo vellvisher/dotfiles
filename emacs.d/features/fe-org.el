@@ -146,7 +146,7 @@ Booking reference: %s
   (setq org-capture-templates
         '(("t" "TODO" entry (file+headline "~/GoogleDriveGmail/org/inbox.org" "Inbox")
            "* TODO %?\nSCHEDULED: %^t")
-          ("s" "Shop" entry (file "")
+          ("s" "Shop" entry (file+headline "~/GoogleDriveGmail/org/inbox.org" "Inbox")
            "* TODO Buy %?  :shopping:\nSCHEDULED: %^t")
           ("b" "Book" entry (file "~/GoogleDriveGmail/org/books.org")
            #'v/org-capture-book-template)
@@ -173,6 +173,7 @@ Booking reference: %s
            (org-journal-date-format "%a %d %b, %Y")))
 
 (use-package org-agenda
+  :after org
   :hook((org-agenda-mode . v/org-agenda-mode-hook-function))
   ;; Suggestion from:
   ;; https://blog.aaronbieber.com/2016/09/25/agenda-interactions-primer.html
@@ -284,9 +285,9 @@ Booking reference: %s
   :config
   (org-super-agenda-mode +1))
 
-(use-package literate-calc-mode
-  :ensure t
-  :defer 10)
+;; (use-package literate-calc-mode
+;;   :ensure t
+;;   :defer 10)
 
 (custom-set-faces
   '(org-level-1 ((t (:inherit outline-1 :height 1.1))))
