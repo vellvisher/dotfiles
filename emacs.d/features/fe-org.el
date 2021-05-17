@@ -113,6 +113,7 @@ SCHEDULED: <2019-12-21 Sat>
 + [ ] Toothbrush
 + [ ] satin floss
 + [ ] underwear
++ [ ] socks
 + [ ] vest
 + [ ] t shirts
 + [ ] trousers
