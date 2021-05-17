@@ -47,7 +47,7 @@
     (v/csetq bazel-mode-buildifier-before-save t)
     ;; Add imenu support
     ;; Replace python-imenu-create-index with the default one
-    ;; (setq-local imenu-create-index-function #'imenu-default-create-index-function)
+    (setq-local imenu-create-index-function #'imenu-default-create-index-function)
 
     ;; Simple regex over method names
     (setq-local imenu-generic-expression
