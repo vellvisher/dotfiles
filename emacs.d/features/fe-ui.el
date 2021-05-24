@@ -107,3 +107,11 @@
   (set-face-attribute 'show-paren-match nil
                       :background nil
                       :foreground "#FA009A"))
+
+(set-face-attribute 'default nil :stipple nil :foreground "#eeffff" :inverse-video nil
+                        ;; :family "Menlo" ;; or Meslo if unavailable: https://github.com/andreberg/Meslo-Font
+                        ;; :family "Hack" ;; brew tap homebrew/cask-fonts && brew cask install font-hack
+                        :family "JetBrains Mono" ;; brew tap homebrew/cask-fonts && brew install --cask font-jetbrains-mono
+                        ;; :family "mononoki" ;; https://madmalik.github.io/mononoki/ or sudo apt-get install fonts-mononoki
+                        :box nil :strike-through nil :overline nil :underline nil :slant 'normal :weight 'normal
+                        :width 'normal :foundry "nil")
