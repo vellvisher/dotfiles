@@ -27,7 +27,7 @@
 
 ;; Match theme color early on (smoother transition).
 ;; Theme loaded in features/fe-ui.el.
-(set-background-color "#073642")
+(set-background-color "#292D3E")
 
 ;; Don't want a mode line while loading init.
 (setq mode-line-format nil)
