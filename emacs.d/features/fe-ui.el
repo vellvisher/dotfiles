@@ -1,10 +1,5 @@
 (require 'v-vcsetq)
 
-;; (use-package solarized-theme
-;;   :ensure t
-;;   :init
-;;   (load-theme 'solarized-dark t))
-
 ;; Make emacs full-screen which is faster than toggle-frame-fullscreen which
 ;; carries a 0.5s delay.
 (set-frame-parameter nil 'fullscreen 'fullboth)
