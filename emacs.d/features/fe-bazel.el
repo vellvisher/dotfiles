@@ -1,6 +1,6 @@
 (require 'v-vcsetq)
 
-(use-package bazel-mode
+(use-package bazel
   :ensure t
   :mode (("\\.bzl\\'" . bazel-mode)
          ("BUILD\\'" . bazel-mode))
