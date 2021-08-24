@@ -72,3 +72,12 @@
   :ensure t
   :init
   (dired-recent-mode 1))
+
+(use-package dired-atool
+  :ensure t
+  :defer 3
+  ;; :validate-custom
+  ;; (dired-atool-unpack-no-confirm t)
+  :bind (:map dired-mode-map
+              ("z" . dired-atool-do-unpack-to-current-dir)
+              ("Z" . dired-atool-do-pack)))

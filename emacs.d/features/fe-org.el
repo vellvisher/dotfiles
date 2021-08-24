@@ -36,8 +36,7 @@
          ("C-c t" . org-set-tags-command)
          ("C-c p" . org-priority)
          :map org-mode-map
-         ("C-c C-l" . org-insert-link)
-         ("<" . v/org-insert-char-dwim))
+         ("C-c C-l" . org-insert-link))
   :hook ((org-mode . prettify-symbols-mode)
          (org-mode . org-indent-mode)
          (org-mode . flyspell-mode)
@@ -60,13 +59,6 @@
     (org-starless-mode +1)
     (v/vsetq prettify-symbols-alist '(("lambda" . ?λ)
                                       ("->" . ?→))))
-
-  (defun v/org-insert-char-dwim ()
-    (interactive)
-    ;; Display org-insert-structure-template if < inserted at BOL.
-    (if (looking-back "^")
-        (call-interactively #'org-insert-structure-template)
-      (self-insert-command 1)))
   (v/vsetq org-directory "~/GoogleDriveGmail/org")
   (v/vsetq org-default-notes-file (concat org-directory "/inbox.org"))
   (add-to-list 'org-agenda-files org-directory)
@@ -296,3 +288,11 @@ Booking reference: %s
   '(org-level-3 ((t (:inherit outline-3 :height 1.01))))
   '(org-level-4 ((t (:inherit outline-4 :height 1.005))))
   '(org-level-5 ((t (:inherit outline-5 :height 1.0)))))
+
+(use-package company-org-block
+  :ensure t
+  :custom
+  (company-org-block-edit-style 'auto) ;; 'auto, 'prompt, or 'inline
+  :hook ((org-mode . (lambda ()
+                       (setq-local company-backends '(company-org-block))
+                       (company-mode +1)))))
