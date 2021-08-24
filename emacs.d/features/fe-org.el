@@ -27,7 +27,8 @@
         (font-lock-ensure)
         (font-lock-flush)))))
 
-(provide 'org-starless)
+;; Disable org-starless.
+;; (provide 'org-starless)
 
 (use-package org
   :ensure org-plus-contrib ;; Ensure latest org installed from elpa
