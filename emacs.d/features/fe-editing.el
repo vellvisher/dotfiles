@@ -140,3 +140,13 @@
      log-edit-comment-ring))
   :config
   (savehist-mode +1))
+
+;; https://www.reddit.com/r/emacs/comments/56qb27/enable_upcasedowncaseregion_but_prevent_accident/
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(defun v/ensure-region-active (func &rest args)
+  (when (region-active-p)
+    (apply func args)))
+
+(advice-add 'upcase-region :around 'v/ensure-region-active)
+(advice-add 'downcase-region :around 'v/ensure-region-active)
