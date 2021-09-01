@@ -57,7 +57,7 @@
     (v/vsetq show-trailing-whitespace t)
     (v/vsetq org-imenu-depth 4)
     (set-fill-column 1000)
-    (org-starless-mode +1)
+    ;; (org-starless-mode +1)
     (v/vsetq prettify-symbols-alist '(("lambda" . ?λ)
                                       ("->" . ?→))))
   (v/vsetq org-directory "~/GoogleDriveGmail/org")
