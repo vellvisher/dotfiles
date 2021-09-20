@@ -110,6 +110,7 @@ SCHEDULED: <2019-12-21 Sat>
 + [ ] vest
 + [ ] t shirts
 + [ ] trousers
++ [ ] shorts
 + [ ] night wear
 + [ ] passport
 + [ ] residence permit
