@@ -31,7 +31,7 @@
 (provide 'org-starless)
 
 (use-package org
-  :ensure org-plus-contrib ;; Ensure latest org installed from elpa
+  :ensure t
   :bind (("C-c c" . org-capture)
          ("C-c l" . org-store-link)
          ("C-c t" . org-set-tags-command)
