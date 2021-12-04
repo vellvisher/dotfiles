@@ -112,8 +112,13 @@ SCHEDULED: <2019-12-21 Sat>
 + [ ] trousers
 + [ ] shorts
 + [ ] night wear
-+ [ ] passport
-+ [ ] residence permit
++ [ ] house keys
++ [ ] documents
+  + [ ] passport
+  + [ ] residence permit
+  + [ ] pcr test
+  + [ ] passenger locator
+  + [ ] arrival test
 + [ ] dance shoes
 + [ ] perfume
 + [ ] mint
