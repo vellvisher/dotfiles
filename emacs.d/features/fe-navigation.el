@@ -91,3 +91,10 @@ Repeated invocations toggle between the two most recently open buffers."
 (use-package simple
   :config
   (v/vsetq set-mark-command-repeat-pop t))
+
+;; Smarter move to beginning/end of line.
+(use-package mwim
+  :ensure t
+  :bind (:map prog-mode-map
+              ("C-a" . mwim-beginning-of-code-or-line)
+              ("C-e" . mwim-end-of-code-or-line)))
