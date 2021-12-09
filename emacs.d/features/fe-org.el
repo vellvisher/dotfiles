@@ -8,28 +8,6 @@
   :custom
   (org-fancy-priorities-list '("HIGH" "MID" "LOW" "OPTIONAL")))
 
-(define-minor-mode org-starless-mode
-  "Starless org-mode"
-  nil nil nil
-  :require 'org
-  (let* ((keyword
-          `(("^\\(\\*+ \\)\\s-*\\S-" ; Do not hide empty headings!
-             (1 (put-text-property (match-beginning 1) (match-end 1) 'invisible t)
-                nil)))))
-    (if org-starless-mode
-        (progn
-          (font-lock-add-keywords nil keyword)
-          (font-lock-ensure)
-          (font-lock-flush))
-      (save-excursion
-        (goto-char (point-min))
-        (font-lock-remove-keywords nil keyword)
-        (font-lock-ensure)
-        (font-lock-flush)))))
-
-;; Disable org-starless.
-(provide 'org-starless)
-
 (use-package org
   :ensure t
   :bind (("C-c c" . org-capture)
@@ -57,7 +35,7 @@
     (v/vsetq show-trailing-whitespace t)
     (v/vsetq org-imenu-depth 4)
     (set-fill-column 1000)
-    ;; (org-starless-mode +1)
+
     (v/vsetq prettify-symbols-alist '(("lambda" . ?λ)
                                       ("->" . ?→))))
   (v/vsetq org-directory "~/GoogleDriveGmail/org")
