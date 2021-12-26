@@ -138,7 +138,8 @@ Booking reference: %s
            #'v/org-capture-packing-list)
           ("f" "Flight checklist" entry (file+headline "~/GoogleDriveGmail/org/inbox.org" "Inbox")
            #'v/org-capture-flight-checklist)
-          ("w" "Work" entry (file+headline "~/GoogleDrive/org/work.org" "Inbox")
+          ;; Eg. "~/GoogleDriveGmail/org/work.org"
+          ("w" "Work" entry (file+headline v-work-org-filename "Inbox")
            "* TODO %?\nSCHEDULED: %^t"))))
 
 (use-package org-journal
