@@ -181,7 +181,8 @@ Booking reference: %s
          :map org-agenda-mode-map
          ("P" . v-org-agenda-previous-header)
          ("N" . v-org-agenda-next-header)
-         ("G" . org-agenda-goto-date))
+         ("G" . org-agenda-goto-date)
+         ("C-c C-s" . v-org-agenda-schedule-safe))
   :custom
   ((org-agenda-custom-commands
     '(("d" "Daily agenda and all TODOs"
@@ -220,6 +221,13 @@ Booking reference: %s
     "Jump to the previous header in an agenda series."
     (interactive)
     (v--org-agenda-goto-header t))
+
+  (defun v-org-agenda-schedule-safe (arg &optional time)
+    "Schedule the item at point safely, ignoring command if there are marks"
+    (interactive "P")
+    (if (not (equal org-agenda-bulk-marked-entries nil))
+        (error "Note: Use bulk schedule command instead")
+      (org-agenda-schedule arg time)))
 
   (defun v--org-agenda-goto-header (&optional backwards)
     "Find the next agenda series header forwards or BACKWARDS."
