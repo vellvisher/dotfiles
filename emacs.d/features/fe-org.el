@@ -132,7 +132,8 @@ Booking reference: %s
            #'v/org-capture-emacs-template)
           ("a" "Article" entry (file "~/GoogleDriveGmail/org/articles.org")
            #'v/org-capture-article-template)
-          ("m" "Movies" entry (file "~/GoogleDriveGmail/org/movies.org")
+          ;; Prevent conflict with mail
+          ("f" "Film/Movies" entry (file "~/GoogleDriveGmail/org/movies.org")
            #'v/org-capture-movie-template)
           ("p" "Packing list" entry (file+headline "~/GoogleDriveGmail/org/inbox.org" "Inbox")
            #'v/org-capture-packing-list)
@@ -140,7 +141,9 @@ Booking reference: %s
            #'v/org-capture-flight-checklist)
           ;; Eg. "~/GoogleDriveGmail/org/work.org"
           ("w" "Work" entry (file+headline v-work-org-filename "Inbox")
-           "* TODO %?\nSCHEDULED: %^t"))))
+           "* TODO %?\nSCHEDULED: %^t")
+          ("m" "Mail" entry (file+headline v-work-org-filename "Inbox")
+           "* TODO %?\nSCHEDULED: %^t\n%a\n"))))
 
 (use-package org-journal
   :ensure t
