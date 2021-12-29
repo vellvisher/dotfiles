@@ -1,8 +1,11 @@
+(require 'v-vcsetq)
+
 (use-package magit
   :ensure t
   :bind ("C-x g" . magit-status)
   :config
   (add-to-list 'magit-no-confirm 'stage-all-changes)
+  (v/csetq magit-revision-fill-summary-line 100)
 
   (fullframe magit-status magit-mode-quit-window))
 
