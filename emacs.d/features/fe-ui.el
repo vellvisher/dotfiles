@@ -28,10 +28,10 @@
 (use-package battery
   :config
   (when (and battery-status-function
-       (not (string-match-p "N/A"
-                (battery-format "%B"
-                        (funcall battery-status-function)))))
-  (display-battery-mode 1)))
+             (not (string-match-p "N/A"
+                                  (battery-format "%B"
+                                                  (funcall battery-status-function)))))
+    (display-battery-mode 1)))
 
 ;; Display column numbers.
 (setq-default column-number-mode t)
@@ -47,24 +47,24 @@
   (v/csetq display-time-day-and-date t)
 
   (v/csetq display-time-string-forms
-            '((format "%s %s %s, %s:%s"
-                      dayname
-                      monthname day
-                      24-hours minutes)))
+           '((format "%s %s %s, %s:%s"
+                     dayname
+                     monthname day
+                     24-hours minutes)))
   (display-time))
 
 ;; Move `mode-line-modes` to the end of the mode-line.
 (v/csetq mode-line-format
-'("%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification mode-line-buffer-identification "   " mode-line-position
- (vc-mode vc-mode)
- "  " mode-line-misc-info mode-line-modes mode-line-end-spaces))
+         '("%e" mode-line-front-space mode-line-mule-info mode-line-client mode-line-modified mode-line-remote mode-line-frame-identification mode-line-buffer-identification "   " mode-line-position
+           (vc-mode vc-mode)
+           "  " mode-line-misc-info mode-line-modes mode-line-end-spaces))
 
 (use-package minions
-    :ensure t
-    :config
-    (v/csetq minions-mode-line-lighter "…")
-    (v/csetq minions-mode-line-delimiters '("" . ""))
-    (minions-mode +1))
+  :ensure t
+  :config
+  (v/csetq minions-mode-line-lighter "…")
+  (v/csetq minions-mode-line-delimiters '("" . ""))
+  (minions-mode +1))
 
 (use-package golden-ratio
   :ensure t
