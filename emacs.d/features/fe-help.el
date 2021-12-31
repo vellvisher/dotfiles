@@ -1,4 +1,5 @@
 (require 'v-vsetq)
+(require 'v-vcsetq)
 
 (use-package help
   :hook (help-mode . goto-address-mode)
@@ -22,4 +23,5 @@
 (use-package which-key
   :ensure t
   :config
-  (which-key-mode))
+  (which-key-mode)
+  (v/csetq which-key-idle-delay 0.5))
