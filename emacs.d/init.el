@@ -113,10 +113,10 @@
 (defun v/load-non-core-init ()
   "Load non-core initialisation."
   ;; Undo GC values post init.el.
-  (setq gc-cons-threshold (* 16 1024 1024)
+  (setq gc-cons-threshold 100000000
         gc-cons-percentage 0.1)
   (run-with-idle-timer 5 t #'garbage-collect)
-  (setq garbage-collection-messages t)
+  (setq garbage-collection-messages nil)
   (setq file-name-handler-alist v/init--file-name-handler-alist)
 
   ;; Done loading core init.el. Announce it and let the heavy loading begin.
