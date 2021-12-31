@@ -9,6 +9,8 @@
   (setq projectile-enable-caching t)
   (setq projectile-completion-system 'ivy)
   (setq projectile-indexing-method 'hybrid)
+
+  (setq projectile-ignored-projects '("~/"))
   ;; fd is super fast. Use it if available.
   (when (executable-find "fd")
     (let ((fd-command "fd . --print0"))
