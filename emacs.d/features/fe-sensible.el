@@ -1,4 +1,4 @@
-(require 'v-vcetq)
+(require 'v-vcsetq)
 
 (v/csetq delete-by-moving-to-trash t)
 
