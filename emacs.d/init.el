@@ -135,6 +135,7 @@
   (load "~/.emacs.d/features/fe-libs.el")
 
   ;; Load non-core features.
+  (load "~/.emacs.d/features/fe-sensible.el")
   (load "~/.emacs.d/features/fe-eshell.el")
   (load "~/.emacs.d/features/fe-scratch.el")
   (load "~/.emacs.d/features/fe-paradox.el")
