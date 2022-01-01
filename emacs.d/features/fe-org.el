@@ -291,3 +291,8 @@ Booking reference: %s
   :hook ((org-mode . (lambda ()
                        (setq-local company-backends '(company-org-block))
                        (company-mode +1)))))
+
+(use-package org-bookmark-heading
+  :after org
+  :defer 5
+  :ensure t)
