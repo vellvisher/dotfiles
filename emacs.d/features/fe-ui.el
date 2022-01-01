@@ -108,3 +108,11 @@
                     :slant 'normal :weight 'normal :width 'normal :foundry "nil"
                     ;; Font-size / 10 is the height
                     :height 150)
+
+(use-package moody
+  :ensure t
+  :config
+  (setq x-underline-at-descent-line t)
+  (moody-replace-mode-line-buffer-identification)
+  (moody-replace-vc-mode)
+  (moody-replace-eldoc-minibuffer-message-function))
