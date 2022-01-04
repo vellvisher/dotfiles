@@ -306,6 +306,9 @@ Booking reference: %s
       (replace-regexp-in-string
        " href=\"#org[[:alnum:]]\\{7\\}\""
        ""
-       output t)))
+       (replace-regexp-in-string
+        " id=\"[[:alpha:]-]*org[[:alnum:]]\\{7\\}\""
+        ""
+        output t) t)))
 
   (add-to-list 'org-export-filter-final-output-functions 'v/html-body-id-filter))
