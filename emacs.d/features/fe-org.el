@@ -312,3 +312,13 @@ Booking reference: %s
         output t) t)))
 
   (add-to-list 'org-export-filter-final-output-functions 'v/html-body-id-filter))
+
+(defun v/org-export-to-html-after-save-for-current-buffer()
+  (interactive)
+  (setq v/org-export-to-html-buffer-name (buffer-name))
+  ;; Auto-export org files to html when save.
+  (defun v/org-mode-export-hook()
+    "Auto export html"
+    (when (and (eq major-mode 'org-mode) (eq (buffer-name) v/org-export-to-html-buffer-name))
+      (org-html-export-to-html t)))
+  (add-hook 'after-save-hook 'v/org-mode-export-hook))
