@@ -171,6 +171,7 @@
   (load "~/.emacs.d/features/fe-compile.el")
   (load "~/.emacs.d/features/fe-flyspell.el")
   (load "~/.emacs.d/features/fe-yasnippet.el")
+  (load "~/.emacs.d/features/fe-mu4e.el")
   (load "~/.emacs.d/features/fe-buffers.el")
   (load "~/.emacs.d/features/fe-alfred-org-capture.el"))
 
