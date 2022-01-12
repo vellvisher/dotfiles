@@ -139,6 +139,7 @@
   (load "~/.emacs.d/features/fe-eshell.el")
   (load "~/.emacs.d/features/fe-scratch.el")
   (load "~/.emacs.d/features/fe-paradox.el")
+  (load "~/.emacs.d/features/fe-company.el")
   (load "~/.emacs.d/features/fe-navigation.el")
   (load "~/.emacs.d/features/fe-ivy.el")
   (load "~/.emacs.d/features/fe-ui.el")
