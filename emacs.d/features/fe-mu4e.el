@@ -4,13 +4,18 @@
              (expand-file-name "/opt/homebrew/share/emacs/site-lisp/mu/mu4e/"))
 
 (use-package mu4e
-  :bind (("M-m" . mu4e)
+  :bind (("M-m" . v/mu4e-start-and-jump-to-inbox)
          :map mu4e-main-mode-map
          ("i" . v/mu4e-jump-to-inbox))
   :hook ((mu4e-view-mode . goto-address-mode)
          (mu4e-compose-mode . v/mu4e-compose-mode-hook)
          (mu4e-loading-mode . v/mu4e-jump-to-inbox))
   :config
+  (defun v/mu4e-start-and-jump-to-inbox ()
+    "Jumps directly to the inbox."
+    (interactive)
+    (mu4e~start)
+    (mu4e~headers-jump-to-maildir "/Gmail/Inbox"))
   (defun v/mu4e-jump-to-inbox ()
     "Jumps directly to the inbox."
     (interactive)
