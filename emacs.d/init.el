@@ -106,6 +106,9 @@
 (setq use-package-enable-imenu-support t)
 (require 'use-package)
 
+(use-package use-package-ensure-system-package
+  :ensure t)
+
 ;; Remap META to CMD
 (setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
