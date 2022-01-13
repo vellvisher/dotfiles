@@ -116,3 +116,9 @@
   (moody-replace-mode-line-buffer-identification)
   (moody-replace-vc-mode)
   (moody-replace-eldoc-minibuffer-message-function))
+
+(use-package beacon
+  :ensure t
+  :defer 20
+  :init
+  (beacon-mode 1))
