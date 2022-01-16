@@ -86,23 +86,23 @@
         (list
          (make-mu4e-context
           :name "Gmail"
-          :enter-func (lambda () (mu4e-message (concat "Entering context" v-mu4e-user-mail-default-address)))
-          :leave-func (lambda () (mu4e-message (concat "Leaving context" v-mu4e-user-mail-default-address)))
+          :enter-func (lambda () (mu4e-message (concat "Entering context " v-mu4e-user-mail-default-address)))
+          :leave-func (lambda () (mu4e-message (concat "Leaving context " v-mu4e-user-mail-default-address)))
           :match-func (lambda (msg)
                         (when msg
                           (mu4e-message-contact-field-matches
                            msg '(:from :to :cc :bcc) v-mu4e-user-mail-default-address)))
-          :vars '((user-mail-address . v-mu4e-user-mail-default-address)
-                  (user-full-name . "Vaarnan Drolia")
-                  (mu4e-sent-folder . "/Gmail/[Gmail]/Sent Mail")
-                  (mu4e-drafts-folder . "/Gmail/[Gmail]/Drafts")
-                  (mu4e-trash-folder . "/Gmail/[Gmail]/Trash")
-                  (mu4e-refile-folder . "/Gmail/[Gmail]/All Mail")
-                  (mu4e-compose-signature . nil)
-                  (mu4e-compose-format-flowed . nil)
-                  (smtpmail-smtp-user . v-mu4e-user-mail-default-address)
-                  (smtpmail-smtp-server . "smtp.gmail.com")
-                  (smtpmail-smtp-service . 465)))
+          :vars (cons `(smtpmail-smtp-user . ,v-mu4e-user-mail-default-address)
+                      (cons `(user-mail-address . ,v-mu4e-user-mail-default-address)
+                            '((user-full-name . "Vaarnan Drolia")
+                              (mu4e-sent-folder . "/Gmail/[Gmail]/Sent Mail")
+                              (mu4e-drafts-folder . "/Gmail/[Gmail]/Drafts")
+                              (mu4e-trash-folder . "/Gmail/[Gmail]/Trash")
+                              (mu4e-refile-folder . "/Gmail/[Gmail]/All Mail")
+                              (mu4e-compose-signature . nil)
+                              (mu4e-compose-format-flowed . nil)
+                              (smtpmail-smtp-server . "smtp.gmail.com")
+                              (smtpmail-smtp-service . 465)))))
          )))
 
 (use-package mu4e-marker-icons
