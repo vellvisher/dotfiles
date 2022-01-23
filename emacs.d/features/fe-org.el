@@ -142,7 +142,7 @@ Booking reference: %s
           ;; Eg. "~/GoogleDriveGmail/org/work.org"
           ("w" "Work" entry (file+headline v-work-org-filename "Inbox")
            "* TODO %?\nSCHEDULED: %^t")
-          ("m" "Mail" entry (file+headline v-work-org-filename "Inbox")
+          ("m" "Mail" entry (file+headline "~/GoogleDriveGmail/org/inbox.org" "Inbox")
            "* TODO %?\nSCHEDULED: %^t\n%a\n"))))
 
 (use-package org-journal
