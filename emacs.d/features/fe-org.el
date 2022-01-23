@@ -321,4 +321,4 @@ Booking reference: %s
     "Auto export html"
     (when (and (eq major-mode 'org-mode) (eq (buffer-name) v/org-export-to-html-buffer-name))
       (org-html-export-to-html t)))
-  (add-hook 'after-save-hook 'v/org-mode-export-hook))
+  (add-hook 'after-save-hook #'v/org-mode-export-hook))
