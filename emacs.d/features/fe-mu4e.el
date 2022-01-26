@@ -8,7 +8,8 @@
          :map mu4e-main-mode-map
          ("i" . v/mu4e-jump-to-inbox)
          :map mu4e-headers-mode-map
-         ("g" . v/mu4e-mbsync-and-update-index))
+         (("e" . v/mu4e-archive-current-message)
+          ("g" . v/mu4e-mbsync-and-update-index)))
   :hook ((mu4e-view-mode . goto-address-mode)
          (mu4e-compose-mode . v/mu4e-compose-mode-hook)
          (mu4e-loading-mode . v/mu4e-jump-to-inbox))
@@ -34,6 +35,12 @@
                                          (message "Process mbsync finished")
                                          (mu4e-update-mail-and-index t))
                                      (user-error (format "%s\n%s" output)))))))
+  (defun v/mu4e-archive-current-message ()
+    "Jumps directly to the inbox."
+    (interactive)
+    (mu4e-headers-mark-for-refile)
+    (mu4e-mark-execute-all t))
+
   ;; Update mail using 'U' in main view:
   ;; Only update the index, use the brew daemon.
   ;; (setq mu4e-get-mail-command "mbsync -Va")
