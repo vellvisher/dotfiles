@@ -95,6 +95,6 @@ Repeated invocations toggle between the two most recently open buffers."
 ;; Smarter move to beginning/end of line.
 (use-package mwim
   :ensure t
-  :bind (:map prog-mode-map
-              ("C-a" . mwim-beginning-of-code-or-line)
-              ("C-e" . mwim-end-of-code-or-line)))
+  :bind
+  (("C-a" . mwim-beginning-of-code-or-line)
+   ("C-e" . mwim-end-of-code-or-line)))

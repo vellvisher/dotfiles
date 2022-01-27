@@ -142,7 +142,7 @@ Booking reference: %s
           ;; Eg. "~/GoogleDriveGmail/org/work.org"
           ("w" "Work" entry (file+headline v-work-org-filename "Inbox")
            "* TODO %?\nSCHEDULED: %^t")
-          ("m" "Mail" entry (file+headline v-work-org-filename "Inbox")
+          ("m" "Mail" entry (file+headline "~/GoogleDriveGmail/org/inbox.org" "Inbox")
            "* TODO %?\nSCHEDULED: %^t\n%a\n"))))
 
 (use-package org-journal
@@ -321,4 +321,4 @@ Booking reference: %s
     "Auto export html"
     (when (and (eq major-mode 'org-mode) (eq (buffer-name) v/org-export-to-html-buffer-name))
       (org-html-export-to-html t)))
-  (add-hook 'after-save-hook 'v/org-mode-export-hook))
+  (add-hook 'after-save-hook #'v/org-mode-export-hook))
