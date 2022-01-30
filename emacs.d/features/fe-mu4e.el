@@ -50,7 +50,7 @@
   (setq mu4e-html2text-command "w3m -T text/html") ;; alternatively "textutil -stdin -format html -convert txt -stdout"
   (setq mu4e-user-mail-address-list v-mu4e-user-mail-address-list)
   (setq mu4e-context-policy 'pick-first)
-  (setq mu4e-compose-context-policy 'always-ask)
+  (setq mu4e-compose-context-policy 'pick-first)
   (setq mu4e-update-interval 30)
   ;; (setq mu4e-index-cleanup nil)      ;; don't do a full cleanup check
   ;; (setq mu4e-index-lazy-check t)    ;; don't consider up-to-date dirs
