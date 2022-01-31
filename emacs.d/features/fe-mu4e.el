@@ -8,7 +8,8 @@
          :map mu4e-main-mode-map
          ("i" . v/mu4e-jump-to-inbox)
          :map mu4e-headers-mode-map
-         ("g" . v/mu4e-mbsync-and-update-index))
+         (("e" . v/mu4e-archive-current-message)
+          ("g" . v/mu4e-mbsync-and-update-index)))
   :hook ((mu4e-view-mode . goto-address-mode)
          (mu4e-compose-mode . v/mu4e-compose-mode-hook)
          (mu4e-loading-mode . v/mu4e-jump-to-inbox))
@@ -34,6 +35,12 @@
                                          (message "Process mbsync finished")
                                          (mu4e-update-mail-and-index t))
                                      (user-error (format "%s\n%s" output)))))))
+  (defun v/mu4e-archive-current-message ()
+    "Jumps directly to the inbox."
+    (interactive)
+    (mu4e-headers-mark-for-refile)
+    (mu4e-mark-execute-all t))
+
   ;; Update mail using 'U' in main view:
   ;; Only update the index, use the brew daemon.
   ;; (setq mu4e-get-mail-command "mbsync -Va")
@@ -43,7 +50,7 @@
   (setq mu4e-html2text-command "w3m -T text/html") ;; alternatively "textutil -stdin -format html -convert txt -stdout"
   (setq mu4e-user-mail-address-list v-mu4e-user-mail-address-list)
   (setq mu4e-context-policy 'pick-first)
-  (setq mu4e-compose-context-policy 'always-ask)
+  (setq mu4e-compose-context-policy 'pick-first)
   (setq mu4e-update-interval 30)
   ;; (setq mu4e-index-cleanup nil)      ;; don't do a full cleanup check
   ;; (setq mu4e-index-lazy-check t)    ;; don't consider up-to-date dirs
@@ -86,23 +93,23 @@
         (list
          (make-mu4e-context
           :name "Gmail"
-          :enter-func (lambda () (mu4e-message (concat "Entering context" v-mu4e-user-mail-default-address)))
-          :leave-func (lambda () (mu4e-message (concat "Leaving context" v-mu4e-user-mail-default-address)))
+          :enter-func (lambda () (mu4e-message (concat "Entering context " v-mu4e-user-mail-default-address)))
+          :leave-func (lambda () (mu4e-message (concat "Leaving context " v-mu4e-user-mail-default-address)))
           :match-func (lambda (msg)
                         (when msg
                           (mu4e-message-contact-field-matches
                            msg '(:from :to :cc :bcc) v-mu4e-user-mail-default-address)))
-          :vars '((user-mail-address . v-mu4e-user-mail-default-address)
-                  (user-full-name . "Vaarnan Drolia")
-                  (mu4e-sent-folder . "/Gmail/[Gmail]/Sent Mail")
-                  (mu4e-drafts-folder . "/Gmail/[Gmail]/Drafts")
-                  (mu4e-trash-folder . "/Gmail/[Gmail]/Trash")
-                  (mu4e-refile-folder . "/Gmail/[Gmail]/All Mail")
-                  (mu4e-compose-signature . nil)
-                  (mu4e-compose-format-flowed . nil)
-                  (smtpmail-smtp-user . v-mu4e-user-mail-default-address)
-                  (smtpmail-smtp-server . "smtp.gmail.com")
-                  (smtpmail-smtp-service . 465)))
+          :vars (cons `(smtpmail-smtp-user . ,v-mu4e-user-mail-default-address)
+                      (cons `(user-mail-address . ,v-mu4e-user-mail-default-address)
+                            '((user-full-name . "Vaarnan Drolia")
+                              (mu4e-sent-folder . "/Gmail/[Gmail]/Sent Mail")
+                              (mu4e-drafts-folder . "/Gmail/[Gmail]/Drafts")
+                              (mu4e-trash-folder . "/Gmail/[Gmail]/Trash")
+                              (mu4e-refile-folder . "/Gmail/[Gmail]/All Mail")
+                              (mu4e-compose-signature . nil)
+                              (mu4e-compose-format-flowed . nil)
+                              (smtpmail-smtp-server . "smtp.gmail.com")
+                              (smtpmail-smtp-service . 465)))))
          )))
 
 (use-package mu4e-marker-icons

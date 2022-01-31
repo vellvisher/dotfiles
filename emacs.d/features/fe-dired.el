@@ -19,7 +19,8 @@
       (smartparens-mode -1))))
 (use-package dired
   :hook ((dired-mode . dired-hide-details-mode)
-         (dired-mode . dired-collapse-mode))
+         (dired-mode . dired-collapse-mode)
+         (dired-mode . v/dired-mode-hook-function))
   :bind (:map dired-mode-map
               ("i" . dired-hide-details-mode)
               ("M-<return>" . v/dired-find-file-conservatively))
@@ -37,6 +38,10 @@
     (interactive)
     (dired-create-directory))
 
+  (defun v/dired-mode-hook-function ()
+    (when (string= system-type "darwin")
+      (setq dired-use-ls-dired nil)))
+
   ;; For dired-jump.
   (use-package dired-x)
 
@@ -46,9 +51,13 @@
   (use-package peep-dired
     :ensure t
     :bind (:map dired-mode-map
-                ("P" . peep-dired)))
+                ("<SPC>" . peep-dired)))
 
   (use-package ivy-dired-history
+    :ensure t)
+
+
+  (use-package dired-du
     :ensure t)
 
   ;; (use-package dired-subtree :ensure t
