@@ -9,22 +9,27 @@
          ("i" . v/mu4e-jump-to-inbox)
          :map mu4e-headers-mode-map
          (("e" . v/mu4e-archive-current-message)
+          ("v" . v/mu4e-headers-view-in-browser)
           ("g" . v/mu4e-mbsync-and-update-index)))
   :hook ((mu4e-view-mode . goto-address-mode)
          (mu4e-compose-mode . v/mu4e-compose-mode-hook)
          (mu4e-loading-mode . v/mu4e-jump-to-inbox))
   :config
   (defun v/mu4e-start-and-jump-to-inbox ()
-    "Jumps directly to the inbox."
+    "Starts mu4e and then jumps directly to the inbox."
     (interactive)
     (mu4e~start)
     (mu4e~headers-jump-to-maildir "/Gmail/Inbox"))
+  (defun v/mu4e-headers-view-in-browser ()
+    "Opens the current message in the web browser."
+    (interactive)
+    (mu4e-headers-action 'mu4e-action-view-in-browser))
   (defun v/mu4e-jump-to-inbox ()
     "Jumps directly to the inbox."
     (interactive)
     (mu4e~headers-jump-to-maildir "/Gmail/Inbox"))
   (defun v/mu4e-mbsync-and-update-index ()
-    "Jumps directly to the inbox."
+    "Syncs via a process with mbsync and then calls an index update."
     (interactive)
     (set-process-sentinel (start-process-shell-command "mbsync" "*mbsync*" "mbsync -Va")
                           (lambda (process state)
@@ -73,6 +78,9 @@
            (:maildir "/Gmail/[Gmail]/Important"     :key  ?s)))
 
   (setq mu4e-display-update-status-in-modeline t)
+  (setq mu4e-html2text-command
+        "textutil -stdin -format html -convert txt -stdout")
+
 
   (add-to-list 'mu4e-headers-actions '("ViewInBrowser" . mu4e-action-view-in-browser) t)
 
