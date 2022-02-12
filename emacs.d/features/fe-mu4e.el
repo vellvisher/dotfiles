@@ -10,7 +10,9 @@
          :map mu4e-headers-mode-map
          (("e" . v/mu4e-archive-current-message)
           ("v" . v/mu4e-headers-view-in-browser)
-          ("g" . v/mu4e-mbsync-and-update-index)))
+          ("g" . v/mu4e-mbsync-and-update-index))
+         :map mu4e-view-mode-map
+         ("v" . v/mu4e-view-mode-view-in-browser))
   :hook ((mu4e-view-mode . goto-address-mode)
          (mu4e-compose-mode . v/mu4e-compose-mode-hook)
          (mu4e-loading-mode . v/mu4e-jump-to-inbox))
@@ -24,6 +26,10 @@
     "Opens the current message in the web browser."
     (interactive)
     (mu4e-headers-action 'mu4e-action-view-in-browser))
+  (defun v/mu4e-view-mode-view-in-browser ()
+    "Opens the current message in the web browser."
+    (interactive)
+    (mu4e-action-view-in-browser (mu4e-message-at-point)))
   (defun v/mu4e-jump-to-inbox ()
     "Jumps directly to the inbox."
     (interactive)
@@ -38,7 +44,7 @@
                                    (if (= (process-exit-status process) 0)
                                        (progn
                                          (message "Process mbsync finished")
-                                         (mu4e-update-mail-and-index t))
+                                         (mu4e-update-index t))
                                      (user-error (format "%s\n%s" output)))))))
   (defun v/mu4e-archive-current-message ()
     "Jumps directly to the inbox."
