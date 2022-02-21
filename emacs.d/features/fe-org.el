@@ -10,6 +10,7 @@
 
 (use-package org
   :ensure t
+  :mode ("\\.org\\'" . org-mode)
   :bind (("C-c c" . org-capture)
          ("C-c l" . org-store-link)
          ("C-c t" . org-set-tags-command)
@@ -40,7 +41,6 @@
                                       ("->" . ?→))))
   (v/vsetq org-directory "~/GoogleDriveGmail/org")
   (v/vsetq org-default-notes-file (concat org-directory "/inbox.org"))
-  (add-to-list 'org-agenda-files org-directory)
   (v/vsetq org-return-follows-link t)
   (v/vsetq org-catch-invisible-edits 'error)
 
@@ -155,8 +155,8 @@ Booking reference: %s
            (org-journal-date-format "%a %d %b, %Y")))
 
 (use-package org-agenda
-  :after org
   :hook((org-agenda-mode . v/org-agenda-mode-hook-function))
+  :commands org-agenda
   ;; Suggestion from:
   ;; https://blog.aaronbieber.com/2016/09/25/agenda-interactions-primer.html
   :bind (("C-c a" . v-pop-to-org-agenda)
@@ -190,8 +190,12 @@ Booking reference: %s
     (interactive "P")
     (org-agenda nil "d"))
   (defun v/org-agenda-mode-hook-function ()
+    (add-to-list 'org-agenda-files (concat org-directory "/inbox.org"))
+    (add-to-list 'org-agenda-files v-work-org-filename)
+
     (hl-line-mode +1)
     (goto-address-mode +1)
+
     (v/vsetq org-agenda-use-time-grid nil)
     (v/vsetq org-agenda-sticky nil))
   (defun v-org-agenda-next-header ()
