@@ -209,6 +209,7 @@ there are no attachments."
 (use-package message
   :hook ((message-send . v/message-warn-if-no-attachments)
          (message-mode . turn-on-orgtbl))
+  :after mu4e
   :config
   (setq message-send-mail-function 'smtpmail-send-it)
   (v/csetq mail-user-agent 'mu4e-user-agent)
