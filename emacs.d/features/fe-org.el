@@ -317,3 +317,21 @@ Booking reference: %s
     (when (and (eq major-mode 'org-mode) (eq (buffer-name) v/org-export-to-html-buffer-name))
       (org-html-export-to-html t)))
   (add-hook 'after-save-hook #'v/org-mode-export-hook))
+
+(use-package org-roam
+  :ensure t
+  :after org
+  :init (setq org-roam-v2-ack t) ;; Acknowledge V2 upgrade
+  :custom
+  (org-roam-directory (file-truename "~/GoogleDriveGmail/org/roam"))
+  :config
+  (org-roam-setup)
+  (org-roam-db-autosync-mode)
+  :bind (("C-c n f" . org-roam-node-find)
+         ("C-c n r" . org-roam-node-random)
+         (:map org-mode-map
+               (("C-c n i" . org-roam-node-insert)
+                ("C-c n o" . org-id-get-create)
+                ("C-c n t" . org-roam-tag-add)
+                ("C-c n a" . org-roam-alias-add)
+                ("C-c n l" . org-roam-buffer-toggle)))))
