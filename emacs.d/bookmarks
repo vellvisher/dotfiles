@@ -1,12 +1,24 @@
-;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("ilr"
- (filename . "~/GoogleDriveGmail/org/inbox.org")
- (front-context-string . "* ILR :ilr:\n** T")
- (rear-context-string . "0-16 Wed 21:13]\n")
- (position . 59211))
+(("beorg"
+ (filename . "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/")
+ (front-context-string . "Documents\n  -rw-")
+ (rear-context-string . "0B 16 Oct 10:48 ")
+ (position . 173))
+("ilr"
+ (filename . "/Users/vaarnan/GoogleDriveGmail/org/inbox.org")
+ (handler . org-bookmark-jump)
+ (front-context-string . "89C1941D-D7BE-4DAC-AF7B-0F030C5C80E7"))
+("a"
+ (filename . "/Users/vaarnan/GoogleDriveGmail/org/inbox.org")
+ (handler . org-bookmark-jump)
+ (front-context-string . "A642510A-E5A1-4725-B170-5DD9A656833D"))
+("taxes"
+ (filename . "/Users/vaarnan/GoogleDriveGmail/org/inbox.org")
+ (handler . org-bookmark-jump)
+ (front-context-string . "16F3C556-D78A-44B8-8F55-3BA0E42AB83F"))
 ("worklog"
  (filename . "/Users/vaarnan/GoogleDrive/org/work.org")
  (handler . org-bookmark-jump)
@@ -29,9 +41,9 @@
 ("org-refile-last-stored"
  (filename . "/Users/vaarnan/GoogleDriveGmail/org/inbox.org")
  (handler . org-bookmark-jump)
- (front-context-string . "1AFBDA9A-455A-44A1-8279-2BEC79D612B6"))
+ (front-context-string . "3C1FCAAB-836A-4818-8B62-1CA6F6D62AD6"))
 ("org-capture-last-stored"
- (filename . "/Users/vaarnan/GoogleDriveGmail/org/articles.org")
+ (filename . "/Users/vaarnan/GoogleDriveGmail/org/emacs.org")
  (handler . org-bookmark-jump)
- (front-context-string . "247CFF1A-41B2-4B5E-A8BB-2929A8051821"))
+ (front-context-string . "F5124B28-7221-4FCD-BF39-A6856B31EF87"))
 )
