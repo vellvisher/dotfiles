@@ -43,9 +43,6 @@
     (when (string= system-type "darwin")
       (setq dired-use-ls-dired nil)))
 
-  ;; For dired-jump.
-  (use-package dired-x)
-
   ;; Omit ".", ".."
   (v/vsetq dired-omit-mode t)
 
