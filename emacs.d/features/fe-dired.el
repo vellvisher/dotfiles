@@ -94,4 +94,5 @@
 
 (use-package dired-aux
   :config
-  (v/csetq dired-compress-directory-default-suffix ".zip"))
+  (v/csetq dired-compress-directory-default-suffix ".zip")
+  (v/csetq dired-compress-file-default-suffix ".zip"))
