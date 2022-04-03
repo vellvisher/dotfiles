@@ -1,4 +1,5 @@
 (require 'v-vsetq)
+(require 'v-vcsetq)
 
 (use-package dired-filter
   :ensure t)
@@ -90,3 +91,7 @@
   :bind (:map dired-mode-map
               ("z" . dired-atool-do-unpack-to-current-dir)
               ("Z" . dired-atool-do-pack)))
+
+(use-package dired-aux
+  :config
+  (v/csetq dired-compress-directory-default-suffix ".zip"))
