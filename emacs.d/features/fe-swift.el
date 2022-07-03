@@ -1,5 +1,22 @@
 (require 'v-vsetq)
 
+(use-package flycheck
+  :ensure t
+  :defer 10
+  :config
+  ;; Overrid to C-c f prefix because C-c ! interferes with org-mode inactive
+  ;; timestamp.
+  (define-key flycheck-mode-map flycheck-keymap-prefix nil)
+  (setq flycheck-keymap-prefix (kbd "C-c f"))
+  (define-key flycheck-mode-map flycheck-keymap-prefix
+    flycheck-command-map)
+
+  (global-flycheck-mode))
+
+(use-package flycheck-swift
+  :ensure t
+  :after flycheck)
+
 (use-package swift-mode
   :ensure t
   :mode ("\\.swift\\'" . swift-mode)
@@ -16,6 +33,8 @@
     (whitespace-mode -1)
     (whitespace-mode +1)
 
+    (flycheck-swift-setup)
+
     :config
     (when (require 'reformatter nil 'noerror)
       (reformatter-define swift-format
@@ -27,6 +46,6 @@
                                   (with-temp-file temp-file-path
                                     (insert-buffer buffer))
                                   (if config-file
-                                      (list "--configuration" config-file "-m" "format" temp-file-path))
-                                  (list "-m" "format" temp-file-path)))
+                                      (list "--configuration" config-file temp-file-path))
+                                  (list temp-file-path)))
       (add-hook 'swift-mode-hook 'swift-format-on-save-mode))))
