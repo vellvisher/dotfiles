@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: swift_todo
+# key: <todo
+# --
+
+// TODO(vaarnan):
