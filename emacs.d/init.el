@@ -78,15 +78,13 @@
       '(("melpa" . "http://melpa.org/packages/")
         ("melpa-stable" . "https://stable.melpa.org/packages/")
         ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-        ("gnu" . "https://elpa.gnu.org/packages/")
-        ("org" . "https://orgmode.org/elpa/")))
+        ("gnu" . "https://elpa.gnu.org/packages/")))
 
 (setq package-archive-priorities
       '(("melpa" .  5)
         ("melpa-stable" . 4)
         ("nongnu" . 3)
-        ("gnu" . 2)
-        ("org" . 1)))
+        ("gnu" . 2)))
 
 (unless package--initialized
   (package-initialize))
