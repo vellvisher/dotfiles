@@ -164,15 +164,16 @@
   (load "~/.emacs.d/features/fe-kotlin.el")
   ;; Less frequently used:
   ;; (load "~/.emacs.d/features/fe-php.el")
+  (load "~/.emacs.d/features/fe-work.el")
   (load "~/.emacs.d/features/fe-org.el")
   (load "~/.emacs.d/features/fe-ob.el")
   (load "~/.emacs.d/features/fe-help.el")
-  (load "~/.emacs.d/features/fe-work.el")
   (load "~/.emacs.d/features/fe-bazel.el")
   (load "~/.emacs.d/features/fe-tags.el")
   (load "~/.emacs.d/features/fe-ediff.el")
   ;; disabled since unused
   ;; (load "~/.emacs.d/features/fe-gcal.el")
+  (load "~/.emacs.d/features/fe-flutter.el")
   (load "~/.emacs.d/features/fe-qrcode.el")
   (load "~/.emacs.d/features/fe-writing.el")
   (load "~/.emacs.d/features/fe-compile.el")
