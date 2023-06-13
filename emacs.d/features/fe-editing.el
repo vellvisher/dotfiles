@@ -150,3 +150,8 @@
 
 (advice-add 'upcase-region :around 'v/ensure-region-active)
 (advice-add 'downcase-region :around 'v/ensure-region-active)
+
+(use-package tiny
+  ;; Can use this for org-table with dates:
+  ;; m\n14||%(date "2023-06-29" (+ x 1))| Day %(1+ x)|||
+  :bind ("C-;" . tiny-expand))
