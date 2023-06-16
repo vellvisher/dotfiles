@@ -180,6 +180,7 @@
   (load "~/.emacs.d/features/fe-mu4e.el")
   (load "~/.emacs.d/features/fe-buffers.el")
   (load "~/.emacs.d/features/fe-alfred-org-capture.el")
+  (load "~/.emacs.d/features/fe-dwim-shell.el")
   (load "~/.emacs.d/features/fe-mac.el"))
 
 (if v/init-debug-init
