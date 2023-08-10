@@ -38,7 +38,8 @@
     (set-fill-column 1000)
 
     (v/vsetq prettify-symbols-alist '(("lambda" . ?λ)
-                                      ("->" . ?→))))
+                                      ("->" . ?→)
+                                      ("<->" . ?↔))))
   (v/vsetq org-directory "~/GoogleDriveGmail/org")
   (v/vsetq org-default-notes-file (concat org-directory "/inbox.org"))
   (v/vsetq org-return-follows-link t)
