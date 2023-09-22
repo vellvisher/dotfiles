@@ -82,7 +82,8 @@
                                           (format "* TODO <%s> packing list
 SCHEDULED: <2019-12-21 Sat>
 
-+ [ ] Toothbrush
++ [ ] Toothbrush/paste
++ [ ] contact lenses
 + [ ] satin floss
 + [ ] underwear
 + [ ] socks
