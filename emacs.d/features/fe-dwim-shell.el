@@ -7,10 +7,20 @@
          ([remap dired-smart-shell-command] . dwim-shell-command))
   :config
   (defun v/dwim-shell-command-convert-to-mp4 ()
-    "Convert all marked videos to optimized gif(s)."
+    "Convert to mov to mp4"
     (interactive)
     (dwim-shell-command-on-marked-files
      "Convert to mov to mp4"
      ;; "ffmpeg -loglevel quiet -stats -y -i <<f>>.MOV -vcodec h264 -acodec copy <<fne>>.mp4"
-     "ffmpeg -i '<<f>>' -vcodec h264 -acodec copy '<<fne>>'.mp4"
-     :utils "ffmpeg")))
+     ;; Found the encoder via ffmpeg -encoders | grep videotoolbox,
+     ;; source https://www.reddit.com/r/ffmpeg/comments/14pqeex/getting_0_gpu_utilization_with_apple_silicons/
+     "ffmpeg -i '<<f>>' -map_metadata 0 \
+     -c:v hevc_videotoolbox -q:v 35 -preset fast -c:a aac -b:a 128k -tag:v hvc1 '<<fne>>'.mp4"
+     :utils "ffmpeg"))
+  (defun v/dwim-shell-command-extract-xip ()
+    "Extract xip xcode archive"
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "Extract an xip xcode archive"
+     "xip --extract <<f>>"
+     :utils "xip")))
