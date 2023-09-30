@@ -1,5 +1,8 @@
 (use-package dwim-shell-command
   :ensure t
+  :commands (v/dwim-shell-command-convert-to-mp4
+             v/dwim-shell-command-extract-xip
+             v/dwim-shell-command-convert-to-webp)
   :bind (([remap shell-command] . dwim-shell-command)
          :map dired-mode-map
          ([remap dired-do-async-shell-command] . dwim-shell-command)
@@ -23,4 +26,11 @@
     (dwim-shell-command-on-marked-files
      "Extract an xip xcode archive"
      "xip --extract <<f>>"
-     :utils "xip")))
+     :utils "xip"))
+  (defun v/dwim-shell-command-convert-to-webp ()
+    "Convert to webp"
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "Convert to webp"
+     "cwebp -q 50 <<f>> -o <<fne>>.webp"
+     :utils "cwebp")))
