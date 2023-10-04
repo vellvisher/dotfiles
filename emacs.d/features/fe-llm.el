@@ -2,6 +2,7 @@
   :ensure t)
 
 (use-package chatgpt-shell
+  :bind (("C-c C-e" . chatgpt-shell-prompt-compose))
   :ensure t
   :custom
   ((chatgpt-shell-openai-key
