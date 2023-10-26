@@ -25,7 +25,7 @@
     (interactive)
     (dwim-shell-command-on-marked-files
      "Extract an xip xcode archive"
-     "xip --extract <<f>>"
+     "xip -x <<f>>"
      :utils "xip"))
   (defun v/dwim-shell-command-convert-to-webp ()
     "Convert to webp"
