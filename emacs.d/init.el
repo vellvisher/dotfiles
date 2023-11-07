@@ -183,7 +183,8 @@
   (load "~/.emacs.d/features/fe-dwim-shell.el")
   (load "~/.emacs.d/features/fe-llm.el")
   (load "~/.emacs.d/features/fe-image.el")
-  (load "~/.emacs.d/features/fe-mac.el"))
+  (load "~/.emacs.d/features/fe-mac.el")
+  (load "~/.emacs.d/features/fe-v-mode.el"))
 
 (if v/init-debug-init
     (v/load-non-core-init)

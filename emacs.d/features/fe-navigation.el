@@ -12,8 +12,6 @@
 
 (v/vsetq next-screen-context-lines 10)
 
-(global-set-key (kbd "M-o") 'other-window)
-
 ;; Disable to get used to above binding.
 (global-unset-key (kbd "C-x o"))
 
