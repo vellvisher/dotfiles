@@ -2,6 +2,8 @@
   :ensure t
   :commands (v/dwim-shell-command-convert-to-mp4
              v/dwim-shell-command-extract-xip
+             v/dwim-shell-command-make-swift-package-library
+             v/dwim-shell-command-proto-to-swift-proto
              v/dwim-shell-command-convert-to-webp)
   :bind (([remap shell-command] . dwim-shell-command)
          :map dired-mode-map
@@ -27,6 +29,28 @@
      "Extract an xip xcode archive"
      "xip -x <<f>>"
      :utils "xip"))
+  (defun v/dwim-shell-commands-make-swift-package-library ()
+    "Create a swift package library"
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "Create a swift package library"
+     "swift package init --type library"
+     :utils "swift"))
+
+  (defun v/dwim-shell-command-make-swift-package-executable ()
+    "Create a swift package executable"
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "Create a swift package executable"
+     "swift package init --type executable"
+     :utils "swift"))
+  (defun v/dwim-shell-command-proto-to-swift-proto ()
+    "Proto to swift proto compiler"
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "Proto to swift proto compiler"
+     "protoc --swift_out=. --proto_path=. <<f>>"
+     :utils "protoc"))
   (defun v/dwim-shell-command-convert-to-webp ()
     "Convert to webp"
     (interactive)
