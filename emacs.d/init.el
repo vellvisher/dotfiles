@@ -160,6 +160,7 @@
   (load "~/.emacs.d/features/fe-swift.el")
   (load "~/.emacs.d/features/fe-ts.el")
   (load "~/.emacs.d/features/fe-kotlin.el")
+  (load "~/.emacs.d/features/fe-dart.el")
   ;; Less frequently used:
   ;; (load "~/.emacs.d/features/fe-php.el")
   (load "~/.emacs.d/features/fe-work.el")
