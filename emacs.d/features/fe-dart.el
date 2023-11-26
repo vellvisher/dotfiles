@@ -1,5 +1,10 @@
+;;; fe-dart.el --- Dart mode configuration
+;;; Commentary:
+;; This file contains the setup for Dart mode.
+;;; Code:
 (use-package dart-mode
   :mode ("\\.dart\\'" . dart-mode)
+  :after reformatter
   :hook (dart-mode . v/dart-mode-hook)
   :init
   (defun dart-imenu-create-index ()
@@ -14,4 +19,10 @@
 
   (defun v/dart-mode-hook ()
     (setq-local imenu-create-index-function #'dart-imenu-create-index)
-    (imenu-add-to-menubar "INDEX")))
+    (imenu-add-to-menubar "INDEX")
+    (when (require 'reformatter nil 'noerror)
+      (reformatter-define dart-format
+        :program "dart"
+        :args '("format"))
+      (add-hook 'dart-mode-hook #'(lambda () (dart-format-on-save-mode 1))))))
+;;; fe-dart.el ends here
