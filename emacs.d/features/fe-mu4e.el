@@ -179,13 +179,17 @@ there are no attachments."
 	       (not (v/message-attachment-present-p)))
       (unless (y-or-n-p v/message-attachment-reminder)
         (keyboard-quit))))  (setq mu4e-headers-flagged-mark   '("F" . "🚩 "))
+  ;; https://www.djcbsoftware.nl/code/mu/mu4e/Fancy-characters.html
   (setq mu4e-headers-new-mark       '("N" . "✨ "))
   (setq mu4e-headers-passed-mark    '("P" . "↪ "))
   (setq mu4e-headers-replied-mark   '("R" . "↩ "))
-  (setq mu4e-headers-seen-mark      '("S" . " "))
   (setq mu4e-headers-trashed-mark   '("T" . "🗑️"))
   (setq mu4e-headers-attach-mark    '("a" . "📎 "))
   (setq mu4e-headers-encrypted-mark '("x" . "🔑 "))
+  ;; Clear icons to get more space.
+  (setq mu4e-headers-personal-mark  '("p" . " "))
+  (setq mu4e-headers-seen-mark      '("S" . " "))
+  (setq mu4e-headers-list-mark      '("p" . "📒 "))
   (setq mu4e-headers-signed-mark    '("s" . "🖊 ")))
 
 (use-package smtpmail
