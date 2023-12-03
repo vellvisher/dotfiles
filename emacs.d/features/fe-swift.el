@@ -1,5 +1,9 @@
-(require 'v-vsetq)
+;;; fe-swift.el --- Swift mode configuration
+;;; Commentary:
+;; This file contains the setup for Swift mode.
+;;; Code:
 
+(require 'v-vsetq)
 (use-package flycheck
   :ensure t
   :defer 10
@@ -48,4 +52,5 @@
                                   (if config-file
                                       (list "--configuration" config-file temp-file-path))
                                   (list temp-file-path)))
-      (add-hook 'swift-mode-hook 'swift-format-on-save-mode))))
+      (add-hook 'swift-mode-hook #'(lambda () (swift-format-on-save-mode 1))))))
+;;; fe-swift.el ends here
