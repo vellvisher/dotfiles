@@ -17,11 +17,15 @@
     :defer 10)
   (use-package ob-java
     :defer 10)
+  (use-package ob-js
+    :defer 10)
   (org-babel-do-load-languages
    'org-babel-load-languages '((shell . t)
                                (sqlite . t)
                                (emacs-lisp . t)
                                (sqlite . t)
-                               (java . t))))
+                               (java . t)
+                               (js . t)
+                               (python . t))))
 
 ;; (v/vsetq org-babel-default-header-args:java '((:classname  . "Test")))
