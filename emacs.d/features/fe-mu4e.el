@@ -3,6 +3,11 @@
 (add-to-list 'load-path
              (expand-file-name "/opt/homebrew/share/emacs/site-lisp/mu/mu4e/"))
 
+;; If mu4e is misbehaving, need to delete the elc in the above directory.
+;; Can simulate issues by requiring the following, otherwise commented out
+;; since v-mu4e-user-mail-address-list is not set yet.
+;; (require 'mu4e)
+
 (use-package mu4e
   :bind (("M-m" . mu4e)
          :map mu4e-main-mode-map
@@ -45,7 +50,9 @@
     (interactive)
     (mu4e-headers-mark-for-refile)
     (mu4e-mark-execute-all t))
-
+  (setq mu4e-trash-folder (lambda (msg) (if (mu4e-message-contact-field-matches msg :to "vaarnan@gmail.com")
+                                       "/Gmail/[Gmail]/Trash"
+                                     "/Tegyaan/[Gmail]/Bin")))
   ;; Update mail using 'U' in main view:
   ;; Only update the index, use the brew daemon.
   ;; (setq mu4e-get-mail-command "mbsync -Va")
@@ -75,7 +82,9 @@
 
   (setq mu4e-maildir-shortcuts
         '( (:maildir "/Gmail/Inbox"     :key  ?i)
-           (:maildir "/Gmail/[Gmail]/Important"     :key  ?s)))
+           (:maildir "/Gmail/[Gmail]/Trash"     :key  ?t)
+           (:maildir "/Tegyaan/Inbox"     :key  ?w)
+           (:maildir "/Tegyaan/[Gmail]/Bin"     :key  ?b)))
 
   (setq mu4e-display-update-status-in-modeline t)
   (setq mu4e-html2text-command
@@ -112,13 +121,42 @@
                             '((user-full-name . "Vaarnan Drolia")
                               (mu4e-sent-folder . "/Gmail/[Gmail]/Sent Mail")
                               (mu4e-drafts-folder . "/Gmail/[Gmail]/Drafts")
-                              (mu4e-trash-folder . "/Gmail/[Gmail]/Trash")
                               (mu4e-refile-folder . "/Gmail/[Gmail]/All Mail")
                               (mu4e-compose-signature . nil)
                               (mu4e-compose-format-flowed . nil)
                               (smtpmail-smtp-server . "smtp.gmail.com")
                               (smtpmail-smtp-service . 465)))))
+         (make-mu4e-context
+          :name "Tegyaan"
+          :enter-func (lambda () (mu4e-message (concat "Entering context " v-mu4e-user-mail-tegyaan-address)))
+          :leave-func (lambda () (mu4e-message (concat "Leaving context " v-mu4e-user-mail-tegyaan-address)))
+          :match-func (lambda (msg)
+                        (when msg
+                          (mu4e-message-contact-field-matches
+                           msg '(:from :to :cc :bcc) v-mu4e-user-mail-tegyaan-address)))
+          :vars (cons `(smtpmail-smtp-user . ,v-mu4e-user-mail-tegyaan-address)
+                      (cons `(user-mail-address . ,v-mu4e-user-mail-tegyaan-address)
+                            '((user-full-name . "Vaarnan Drolia")
+                              (mu4e-sent-folder . "/Tegyaan/[Gmail]/Sent Mail")
+                              (mu4e-drafts-folder . "/Tegyaan/[Gmail]/Drafts")
+                              (mu4e-trash-folder . "/Tegyaan/[Gmail]/Bin")
+                              (mu4e-refile-folder . "/Tegyaan/[Gmail]/All Mail")
+                              (mu4e-compose-signature . nil)
+                              (mu4e-compose-format-flowed . nil)
+                              (smtpmail-smtp-server . "smtp.gmail.com")
+                              (smtpmail-smtp-service . 465)))))
          )))
+
+;; https://github.com/danielfleischer/mu4easy/blob/bb9f5df374723932c848f8864c86d7b0ceacc82c/mu4easy.el#L124-L131
+(setf (alist-get 'trash mu4e-marks)
+      '(:char ("d" . "▼")
+              :prompt "dtrash"
+              :dyn-target (lambda (target msg) (mu4e-get-trash-folder msg))
+              ;; Here's the main difference to the regular trash mark, no +T
+              ;; before -N so the message is not marked as IMAP-deleted:
+              :action (lambda (docid msg target)
+                        (mu4e--server-move docid (mu4e--mark-check-target target) "+S-u-N"))))
+
 
 (use-package mu4e-marker-icons
   :ensure t
@@ -247,5 +285,4 @@ there are no attachments."
 		   (re-search-forward v/message-attachment-intent-re nil t)))
 	       (not (v/message-attachment-present-p)))
       (unless (y-or-n-p v/message-attachment-reminder)
-        (keyboard-quit))))
-  )
+        (keyboard-quit)))))
