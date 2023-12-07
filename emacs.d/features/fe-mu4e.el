@@ -38,13 +38,13 @@
     (interactive)
     (set-process-sentinel (start-process-shell-command "mbsync" "*mbsync*" "mbsync -Va")
                           (lambda (process state)
-                                 (let ((output (with-current-buffer (process-buffer process)
-                                                 (buffer-string))))
-                                   (if (= (process-exit-status process) 0)
-                                       (progn
-                                         (message "Process mbsync finished")
-                                         (mu4e-update-index t))
-                                     (user-error (format "%s\n%s" output)))))))
+                            (let ((output (with-current-buffer (process-buffer process)
+                                            (buffer-string))))
+                              (if (= (process-exit-status process) 0)
+                                  (progn
+                                    (message "Process mbsync finished")
+                                    (mu4e-update-index t))
+                                (user-error (format "%s\n%s" output)))))))
   (defun v/mu4e-archive-current-message ()
     "Jumps directly to the inbox."
     (interactive)
@@ -145,9 +145,9 @@
                               (mu4e-compose-format-flowed . nil)
                               (smtpmail-smtp-server . "smtp.gmail.com")
                               (smtpmail-smtp-service . 465)))))
-         )))
-
-;; https://github.com/danielfleischer/mu4easy/blob/bb9f5df374723932c848f8864c86d7b0ceacc82c/mu4easy.el#L124-L131
+         ))
+  ;; https://github.com/danielfleischer/mu4easy/blob/bb9f5df374723932c848f8864c86d7b0ceacc82c/mu4easy.el#L124-L131
+  ;; From this reddit https://www.reddit.com/r/emacs/comments/ql9o2o/mu4e_mbsync_and_gmail/
 (setf (alist-get 'trash mu4e-marks)
       '(:char ("d" . "▼")
               :prompt "dtrash"
@@ -156,7 +156,7 @@
               ;; before -N so the message is not marked as IMAP-deleted:
               :action (lambda (docid msg target)
                         (mu4e--server-move docid (mu4e--mark-check-target target) "+S-u-N"))))
-
+)
 
 (use-package mu4e-marker-icons
   :ensure t
