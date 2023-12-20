@@ -3,6 +3,18 @@
 (add-to-list 'load-path
              (expand-file-name "/opt/homebrew/share/emacs/site-lisp/mu/mu4e/"))
 
+;; Installation instructions
+;; isync (for mbsync) and mu
+;; Copy from the other computer:
+;; + .mbsyncrc
+;; + .authinfo
+;; + certs.pem
+;; mkdir -p $HOME/mail/Gmail
+;; mkdir $HOME/mail/Tegyaan
+;; mbsync -Va
+;; mu init --maildir=~/mail --my-address vaarnan@gmail.com --my-address vaarnan@tegyaan.com
+;; mu index
+
 ;; If mu4e is misbehaving, need to delete the elc in the above directory.
 ;; Can simulate issues by requiring the following, otherwise commented out
 ;; since v-mu4e-user-mail-address-list is not set yet.
