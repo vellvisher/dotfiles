@@ -20,6 +20,7 @@
         kill-region
         mark-sexp
         mouse-set-region
+        mwim-end-of-code-or-line
         org-beginning-of-line
         org-end-of-line
         org-force-self-insert
