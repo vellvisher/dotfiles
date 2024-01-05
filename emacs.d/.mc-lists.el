@@ -3,37 +3,63 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        backward-sexp
         beginning-of-buffer
         c-electric-paren
+        c-electric-pound
         c-electric-semi&comma
         c-electric-slash
+        c-indent-line-or-region
+        comint-delchar-or-maybe-eof
         counsel-M-x
         counsel-yank-pop
         dabbrev-expand
+        drag-stuff-right
         drag-stuff-up
         electric-newline-and-maybe-indent
+        eshell-bol
+        forward-sexp
+        gnus-mime-view-part-externally
         hungry-delete-backward
         hungry-delete-forward
+        ibuffer-do-delete
         indent-for-tab-command
+        insert-register
         isearch-repeat-backward
         ivy-occur-dispatch
         kill-region
         mark-sexp
         mouse-set-region
+        mu4e-headers-mark-for-refile
+        mu4e-mark-execute-all
+        mu4e-mark-unmark-all
+        mwim-beginning-of-code-or-line
+        mwim-end-of-code-or-line
+        nxml-electric-slash
+        occur-rename-buffer
         org-beginning-of-line
+        org-ctrl-c-ctrl-c
+        org-cycle
         org-end-of-line
         org-force-self-insert
         org-kill-line
+        org-return-and-maybe-indent
         org-return-indent
         org-self-insert-command
         org-yank
+        orgtbl-hijacker-command-109
+        proced-send-signal
+        sgml-slash
         sp-backward-delete-char
         sp-backward-kill-word
         sp-delete-char
         sp-kill-word
         sp-remove-active-pair-overlay
+        swiper-isearch
         undefined
+        wdired--self-insert
         wdired-finish-edit
+        wdired-previous-line
         ))
 
 (setq mc/cmds-to-run-once
@@ -44,8 +70,12 @@
         goto-address-at-point
         ivy-switch-buffer
         ivy-wgrep-change-to-wgrep-mode
+        mark-whole-buffer
+        markdown-outdent-or-delete
         mouse-save-then-kill
+        org-open-at-mouse
         save-some-buffers
         swiper
+        v/switch-to-previous-buffer
         wgrep-finish-edit
         ))
