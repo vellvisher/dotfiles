@@ -7,7 +7,8 @@
   :custom
   ((chatgpt-shell-openai-key
     (lambda ()
-      (auth-source-pick-first-password :host "api.openai.com")))))
+      (auth-source-pick-first-password :host "api.openai.com")))
+    (chatgpt-shell-model-version "gpt-3.5-turbo")))
 
 (use-package dall-e-shell
   :ensure t

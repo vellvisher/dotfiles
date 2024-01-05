@@ -27,7 +27,7 @@
 
 [core]
     autocrlf = input
-    excludesfile = ~/.gitignore_global
+	excludesfile = $HOME/.gitignore_global
 	pager = less -F -X
 [merge]
 	tool = vimdiff
