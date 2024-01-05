@@ -35,5 +35,7 @@
 	enabled = true
 [init]
 	defaultBranch = main
+[github]
+	user = vellvisher
 [pull]
 	rebase = false
