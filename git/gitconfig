@@ -35,3 +35,5 @@
 	enabled = true
 [init]
 	defaultBranch = main
+[pull]
+	rebase = false
