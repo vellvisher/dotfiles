@@ -25,8 +25,7 @@
          :map mu4e-main-mode-map
          ("i" . v/mu4e-jump-to-inbox)
          :map mu4e-headers-mode-map
-         (("e" . v/mu4e-archive-current-message)
-          ("v" . v/mu4e-headers-view-in-browser)
+         (("v" . v/mu4e-headers-view-in-browser)
           ("g" . v/mu4e-mbsync-and-update-index))
          :map mu4e-view-mode-map
          ("v" . v/mu4e-view-mode-view-in-browser))
