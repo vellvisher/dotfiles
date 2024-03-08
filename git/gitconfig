@@ -33,3 +33,5 @@
 	tool = vimdiff
 [rerere]
 	enabled = true
+[pull]
+	rebase = false
