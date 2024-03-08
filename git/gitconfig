@@ -27,11 +27,15 @@
 
 [core]
     autocrlf = input
-	excludesfile = $HOME/.gitignore_global
-	pager = less -F -X
+    excludesfile = ~/.gitignore_global
+    pager = less -F -X
 [merge]
 	tool = vimdiff
 [rerere]
 	enabled = true
+[init]
+	defaultBranch = main
+[github]
+	user = vellvisher
 [pull]
 	rebase = false
