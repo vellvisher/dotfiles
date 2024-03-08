@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        backward-sexp
         beginning-of-buffer
         c-electric-paren
         c-electric-semi&comma
@@ -19,7 +20,10 @@
         ivy-occur-dispatch
         kill-region
         mark-sexp
+        markdown-outdent-or-delete
         mouse-set-region
+        mu4e-headers-mark-for-trash
+        mwim-beginning-of-code-or-line
         mwim-end-of-code-or-line
         org-beginning-of-line
         org-end-of-line
@@ -42,6 +46,7 @@
         counsel-describe-function
         counsel-find-file
         end-of-buffer
+        eval-print-last-sexp
         goto-address-at-point
         ivy-switch-buffer
         ivy-wgrep-change-to-wgrep-mode
