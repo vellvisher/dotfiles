@@ -96,7 +96,11 @@
   (sp-local-pair 'prog-mode "{" nil :post-handlers '((v/create-newline-and-enter-sexp "RET")))
   (sp-local-pair 'prog-mode "[" nil :post-handlers '((v/create-newline-and-enter-sexp "RET")))
   (sp-local-pair 'prog-mode "(" nil :post-handlers '((v/create-newline-and-enter-sexp "RET")))
-  (sp-local-pair 'org-mode "+" "+"))
+
+  (defun v/insert-plus-when-region-active (&rest _)
+    (region-active-p))
+
+  (sp-local-pair 'org-mode "+" "+" :when '((v/insert-plus-when-region-active))))
 
 (use-package indent
   :bind ("C-M-\\" . v/indent-region-or-buffer)
