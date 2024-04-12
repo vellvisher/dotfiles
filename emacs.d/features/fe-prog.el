@@ -6,6 +6,7 @@
   (setq clang-format-executable "/usr/local/bin/clang-format"))
 
 (use-package prog-mode
+  :bind (:map prog-mode-map ("M-'" . xref-find-references))
   :hook ((prog-mode . flyspell-prog-mode)
          (prog-mode . company-mode)
          (prog-mode . goto-address-prog-mode)
