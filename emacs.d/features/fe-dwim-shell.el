@@ -4,7 +4,8 @@
              v/dwim-shell-command-extract-xip
              v/dwim-shell-command-make-swift-package-library
              v/dwim-shell-command-proto-to-swift-proto
-             v/dwim-shell-command-convert-to-webp)
+             v/dwim-shell-command-convert-to-webp
+             v/dwim-shell-command-unlock-events)
   :bind (([remap shell-command] . dwim-shell-command)
          :map dired-mode-map
          ([remap dired-do-async-shell-command] . dwim-shell-command)
@@ -51,6 +52,13 @@
      "Proto to swift proto compiler"
      "protoc --swift_out=. --proto_path=. <<f>>"
      :utils "protoc"))
+  (defun v/dwim-shell-command-unlock-events ()
+    "List of mac unlock events"
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "show unlock events for the mac"
+     "log show --predicate \"eventMessage contains 'UNLOCKED'\" --info --last 3h"
+     :utils "log"))
   (defun v/dwim-shell-command-convert-to-webp ()
     "Convert to webp"
     (interactive)
