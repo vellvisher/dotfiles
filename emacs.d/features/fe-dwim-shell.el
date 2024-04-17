@@ -5,7 +5,9 @@
              v/dwim-shell-command-make-swift-package-library
              v/dwim-shell-command-proto-to-swift-proto
              v/dwim-shell-command-convert-markdown-to-org
-             v/dwim-shell-command-convert-to-webp)
+             v/dwim-shell-command-convert-to-webp
+             v/dwim-shell-command-unlock-events
+             v/dwim-shell-command-python3-venv-run)
   :bind (([remap shell-command] . dwim-shell-command)
          :map dired-mode-map
          ([remap dired-do-async-shell-command] . dwim-shell-command)
@@ -65,4 +67,18 @@
     (dwim-shell-command-on-marked-files
      "Convert to webp"
      "cwebp -q 50 <<f>> -o <<fne>>.webp"
-     :utils "cwebp")))
+     :utils "cwebp"))
+  (defun v/dwim-shell-command-unlock-events ()
+    "List of mac unlock events"
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "show unlock events for the mac"
+     "log show --predicate \"eventMessage contains 'UNLOCKED'\" --info --last 3h"
+     :utils "log"))
+  (defun v/dwim-shell-command-python3-venv-run ()
+    "Convert to webp"
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "Run python3 with venv environment"
+     "source .venv/bin/activate && python3 <<f>>"
+     :utils "python3")))
