@@ -73,7 +73,7 @@
     (interactive)
     (dwim-shell-command-on-marked-files
      "show unlock events for the mac"
-     "log show --predicate \"eventMessage contains 'UNLOCKED'\" --info --last 3h"
+     "/usr/bin/log show --predicate \"eventMessage contains 'UNLOCKED'\" --info --last 3h"
      :utils "log"))
   (defun v/dwim-shell-command-python3-venv-run ()
     "Convert to webp"
