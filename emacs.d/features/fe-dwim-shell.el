@@ -4,6 +4,7 @@
              v/dwim-shell-command-extract-xip
              v/dwim-shell-command-make-swift-package-library
              v/dwim-shell-command-proto-to-swift-proto
+             v/dwim-shell-command-convert-markdown-to-org
              v/dwim-shell-command-convert-to-webp
              v/dwim-shell-command-unlock-events
              v/dwim-shell-command-python3-venv-run)
@@ -53,6 +54,13 @@
      "Proto to swift proto compiler"
      "protoc --swift_out=. --proto_path=. <<f>>"
      :utils "protoc"))
+  (defun v/dwim-shell-command-convert-markdown-to-org ()
+    "Convert markdown files to org files"
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "Convert markdown files to org files"
+     "pandoc -f markdown -t org -o <<fne>>.org <<f>>"
+     :utils "pandoc"))
   (defun v/dwim-shell-command-convert-to-webp ()
     "Convert to webp"
     (interactive)
@@ -65,7 +73,7 @@
     (interactive)
     (dwim-shell-command-on-marked-files
      "show unlock events for the mac"
-     "log show --predicate \"eventMessage contains 'UNLOCKED'\" --info --last 3h"
+     "/usr/bin/log show --predicate \"eventMessage contains 'UNLOCKED'\" --info --last 3h"
      :utils "log"))
   (defun v/dwim-shell-command-python3-venv-run ()
     "Convert to webp"
