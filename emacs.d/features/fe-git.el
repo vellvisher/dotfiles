@@ -17,6 +17,8 @@
 
 (use-package git-link
   :ensure t
+  :custom
+  (git-link-use-commit 't)
   :defer 5)
 
 (use-package with-editor
