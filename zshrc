@@ -45,10 +45,12 @@ bindkey '^S' history-incremental-search-forward
 bindkey '^D' delete-char
 
 # Larger history size.
+export FLUTTER_ROOT="$(asdf where flutter)"
+
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 export PATH=/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
-export PATH=$HOME/dev/app/wildr_flutter/.fvm/flutter_sdk/bin:$PATH
+export PATH=$HOME/.asdf/plugins/flutter/bin:$PATH
 export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 export PATH=/usr/local/texlive/2023basic/bin/universal-darwin:$PATH
 
