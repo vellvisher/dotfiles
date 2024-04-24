@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("wildr"
+(("email"
+ (filename . "~/GoogleDriveGmail/org/work.org")
+ (handler . org-bookmark-heading-jump)
+ (outline-path "Inbox" "Passwords"))
+("citizenship"
+ (filename . "~/GoogleDriveGmail/visa/uk/citizenship/")
+ (front-context-string . ".DS_Store\n  -rw-")
+ (rear-context-string . "0K Apr  7 09:56 ")
+ (position . 107)
+ (last-modified 26130 24587 55763 0))
+("wildr"
  (location . "/Users/vaarnan/dev/app/wildr_flutter/")
  (handler . eshell-bookmark-jump))
 ("beorg"
@@ -41,7 +51,7 @@
  (handler . org-bookmark-jump)
  (front-context-string . "3C1FCAAB-836A-4818-8B62-1CA6F6D62AD6"))
 ("org-capture-last-stored"
- (filename . "/Users/vaarnan/GoogleDriveGmail/org/emacs.org")
- (handler . org-bookmark-jump)
- (front-context-string . "F5124B28-7221-4FCD-BF39-A6856B31EF87"))
+ (filename . "~/GoogleDriveGmail/org/inbox.org")
+ (handler . org-bookmark-heading-jump)
+ (outline-path "Inbox" "Follow-up on urban"))
 )
