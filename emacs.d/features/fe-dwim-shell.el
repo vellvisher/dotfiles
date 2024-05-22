@@ -76,9 +76,9 @@
      "/usr/bin/log show --predicate \"eventMessage contains 'UNLOCKED'\" --info --last 3h"
      :utils "log"))
   (defun v/dwim-shell-command-python3-venv-run ()
-    "Convert to webp"
+    "Run with python3 venv, creating it if it doesn't exist"
     (interactive)
     (dwim-shell-command-on-marked-files
      "Run python3 with venv environment"
-     "source .venv/bin/activate && python3 <<f>>"
+     "[ -d .venv ] || python3 -m venv .venv && source .venv/bin/activate && python3 <<f>>"
      :utils "python3")))
