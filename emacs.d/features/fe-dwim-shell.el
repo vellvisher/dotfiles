@@ -31,6 +31,7 @@
     (dwim-shell-command-on-marked-files
      "Extract an xip xcode archive"
      "xip -x <<f>>"
+     :extensions "xip"
      :utils "xip"))
   (defun v/dwim-shell-commands-make-swift-package-library ()
     "Create a swift package library"
@@ -39,7 +40,6 @@
      "Create a swift package library"
      "swift package init --type library"
      :utils "swift"))
-
   (defun v/dwim-shell-command-make-swift-package-executable ()
     "Create a swift package executable"
     (interactive)
@@ -53,6 +53,7 @@
     (dwim-shell-command-on-marked-files
      "Proto to swift proto compiler"
      "protoc --swift_out=. --proto_path=. <<f>>"
+     :extensions "proto"
      :utils "protoc"))
   (defun v/dwim-shell-command-convert-markdown-to-org ()
     "Convert markdown files to org files"
@@ -60,6 +61,7 @@
     (dwim-shell-command-on-marked-files
      "Convert markdown files to org files"
      "pandoc -f markdown -t org -o <<fne>>.org <<f>>"
+     :extensions "md"
      :utils "pandoc"))
   (defun v/dwim-shell-command-convert-to-webp ()
     "Convert to webp"
@@ -76,9 +78,10 @@
      "/usr/bin/log show --predicate \"eventMessage contains 'UNLOCKED'\" --info --last 3h"
      :utils "log"))
   (defun v/dwim-shell-command-python3-venv-run ()
-    "Convert to webp"
+    "Run with python3 venv, creating it if it doesn't exist"
     (interactive)
     (dwim-shell-command-on-marked-files
      "Run python3 with venv environment"
-     "source .venv/bin/activate && python3 <<f>>"
+     "[ -d .venv ] || python3 -m venv .venv && source .venv/bin/activate && python3 <<f>>"
+     :extensions "py"
      :utils "python3")))
