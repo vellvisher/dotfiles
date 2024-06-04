@@ -72,6 +72,11 @@
   ;; Enable since disabled by default.
   ;; (put 'dired-find-alternate-file 'disabled nil)
 
+  ;; Try to guess the target directory for operations.
+  (use-package dired-aux
+    :custom
+    (dired-vc-rename-file t))
+
   ;; Automatically refresh dired buffers when contents changes.
   (v/vsetq dired-auto-revert-buffer t))
 
