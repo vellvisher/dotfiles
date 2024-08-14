@@ -7,6 +7,12 @@
 (use-package dired-collapse
   :ensure t)
 
+(use-package dired-subtree
+  :ensure t
+  :bind (:map dired-mode-map
+              ("<tab>" . dired-subtree-toggle)
+              ("<backtab>" . dired-subtree-cycle)))
+
 ;; Helps when loading files with very long lines
 ;; https://emacs.stackexchange.com/a/38295
 (defun v/dired-find-file-conservatively ()
