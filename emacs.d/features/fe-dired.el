@@ -13,6 +13,12 @@
               ("<tab>" . dired-subtree-toggle)
               ("<backtab>" . dired-subtree-cycle)))
 
+;; Colourful entries.
+(use-package diredfl
+  :ensure t
+  :config
+  (diredfl-global-mode 1))
+
 ;; Helps when loading files with very long lines
 ;; https://emacs.stackexchange.com/a/38295
 (defun v/dired-find-file-conservatively ()
