@@ -161,6 +161,7 @@
   (load "~/.emacs.d/features/fe-ts.el")
   (load "~/.emacs.d/features/fe-kotlin.el")
   (load "~/.emacs.d/features/fe-dart.el")
+  (load "~/.emacs.d/features/fe-go.el")
   (load "~/.emacs.d/features/fe-html.el")
   (load "~/.emacs.d/features/fe-jira.el")
   ;; Less frequently used:
