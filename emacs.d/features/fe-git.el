@@ -6,6 +6,7 @@
   :config
   (add-to-list 'magit-no-confirm 'stage-all-changes)
   (v/csetq magit-revision-fill-summary-line 100)
+  (v/csetq magit-diff-refine-hunk 'all)
 
   (fullframe magit-status magit-mode-quit-window))
 
