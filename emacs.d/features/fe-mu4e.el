@@ -31,6 +31,7 @@
          ("v" . v/mu4e-view-mode-view-in-browser))
   :hook ((mu4e-view-mode . goto-address-mode)
          (mu4e-compose-mode . v/mu4e-compose-mode-hook))
+  :custom (mu4e-search-results-limit 1000)
   :config
   (defun v/mu4e-headers-view-in-browser ()
     "Opens the current message in the web browser."

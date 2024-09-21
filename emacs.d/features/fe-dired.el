@@ -7,6 +7,18 @@
 (use-package dired-collapse
   :ensure t)
 
+(use-package dired-subtree
+  :ensure t
+  :bind (:map dired-mode-map
+              ("<tab>" . dired-subtree-toggle)
+              ("<backtab>" . dired-subtree-cycle)))
+
+;; Colourful entries.
+(use-package diredfl
+  :ensure t
+  :config
+  (diredfl-global-mode 1))
+
 ;; Helps when loading files with very long lines
 ;; https://emacs.stackexchange.com/a/38295
 (defun v/dired-find-file-conservatively ()
@@ -71,6 +83,11 @@
 
   ;; Enable since disabled by default.
   ;; (put 'dired-find-alternate-file 'disabled nil)
+
+  ;; Try to guess the target directory for operations.
+  (use-package dired-aux
+    :custom
+    (dired-vc-rename-file t))
 
   ;; Automatically refresh dired buffers when contents changes.
   (v/vsetq dired-auto-revert-buffer t))
