@@ -33,3 +33,10 @@
   (defun v/prog-mode-hook-function ()
     (v/vsetq prettify-symbols-alist '(("lambda" . ?λ)
                                       ("->" . ?→)))))
+
+(use-package ivy-xref
+  :ensure t
+  :after xref
+  :custom
+  (xref-show-xrefs-function #'ivy-xref-show-xrefs)
+  (xref-show-definitions-function #'ivy-xref-show-defs))
