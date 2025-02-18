@@ -83,4 +83,20 @@
 (use-package compile
   :bind (:map prog-mode-map ("C-c C-c" . v/compile))
   :custom
-  (compilation-auto-jump-to-first-error nil))
+  (compilation-auto-jump-to-first-error 'if-location-known)
+  :config
+  (add-to-list 'compilation-error-regexp-alist 'typescript-tsc)
+  (add-to-list 'compilation-error-regexp-alist-alist
+             '(typescript-tsc
+               "at .* (\\([^()]+\\):\\([0-9]+\\):\\([0-9]+\\))"
+               1 2 3)))
+
+(use-package smart-compile
+  :ensure t
+  :config
+  (add-to-list 'smart-compile-alist '("\\.ts\\'" . "tsc %f")))
+
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (ansi-color-apply-on-region compilation-filter-start (point-max)))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
