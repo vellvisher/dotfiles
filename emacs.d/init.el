@@ -190,6 +190,7 @@
   (load "~/.emacs.d/features/fe-image.el")
   (load "~/.emacs.d/features/fe-pdf.el")
   (load "~/.emacs.d/features/fe-mac.el")
+  (load "~/.emacs.d/features/fe-ready-player.el")
   (load "~/.emacs.d/features/fe-v-mode.el"))
 
 (if v/init-debug-init
