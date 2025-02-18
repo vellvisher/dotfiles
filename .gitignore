@@ -6,3 +6,6 @@ vim/plugged/
 tmux/READONLY
 tmux/VERSION_MAP
 tmux/plugins
+
+emacs.d/elpa
+emacs.d/eln-cache
