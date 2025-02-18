@@ -1,5 +1,6 @@
 vim/.netrwhist
 vim/backups/
+vim/plugged/
 
 # tmux plugin manager specific
 tmux/READONLY
