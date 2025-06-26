@@ -29,6 +29,7 @@
   (org-use-speed-commands t)
   (org-list-use-circular-motion t)
   (org-log-done 'time)
+  (org-image-max-width 300)
   :config
   (defun v/org-mode-hook-function ()
     (toggle-truncate-lines 0)
