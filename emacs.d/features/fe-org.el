@@ -144,6 +144,8 @@ Booking reference: %s
           ;; Eg. "~/GoogleDriveGmail/org/work.org"
           ("w" "Work" entry (file+headline v-work-org-filename "Inbox")
            "* TODO %?\nSCHEDULED: %^t")
+          ("j" "Journelly" entry (file "/Users/vaarnan/Library/Mobile Documents/iCloud~com~xenodium~Journelly/Documents/Journelly.org")
+           "* %U @ %(journelly-generate-metadata)\n%?" :prepend t)
           ("m" "Mail" entry (file+headline "~/GoogleDriveGmail/org/inbox.org" "Inbox")
            "* TODO %?\nSCHEDULED: %^t\n%a\n"))))
 
