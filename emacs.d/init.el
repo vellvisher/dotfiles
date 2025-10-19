@@ -94,18 +94,10 @@
 (require 'gnutls)
 (add-to-list 'gnutls-trustfiles "/usr/local/etc/openssl/cert.pem")
 
-;; Install use-package
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
 ;; use-package-enable-imenu-support must be
 ;; set before requiring use-package.
 (setq use-package-enable-imenu-support t)
 (require 'use-package)
-
-(use-package use-package-ensure-system-package
-  :ensure t)
 
 ;; Remap META to CMD
 (setq mac-option-modifier 'super)
