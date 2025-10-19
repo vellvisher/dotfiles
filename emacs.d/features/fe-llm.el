@@ -7,7 +7,10 @@
   :custom
   ((chatgpt-shell-openai-key
     (lambda ()
-      (auth-source-pick-first-password :host "api.openai.com")))))
+      (auth-source-pick-first-password :host "api.openai.com")))
+   (chatgpt-shell-anthropic-key
+    (lambda ()
+      (auth-source-pick-first-password :host "api.anthropic.com")))))
 
 (use-package dall-e-shell
   :ensure t
@@ -28,3 +31,13 @@
   (setq dall-e-shell-model-version
               (completing-read "Model version: "
                                  dall-e-shell-model-versions nil t))))
+
+(use-package acp
+  :vc (:url "https://github.com/xenodium/acp.el"))
+
+(use-package agent-shell
+  :vc (:url "https://github.com/xenodium/agent-shell")
+  :config
+  (setq agent-shell-anthropic-authentication
+      (agent-shell-anthropic-make-authentication
+       :api-key (lambda () (auth-source-pick-first-password :host "api.anthropic.com")))))
