@@ -6,8 +6,7 @@ echo "Press <TMUX-LEADER>+I to install tpm plugins"
 brew install ctags global
 pip install pygments
 
-# + [ ] Native compile needs gcc/libgccjit, https://github.com/d12frosted/homebrew-emacs-plus/issues/309
-brew install rg fd aspell swift-format trash mu isync webp ffmpeg gcc libgccjit
+brew install rg fd aspell swift-format trash mu isync webp ffmpeg
 
 # New stuff!
 # --with-mailutils probably not necessary
