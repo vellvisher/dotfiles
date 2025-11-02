@@ -12,7 +12,7 @@ brew install rg fd aspell swift-format trash mu isync webp ffmpeg gcc libgccjit
 # New stuff!
 # --with-mailutils probably not necessary
 brew tap d12frosted/emacs-plus
-brew install emacs-plus@29 --with-no-frame-refocus --with-modern-sexy-v1-icon --with-native-comp
+brew install emacs-plus@30 --with-modern-sexy-v1-icon --with-mailutils
 # + [ ] Install emacs font in fe-ui.el
 # + [ ] link google drive
 # + [ ] ln -s $HOME/Library/CloudStorage/GoogleDrive-vaarnan@gmail.com/My\ Drive $HOME/GoogleDriveGmail
