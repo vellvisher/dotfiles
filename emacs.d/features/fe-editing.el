@@ -80,6 +80,7 @@
 
 (use-package smartparens
   :ensure t
+  :bind ("M-[" . v/sp-cycle-pair-next)
   :hook ((prog-mode . smartparens-mode)
          (protobuf-mode . smartparens-mode)
          (org-mode . smartparens-mode)
@@ -92,6 +93,48 @@
     (indent-according-to-mode)
     (forward-line -1)
     (indent-according-to-mode))
+    (defun v/sp-cycle-pair-next (previous)
+    (interactive "P")
+    (let* ((quotes-regexp "['\"`]") ;; Quote chars I typically want (may be repeated).
+           (exclude-regexp "\\\\\\|/") ;; Things I want to exclude.
+           (sexp (or (sp-get-enclosing-sexp)
+                     ;; 'hello'
+                     ;; ^ also work if point is here.
+                     (when-let ((sexp (sp-get-sexp))
+                                (at-point (and (<= (map-elt sexp :beg) (point))
+                                               (<= (point) (map-elt sexp :end)))))
+                       sexp)
+                     (error "No pair found")))
+           (quoted (and (string-match-p quotes-regexp (map-elt sexp :op))
+                        (string-match-p quotes-regexp (map-elt sexp :cl))))
+           (pairs (seq-filter (lambda (pair)
+                                (let ((beg (car pair))
+                                      (end (cdr pair)))
+                                  (when (and (not (string-match-p exclude-regexp beg))
+                                             (not (string-match-p exclude-regexp end)))
+                                    (if quoted
+                                        (or (string-match-p quotes-regexp beg)
+                                            (string-match-p quotes-regexp end))
+                                      (and (not (string-match-p quotes-regexp beg))
+                                           (not (string-match-p quotes-regexp end)))))))
+                              (sp--get-pair-list-context 'wrap))))
+      (when-let* ((next-pos (+ (if previous -1 1)
+                               (or (seq-position pairs
+                                                 (map-elt sexp :op)
+                                                 (lambda (e elt)
+                                                   (equal (car e) elt)))
+                                   (error "No next pair found"))))
+                  (next (if previous
+                            (if (>= next-pos 0)
+                                (seq-elt pairs next-pos)
+                              (seq-elt pairs (1- (seq-length pairs))))
+                          (if (< next-pos (seq-length pairs))
+                              (seq-elt pairs next-pos)
+                            (seq-elt pairs 0)))))
+        (save-excursion
+          ;; Temprarily reposition inside regexp.
+          (goto-char (+ (map-elt sexp :beg) (length (map-elt sexp :op))))
+          (sp-rewrap-sexp next)))))
 
   (sp-local-pair 'prog-mode "{" nil :post-handlers '((v/create-newline-and-enter-sexp "RET")))
   (sp-local-pair 'prog-mode "[" nil :post-handlers '((v/create-newline-and-enter-sexp "RET")))
