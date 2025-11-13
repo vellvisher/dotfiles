@@ -100,6 +100,8 @@
   (defun v/insert-plus-when-region-active (&rest _)
     (region-active-p))
 
+  (sp-local-pair 'typescript-mode "`" "`")
+
   (sp-local-pair 'org-mode "+" "+" :when '((v/insert-plus-when-region-active))))
 
 (use-package indent
