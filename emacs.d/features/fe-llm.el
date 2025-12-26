@@ -40,4 +40,6 @@
   :config
   (setq agent-shell-anthropic-authentication
       (agent-shell-anthropic-make-authentication
-       :api-key (lambda () (auth-source-pick-first-password :host "api.anthropic.com")))))
+       :api-key (lambda () (auth-source-pick-first-password :host "api.anthropic.com"))))
+  (setq agent-shell-google-authentication
+      (agent-shell-google-make-authentication :login t)))

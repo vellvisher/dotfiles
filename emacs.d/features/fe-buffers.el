@@ -7,7 +7,7 @@
 
 (use-package menu-bar
   ;; No need to confirm killing buffers.
-  :bind ("C-x k" . kill-this-buffer))
+  :bind ("C-x k" . kill-current-buffer))
 
 (use-package ibuffer
   :bind (:map ibuffer-mode-map)
