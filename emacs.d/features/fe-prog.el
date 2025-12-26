@@ -40,3 +40,7 @@
   :custom
   (xref-show-xrefs-function #'ivy-xref-show-xrefs)
   (xref-show-definitions-function #'ivy-xref-show-defs))
+
+(use-package prettier
+  :ensure t
+  :hook ((css-mode . prettier-mode)))
