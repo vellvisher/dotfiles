@@ -36,7 +36,7 @@
   :vc (:url "https://github.com/xenodium/acp.el"))
 
 (use-package agent-shell
-  :vc (:url "https://github.com/xenodium/agent-shell")
+  :ensure t
   :config
   (setq agent-shell-anthropic-authentication
       (agent-shell-anthropic-make-authentication
