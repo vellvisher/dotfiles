@@ -70,13 +70,13 @@
      "Convert to webp"
      "cwebp -q 50 <<f>> -o <<fne>>.webp"
      :utils "cwebp"))
-(defun v/dwim-shell-command-convert-heic-to-jpg ()
-  "Convert HEIC to JPG and reduce file size reasonably"
-  (interactive)
-  (dwim-shell-command-on-marked-files
-   "Convert HEIC to JPG"
-   "magick <<f>> -quality 50 <<fne>>.jpg"
-   :utils "convert"))
+  (defun v/dwim-shell-command-convert-heic-to-jpg ()
+    "Convert HEIC to JPG and reduce file size reasonably"
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "Convert HEIC to JPG"
+     "magick <<f>> -quality 50 <<fne>>.jpg"
+     :utils "convert"))
   (defun v/dwim-shell-command-unlock-events ()
     "List of mac unlock events"
     (interactive)
