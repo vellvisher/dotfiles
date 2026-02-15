@@ -11,6 +11,11 @@
   (setq projectile-indexing-method 'hybrid)
 
   (setq projectile-ignored-projects '("~/"))
+
+  ;; Ignore home directory to prevent unnecessary indexing
+  (with-eval-after-load 'projectile
+    (add-to-list 'projectile-globally-ignored-directories "/Users/vaarnan")
+    (add-to-list 'projectile-globally-ignored-directories "~/")) ;; adding `~/` too for consistency
   ;; fd is super fast. Use it if available.
 
   (let ((fd-command "fd . --print0"))
