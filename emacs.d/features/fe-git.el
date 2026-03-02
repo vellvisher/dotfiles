@@ -11,10 +11,10 @@
   (fullframe magit-status magit-mode-quit-window))
 
 (use-package git-gutter
- :ensure t
- :hook (prog-mode . git-gutter-mode)
- :config
- (setq git-gutter:handled-backends '(git bzr svn)))
+  :ensure t
+  :hook (prog-mode . git-gutter-mode)
+  :config
+  (setq git-gutter:handled-backends '(git bzr svn)))
 
 (use-package git-link
   :ensure t
@@ -67,3 +67,47 @@
 (use-package gh
   :ensure t
   :after magit)
+(defun v/gh-fetch-topics ()
+  "Fetch issues and PRs via gh CLI."
+  (let ((json-array-type 'list)
+        (json-object-type 'alist)
+        result)
+    (dolist (type '("issue" "pr"))
+      (when-let* ((output (with-temp-buffer
+                            (when (zerop (call-process "gh" nil t nil type
+                                                       "list"
+                                                       "--state" "all"
+                                                       "--limit" "500"
+                                                       "--json" "number,title,state"))
+                              (buffer-string))))
+                  ((not (string-empty-p (string-trim output)))))
+        (condition-case nil
+            (dolist (item (json-read-from-string output))
+              (push `((:number . ,(map-elt item 'number))
+                      (:title  . ,(map-elt item 'title))
+                      (:state  . ,(map-elt item 'state)))
+                    result))
+          (error nil))))
+    (nreverse result)))
+
+(defun v/gh-insert-issue-or-pr-number ()
+  (interactive)
+  (if-let* ((topics (v/gh-fetch-topics))
+            (max-state (seq-max (mapcar (lambda (topic)
+                                          (length (map-elt topic :state)))
+                                        topics)))
+            (fmt (format "%%-%ds  %%s  %%s" max-state))
+            (candidates (mapcar (lambda (topic)
+                                  (let* ((state (propertize (downcase (map-elt topic :state))
+                                                            'face (if (string-equal (downcase (map-elt topic :state))
+                                                                                    "open")
+                                                                      'success 'error)))
+                                         (number (propertize (number-to-string (map-elt topic :number))
+                                                             'face 'font-lock-comment-face))
+                                         (candidate (format fmt state number (map-elt topic :title))))
+                                    (put-text-property 0 1 :number (map-elt topic :number) candidate)
+                                    candidate))
+                                topics))
+            (choice (completing-read "Topic: " candidates nil t)))
+      (insert (format "#%s" (get-text-property 0 :number choice)))
+    (user-error "No topics found")))
