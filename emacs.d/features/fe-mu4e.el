@@ -1,7 +1,10 @@
 (require 'v-vcsetq)
 
 (add-to-list 'load-path
-             (expand-file-name "/opt/homebrew/share/emacs/site-lisp/mu/mu4e/"))
+             (expand-file-name (concat (if (string= (shell-command-to-string "uname -m") "arm64\n")
+                                          "/opt/homebrew"
+                                        "/usr/local")
+                                       "/share/emacs/site-lisp/mu/mu4e/")))
 
 ;; Installation instructions
 ;; isync (for mbsync) and mu
@@ -67,7 +70,7 @@
                                      "/Tegyaan/[Gmail]/Bin")))
   ;; Update mail using 'U' in main view:
   ;; Only update the index, use the brew daemon.
-  ;; (setq mu4e-get-mail-command "mbsync -Va")
+  (setq mu4e-get-mail-command "mbsync -Va")
   (setq mu4e-view-show-addresses t)
   (setq mu4e-attachment-dir (expand-file-name "~/Downloads/"))
   (setq mu4e-maildir "~/mail")
@@ -75,7 +78,7 @@
   (setq mu4e-user-mail-address-list v-mu4e-user-mail-address-list)
   (setq mu4e-context-policy 'pick-first)
   (setq mu4e-compose-context-policy 'pick-first)
-  (setq mu4e-update-interval 30)
+  (setq mu4e-update-interval 60)
   ;; (setq mu4e-index-cleanup nil)      ;; don't do a full cleanup check
   ;; (setq mu4e-index-lazy-check t)    ;; don't consider up-to-date dirs
 
