@@ -171,6 +171,7 @@
   (load "~/.emacs.d/features/fe-flutter.el")
   (load "~/.emacs.d/features/fe-qrcode.el")
   (load "~/.emacs.d/features/fe-writing.el")
+  (load "~/.emacs.d/features/fe-bibtex.el")
   (load "~/.emacs.d/features/fe-compile.el")
   (load "~/.emacs.d/features/fe-flyspell.el")
   (load "~/.emacs.d/features/fe-yasnippet.el")
