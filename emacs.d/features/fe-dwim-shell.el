@@ -77,6 +77,13 @@
      "Convert HEIC to JPG"
      "magick <<f>> -quality 50 <<fne>>.jpg"
      :utils "convert"))
+  (defun v/dwim-shell-command-convert-svg-to-png ()
+    "Convert SVG to PNG"
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "Convert HEIC to JPG"
+     "inkscape '<<f>>' --export-type=png --export-filename='<<fne>>'.png --export-dpi=600"
+     :utils "inkscape"))
   (defun v/dwim-shell-command-unlock-events ()
     "List of mac unlock events"
     (interactive)
