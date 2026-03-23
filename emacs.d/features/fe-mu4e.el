@@ -45,8 +45,11 @@
     (interactive)
     (mu4e-action-view-in-browser (mu4e-message-at-point)))
   (defun v/mu4e-jump-to-inbox ()
-    "Jumps directly to the inbox."
+    "Jumps directly to the inbox in chronological order."
     (interactive)
+    (setq mu4e-headers-sort-field :date)
+    (setq mu4e-headers-sort-direction 'descending)
+    (setq mu4e-headers-show-threads t)
     (mu4e~headers-jump-to-maildir "/Gmail/Inbox"))
   (defun v/mu4e-mbsync-and-update-index ()
     "Syncs via a process with mbsync and then calls an index update."
@@ -90,10 +93,7 @@
   (auto-fill-mode -1)
   (set-fill-column 1000)
 
-  (add-to-list 'mu4e-bookmarks
-               '( :name  "Important (unread)"
-                  :query "maildir:/Gmail/[Gmail]/Important and flag:unread"
-                  :key   ?u))
+  ;; Bookmarks defined idempotently below in the triage section.
 
   (setq mu4e-maildir-shortcuts
         '( (:maildir "/Gmail/Inbox"     :key  ?i)
@@ -110,11 +110,10 @@
 
   (setq mu4e-headers-date-format "%a %d/%m/%y")
   (setq mu4e-headers-time-format "⧖ %H:%M")
-  (setq mu4e-headers-fields '((:flags . 6)
+  (setq mu4e-headers-fields '((:flags      .  6)
                               (:from-or-to . 25)
-                              ;; (:recipnum . 2)
-                              (:subject . 80)
-                              (:human-date . 15)))
+                              (:subject    . 100)
+                              (:human-date .  15)))
 
   (defun v/mu4e-compose-mode-hook ()
     "Settings for message composition."
@@ -172,6 +171,74 @@
               :action (lambda (docid msg target)
                         (mu4e--server-move docid (mu4e--mark-check-target target) "+S-u-N"))))
 )
+
+
+;; ============================================================
+;; Inbox triage & bulk cleanup
+;; ============================================================
+
+(with-eval-after-load 'mu4e
+
+  ;; Triage keybindings
+  (define-key mu4e-main-mode-map    (kbd "T") #'v/mu4e-inbox-triage)
+  (define-key mu4e-headers-mode-map (kbd "S") #'v/mu4e-search-from-sender)
+  (define-key mu4e-headers-mode-map (kbd "Z") #'v/mu4e-search-same-subject)
+
+  ;; All custom bookmarks — idempotent: strip by name then re-add, safe to eval repeatedly.
+  (let ((custom-bookmarks
+         '((:name  "Important (unread)"
+            :query "maildir:/Gmail/[Gmail]/Important and flag:unread"
+            :key   ?u)
+           (:name  "Inbox - Mailing lists & newsletters"
+            :query "maildir:/Gmail/Inbox AND flag:list"
+            :key   ?n)
+           (:name  "Inbox - Statements & Payments"
+            :query "maildir:/Gmail/Inbox AND (subject:statement OR subject:\"bank statement\" OR subject:\"credit card\" OR subject:\"your bill\" OR subject:\"your invoice\" OR subject:invoice OR subject:receipt OR subject:\"payment reminder\" OR subject:\"payment due\" OR subject:\"payment received\" OR subject:\"payment taken\" OR subject:\"payment confirmation\" OR subject:\"direct debit\" OR subject:\"auto-pay\" OR subject:\"autopay\" OR subject:\"transaction\" OR subject:\"amount due\" OR subject:\"balance due\")"
+            :key   ?f)
+           (:name  "Inbox - Privacy, Terms & Surveys"
+            :query "maildir:/Gmail/Inbox AND (subject:\"privacy policy\" OR subject:\"privacy notice\" OR subject:\"terms of service\" OR subject:\"terms and conditions\" OR subject:\"terms of use\" OR subject:unsubscribe OR subject:newsletter OR subject:survey OR subject:\"feedback request\" OR subject:\"share your feedback\" OR subject:\"tell us what you think\" OR subject:\"we'd love your feedback\" OR subject:\"how did we do\" OR subject:\"rate your experience\")"
+            :key   ?p))))
+    (setq mu4e-bookmarks
+          (append custom-bookmarks
+                  (seq-remove (lambda (b)
+                                (member (plist-get b :name)
+                                        (mapcar (lambda (cb) (plist-get cb :name))
+                                                custom-bookmarks)))
+                              mu4e-bookmarks))))
+
+  (defun v/mu4e-inbox-triage ()
+    "Open inbox sorted by sender for bulk triage.
+Browse with cursor; press S on any message to narrow to all from that sender,
+then '* t' to mark all for trash and 'x' to execute."
+    (interactive)
+    ;; Global set so the async results callback still sees it.
+    (setq mu4e-headers-sort-field :from)
+    (setq mu4e-headers-sort-direction 'ascending)
+    (setq mu4e-headers-show-threads nil)
+    (mu4e-search "maildir:/Gmail/Inbox"))
+
+  (defun v/mu4e-search-from-sender ()
+    "Search inbox for all messages from the sender at point.
+Workflow: S → review → '* t' mark all for trash → 'x' execute."
+    (interactive)
+    (let* ((msg   (mu4e-message-at-point))
+           (from  (mu4e-message-field msg :from))
+           (email (cdar from))
+           (name  (or (caar from) email)))
+      (mu4e-search (format "maildir:/Gmail/Inbox AND from:%s" email))
+      (message "All from \"%s\" — '* t' mark all, 'x' execute, 'r' to archive instead" name)))
+
+  (defun v/mu4e-search-same-subject ()
+    "Search inbox for messages with same base subject as message at point.
+Strips Re:/Fwd: prefixes. Workflow: Z → '* t' → 'x'."
+    (interactive)
+    (let* ((msg  (mu4e-message-at-point))
+           (subj (or (mu4e-message-field msg :subject) ""))
+           (base (replace-regexp-in-string
+                  "^\\(\\(Re\\|Fwd\\|Fw\\):\\s-*\\)+" "" subj t))
+           (safe (replace-regexp-in-string "\"" "" base)))
+      (mu4e-search (format "maildir:/Gmail/Inbox AND subject:\"%s\"" safe))
+      (message "All with subject \"%s\" — '* t' mark all, 'x' execute" base))))
 
 (use-package mu4e-marker-icons
   :ensure t
