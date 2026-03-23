@@ -6,7 +6,7 @@ echo "Press <TMUX-LEADER>+I to install tpm plugins"
 brew install ctags global
 pip install pygments
 
-brew install rg fd aspell swift-format trash mu isync webp ffmpeg
+brew install rg fd aspell swift-format trash mu isync webp ffmpeg pngpaste
 
 # New stuff!
 # --with-mailutils probably not necessary
