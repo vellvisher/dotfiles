@@ -9,3 +9,4 @@ tmux/plugins
 
 emacs.d/elpa
 emacs.d/eln-cache
+/.agent-shell/
