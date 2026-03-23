@@ -196,7 +196,7 @@
             :query "maildir:/Gmail/Inbox AND (subject:statement OR subject:\"bank statement\" OR subject:\"credit card\" OR subject:\"your bill\" OR subject:\"your invoice\" OR subject:invoice OR subject:receipt OR subject:\"payment reminder\" OR subject:\"payment due\" OR subject:\"payment received\" OR subject:\"payment taken\" OR subject:\"payment confirmation\" OR subject:\"direct debit\" OR subject:\"auto-pay\" OR subject:\"autopay\" OR subject:\"transaction\" OR subject:\"amount due\" OR subject:\"balance due\")"
             :key   ?f)
            (:name  "Inbox - Privacy, Terms & Surveys"
-            :query "maildir:/Gmail/Inbox AND (subject:\"privacy policy\" OR subject:\"privacy notice\" OR subject:\"terms of service\" OR subject:\"terms and conditions\" OR subject:\"terms of use\" OR subject:unsubscribe OR subject:newsletter OR subject:survey OR subject:\"feedback request\" OR subject:\"share your feedback\" OR subject:\"tell us what you think\" OR subject:\"we'd love your feedback\" OR subject:\"how did we do\" OR subject:\"rate your experience\")"
+            :query "maildir:/Gmail/Inbox AND (subject:\"privacy policy\" OR subject:\"privacy notice\" OR subject:\"terms of service\" OR subject:\"terms and conditions\" OR subject:\"terms of use\" OR subject:unsubscribe OR subject:newsletter OR subject:survey OR subject:\"feedback request\" OR subject:\"share your feedback\" OR subject:\"tell us what you think\" OR subject:\"we'd love your feedback\" OR subject:\"how did we do\" OR subject:\"rate your experience\" OR subject:\"tell us\" OR subject:\"refer and earn\" OR subject:\"refer a friend\" OR subject:\"referral\")"
             :key   ?p))))
     (setq mu4e-bookmarks
           (append custom-bookmarks
