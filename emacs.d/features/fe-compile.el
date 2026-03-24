@@ -69,16 +69,18 @@
          (message "Build finished")
          (when (and (> (count-windows) 1)
                     (get-buffer-window buffer t))
-           (run-with-timer 2 nil
+           (run-with-timer 1 nil
                            #'delete-window
                            (get-buffer-window buffer t))))
         (t
          (message "Compilation exited abnormally: %s" string))))
 
-;; Automatically hide successful builds window.
-;; Trying out without for a little while.
 (setq compilation-finish-functions (list #'v/compile-autoclose #'v/compile-cache-env))
-(setq compilation-finish-functions nil)
+
+(add-to-list 'display-buffer-alist
+             '("\\*compilation\\*"
+               (display-buffer-at-bottom)
+               (window-height . 0.1)))
 
 (use-package compile
   :bind (:map prog-mode-map ("C-c C-c" . v/compile))
