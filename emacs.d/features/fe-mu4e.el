@@ -24,7 +24,7 @@
 ;; (require 'mu4e)
 
 (use-package mu4e
-  :bind (("M-m" . mu4e)
+  :bind (("M-m" . v/mu4e-toggle)
          :map mu4e-main-mode-map
          ("i" . v/mu4e-jump-to-inbox)
          :map mu4e-headers-mode-map
@@ -178,6 +178,20 @@
 ;; ============================================================
 
 (with-eval-after-load 'mu4e
+
+  (defun v/mu4e-toggle ()
+    "Open mu4e in a dedicated tab, or return to the previous tab if already there."
+    (interactive)
+    (if (string= (alist-get 'name (tab-bar--current-tab)) "mu4e")
+        (tab-bar-switch-to-recent-tab)
+      (let ((existing (cl-find "mu4e" (tab-bar-tabs)
+                               :key (lambda (tab) (alist-get 'name tab))
+                               :test #'string=)))
+        (if existing
+            (tab-bar-switch-to-tab "mu4e")
+          (tab-bar-new-tab)
+          (tab-bar-rename-tab "mu4e")
+          (mu4e)))))
 
   ;; Triage keybindings
   (define-key mu4e-main-mode-map    (kbd "T") #'v/mu4e-inbox-triage)

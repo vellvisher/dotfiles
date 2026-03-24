@@ -122,3 +122,7 @@
   :defer 20
   :init
   (beacon-mode 1))
+
+(use-package tab-bar
+  ;; mu4e is always one tab, so hide for that
+  :custom (tab-bar-show 2))
