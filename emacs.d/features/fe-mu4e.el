@@ -1,3 +1,5 @@
+;;; fe-mu4e.el --- mu4e email configuration -*- lexical-binding: t; -*-
+
 (require 'v-vcsetq)
 
 (add-to-list 'load-path
@@ -14,8 +16,13 @@
 ;; + certs.pem
 ;; mkdir -p $HOME/mail/Gmail
 ;; mkdir $HOME/mail/Tegyaan
+;; mkdir $HOME/mail/Passport
 ;; mbsync -Va
-;; mu init --maildir=~/mail --my-address vaarnan@gmail.com --my-address vaarnan@tegyaan.com
+;; mu init --maildir=~/mail \
+;;   --my-address vaarnan@gmail.com \
+;;   --my-address vaarnan@tegyaan.com \
+;;   $(printf " --my-address %s" v-mu4e-user-mail-passport-aliases)
+;; (or just list each info@<domain> manually with --my-address)
 ;; mu index
 
 ;; If mu4e is misbehaving, need to delete the elc in the above directory.
@@ -68,9 +75,20 @@
     (interactive)
     (mu4e-headers-mark-for-refile)
     (mu4e-mark-execute-all t))
-  (setq mu4e-trash-folder (lambda (msg) (if (mu4e-message-contact-field-matches msg :to "vaarnan@gmail.com")
-                                       "/Gmail/[Gmail]/Trash"
-                                     "/Tegyaan/[Gmail]/Bin")))
+  (setq mu4e-trash-folder
+        (lambda (msg)
+          (let ((maildir (mu4e-message-field msg :maildir)))
+            (cond
+             ((string-prefix-p "/Passport/" maildir) "/Passport/Trash")
+             ((string-prefix-p "/Tegyaan/"  maildir) "/Tegyaan/[Gmail]/Bin")
+             (t                                       "/Gmail/[Gmail]/Trash")))))
+  (setq mu4e-refile-folder
+        (lambda (msg)
+          (let ((maildir (mu4e-message-field msg :maildir)))
+            (cond
+             ((string-prefix-p "/Passport/" maildir) "/Passport/Archive")
+             ((string-prefix-p "/Tegyaan/"  maildir) "/Tegyaan/[Gmail]/All Mail")
+             (t                                       "/Gmail/[Gmail]/All Mail")))))
   ;; Update mail using 'U' in main view:
   ;; Only update the index, use the brew daemon.
   (setq mu4e-get-mail-command "mbsync -Va")
@@ -96,10 +114,11 @@
   ;; Bookmarks defined idempotently below in the triage section.
 
   (setq mu4e-maildir-shortcuts
-        '( (:maildir "/Gmail/Inbox"     :key  ?i)
-           (:maildir "/Gmail/[Gmail]/Trash"     :key  ?t)
-           (:maildir "/Tegyaan/Inbox"     :key  ?w)
-           (:maildir "/Tegyaan/[Gmail]/Bin"     :key  ?b)))
+        '( (:maildir "/Gmail/Inbox"          :key  ?i)
+           (:maildir "/Gmail/[Gmail]/Trash"  :key  ?t)
+           (:maildir "/Tegyaan/Inbox"        :key  ?w)
+           (:maildir "/Tegyaan/[Gmail]/Bin"  :key  ?b)
+           (:maildir "/Passport/INBOX"       :key  ?p)))
 
   (setq mu4e-display-update-status-in-modeline t)
   (setq mu4e-html2text-command
@@ -159,6 +178,26 @@
                               (mu4e-compose-format-flowed . nil)
                               (smtpmail-smtp-server . "smtp.gmail.com")
                               (smtpmail-smtp-service . 465)))))
+         (make-mu4e-context
+          :name "Passport"
+          :enter-func (lambda () (mu4e-message (concat "Entering context " v-mu4e-user-mail-passport-address)))
+          :leave-func (lambda () (mu4e-message (concat "Leaving context " v-mu4e-user-mail-passport-address)))
+          :match-func (lambda (msg)
+                        (when msg
+                          (mu4e-message-contact-field-matches
+                           msg '(:from :to :cc :bcc) v-mu4e-user-mail-passport-aliases)))
+          :vars `((smtpmail-smtp-user    . ,v-mu4e-user-mail-passport-login)
+                  (user-mail-address     . ,v-mu4e-user-mail-passport-address)
+                  (user-full-name        . "Vaarnan Drolia")
+                  (mu4e-sent-folder             . "/Passport/Sent")
+                  (mu4e-sent-messages-behavior . sent)
+                  (mu4e-drafts-folder          . "/Passport/Drafts")
+                  (mu4e-trash-folder     . "/Passport/Trash")
+                  (mu4e-refile-folder    . "/Passport/Archive")
+                  (mu4e-compose-signature . nil)
+                  (mu4e-compose-format-flowed . nil)
+                  (smtpmail-smtp-server  . "smtp.migadu.com")
+                  (smtpmail-smtp-service . 465)))
          ))
   ;; https://github.com/danielfleischer/mu4easy/blob/bb9f5df374723932c848f8864c86d7b0ceacc82c/mu4easy.el#L124-L131
   ;; From this reddit https://www.reddit.com/r/emacs/comments/ql9o2o/mu4e_mbsync_and_gmail/
@@ -219,6 +258,13 @@
                                         (mapcar (lambda (cb) (plist-get cb :name))
                                                 custom-bookmarks)))
                               mu4e-bookmarks))))
+
+  (defun v/mu4e-passport-set-alias ()
+    "Choose a Passport alias as the From address when composing.
+SMTP auth stays as info@passport.dance; only the From header changes."
+    (interactive)
+    (let ((alias (completing-read "Send as: " v-mu4e-user-mail-passport-aliases nil t)))
+      (message-replace-header "From" (message-make-from user-full-name alias))))
 
   (defun v/mu4e-inbox-triage ()
     "Open inbox sorted by sender for bulk triage.
