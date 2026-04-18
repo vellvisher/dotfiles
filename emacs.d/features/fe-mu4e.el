@@ -18,11 +18,7 @@
 ;; mkdir $HOME/mail/Tegyaan
 ;; mkdir $HOME/mail/Passport
 ;; mbsync -Va
-;; mu init --maildir=~/mail \
-;;   --my-address vaarnan@gmail.com \
-;;   --my-address vaarnan@tegyaan.com \
-;;   $(printf " --my-address %s" v-mu4e-user-mail-passport-aliases)
-;; (or just list each info@<domain> manually with --my-address)
+;; mu init --maildir=~/mail --my-address vaarnan@gmail.com --my-address vaarnan@tegyaan.com --my-address info@passport.dance
 ;; mu index
 
 ;; If mu4e is misbehaving, need to delete the elc in the above directory.
