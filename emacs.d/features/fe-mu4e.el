@@ -188,7 +188,7 @@
                            msg '(:from :to :cc :bcc) v-mu4e-user-mail-passport-aliases)))
           :vars `((smtpmail-smtp-user    . ,v-mu4e-user-mail-passport-login)
                   (user-mail-address     . ,v-mu4e-user-mail-passport-address)
-                  (user-full-name        . "Vaarnan Drolia")
+                  (user-full-name        . "passport.dance team")
                   (mu4e-sent-folder             . "/Passport/Sent")
                   (mu4e-sent-messages-behavior . sent)
                   (mu4e-drafts-folder          . "/Passport/Drafts")
