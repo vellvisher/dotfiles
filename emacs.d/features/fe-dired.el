@@ -61,7 +61,13 @@
   (use-package peep-dired
     :ensure t
     :bind (:map dired-mode-map
-                ("<SPC>" . peep-dired)))
+                ("<SPC>" . v/peep-dired-unless-wdired))
+    :config
+    (defun v/peep-dired-unless-wdired ()
+      "Run peep-dired only when not editing filenames in wdired mode."
+      (interactive)
+      (unless (bound-and-true-p wdired-mode)
+        (peep-dired))))
 
   (use-package ivy-dired-history
     :ensure t)
