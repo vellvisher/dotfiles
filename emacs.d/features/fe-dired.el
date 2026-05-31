@@ -69,10 +69,6 @@
       (unless (bound-and-true-p wdired-mode)
         (peep-dired))))
 
-  (use-package ivy-dired-history
-    :ensure t)
-
-
   (use-package dired-du
     :ensure t)
 
