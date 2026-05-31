@@ -76,7 +76,7 @@
   (v/vsetq show-trailing-whitespace t)
   (set-face-attribute 'whitespace-line nil
                       :foreground "DarkOrange1"
-                      :background nil))
+                      :background 'unspecified))
 
 (use-package smartparens
   :ensure t
