@@ -73,10 +73,8 @@
     "Shell pop with arg to cd to working dir. Else use existing location."
     (interactive "P")
     ;; shell-pop-autocd-to-working-dir is defined in shell-pop.el.
-    ;; Using lexical binding to override.
-    (if (string= (buffer-name) shell-pop-last-shell-buffer-name)
-        (shell-pop-out)
-      (shell-pop-up shell-pop-last-shell-buffer-index))))
+    ;; Using dynamic binding to override it; shell-pop handles toggle internally.
+    (call-interactively #'shell-pop)))
 
 (use-package esh-autosuggest
   :hook (eshell-mode . esh-autosuggest-mode)
