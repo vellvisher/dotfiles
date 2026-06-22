@@ -7,6 +7,8 @@
   (add-to-list 'magit-no-confirm 'stage-all-changes)
   (v/csetq magit-revision-fill-summary-line 100)
   (v/csetq magit-diff-refine-hunk 'all)
+  (v/csetq magit-stashes-margin (list t "%Y-%m-%d %H:%M" 'magit-log-margin-width nil 18))
+  (v/csetq magit-status-margin  (list t "%Y-%m-%d %H:%M" 'magit-log-margin-width nil 18))
 
   (fullframe magit-status magit-mode-quit-window))
 
