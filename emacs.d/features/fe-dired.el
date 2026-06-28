@@ -19,6 +19,14 @@
   :config
   (diredfl-global-mode 1))
 
+(defun v/dired-execute-file ()
+  "Execute file at point. Runs python3 venv for .py files."
+  (interactive)
+  (let ((file (dired-get-file-for-visit)))
+    (if (string= (file-name-extension file) "py")
+        (v/dwim-shell-command-python3-venv-run)
+      (dired-find-file))))
+
 ;; Helps when loading files with very long lines
 ;; https://emacs.stackexchange.com/a/38295
 (defun v/dired-find-file-conservatively ()
@@ -36,7 +44,8 @@
          (dired-mode . v/dired-mode-hook-function))
   :bind (:map dired-mode-map
               ("i" . dired-hide-details-mode)
-              ("M-<return>" . v/dired-find-file-conservatively))
+              ("M-<return>" . v/dired-find-file-conservatively)
+              ("C-c C-c" . v/dired-execute-file))
   ;; ("M" . ar/dired-mark-all)
   ;; ("P" . peep-dired)
   :commands (dired-mode)
