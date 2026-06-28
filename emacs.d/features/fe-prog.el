@@ -44,3 +44,9 @@
 (use-package prettier
   :ensure t
   :hook ((css-mode . prettier-mode)))
+
+(use-package flycheck
+  :ensure t
+  :defer 10
+  :custom
+    (flycheck-disabled-checkers '(org-lint)))
