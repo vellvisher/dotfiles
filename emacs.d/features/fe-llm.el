@@ -39,8 +39,7 @@
   :ensure t
   :config
   (setq agent-shell-anthropic-authentication
-      (agent-shell-anthropic-make-authentication
-       :api-key (lambda () (auth-source-pick-first-password :host "api.anthropic.com"))))
+      (agent-shell-anthropic-make-authentication :login t))
   (setq agent-shell-google-authentication
       (agent-shell-google-make-authentication :login t)))
   (setq agent-shell-anthropic-default-model-id "opus")
