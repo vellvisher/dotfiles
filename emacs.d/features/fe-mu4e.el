@@ -130,10 +130,74 @@
                               (:subject    . 100)
                               (:human-date .  15)))
 
+  ;; ---- Compose in markdown, send as HTML ----
+  ;; Write the body in markdown; on send it becomes a multipart/alternative
+  ;; message: the raw markdown is the text/plain part and pandoc-rendered HTML
+  ;; is the text/html part, so bold/italics/lists/links render in rich clients.
+  (defun v/mu4e--markdown-to-html (markdown)
+    "Return an HTML fragment rendered from MARKDOWN via pandoc."
+    (with-temp-buffer
+      (insert markdown)
+      (if (zerop (call-process-region (point-min) (point-max)
+                                      "pandoc" t t nil
+                                      "--from=gfm" "--to=html" "--wrap=none"))
+          (buffer-string)
+        (error "pandoc failed to convert markdown body"))))
+
+  (defun v/mu4e-markdown->html-on-send ()
+    "Wrap the leading text body as multipart/alternative (markdown + HTML).
+Runs from `message-send-hook'.  Converts only the text before any MML/attachment
+tags, so attachments keep working; no-op when the body is empty or already
+contains an explicit HTML part."
+    (save-excursion
+      (message-goto-body)
+      (let* ((body-start (point))
+             (part-start (save-excursion
+                           (if (re-search-forward "^<#\\(multipart\\|part\\|/\\)"
+                                                  nil t)
+                               (match-beginning 0)
+                             (point-max))))
+             (text (buffer-substring-no-properties body-start part-start)))
+        (when (and (not (string-empty-p (string-trim text)))
+                   (not (string-match-p "type=text/html" text)))
+          (let ((html (v/mu4e--markdown-to-html text)))
+            (delete-region body-start part-start)
+            (goto-char body-start)
+            (insert "<#multipart type=alternative>\n"
+                    "<#part type=text/plain>\n"
+                    (string-trim-right text) "\n"
+                    "<#part type=text/html>\n"
+                    (string-trim-right html) "\n"
+                    "<#/multipart>\n"))))))
+
+  ;; Lightweight markdown syntax highlighting layered onto message-mode.
+  ;; Not a full markdown-mode -- just fontifies the common inline/block markup
+  ;; so the body reads the way it will render.
+  (defvar v/mu4e-markdown-font-lock-keywords
+    `((,(rx bol (** 1 6 "#") " " (* nonl))          . 'bold)           ; headings
+      (,(rx "**" (+? (not (any "\n"))) "**")        . 'bold)           ; **bold**
+      (,(rx "__" (+? (not (any "\n"))) "__")        . 'bold)           ; __bold__
+      (,(rx (not (any "*")) (group "*" (+? (not (any "*\n"))) "*"))
+       1 'italic)                                                      ; *italic*
+      (,(rx symbol-start "_" (+? (not (any "_\n"))) "_" symbol-end)
+       . 'italic)                                                      ; _italic_
+      (,(rx "`" (+? (not (any "`\n"))) "`")         . 'font-lock-constant-face) ; `code`
+      (,(rx "~~" (+? (not (any "\n"))) "~~")        . 'font-lock-comment-face)  ; ~~strike~~
+      (,(rx "[" (group (+? (not (any "]\n")))) "](" (group (+? (not (any ")\n")))) ")")
+       (1 'link) (2 'font-lock-string-face))                          ; [text](url)
+      (,(rx bol (* space) (group (any "-*+") " "))  1 'font-lock-keyword-face)  ; bullets
+      (,(rx bol (* space) (group (+ digit) "." " ")) 1 'font-lock-keyword-face)); ordered
+    "Minimal markdown highlighting for mu4e compose buffers.")
+
   (defun v/mu4e-compose-mode-hook ()
     "Settings for message composition."
     (set-fill-column 1000)
-    (flyspell-mode))
+    (flyspell-mode)
+    (add-hook 'message-send-hook #'v/mu4e-markdown->html-on-send nil t)
+    (font-lock-add-keywords nil v/mu4e-markdown-font-lock-keywords 'append)
+    (when font-lock-mode
+      (font-lock-flush)
+      (font-lock-ensure)))
 
   (setq mu4e-contexts
         (list
