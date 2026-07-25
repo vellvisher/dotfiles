@@ -8,6 +8,7 @@
   (add-hook 'typescript-mode-hook
             (lambda ()
               (add-hook 'before-save-hook 'prettier-js nil t)
+              (add-hook 'typescript-mode #'flymake-eslint-enable)
               (setq-local whitespace-line-column 100))))
 
 (use-package prettier-js
