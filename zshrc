@@ -58,3 +58,6 @@ setopt inc_append_history
 setopt share_history
 # (Nice to have) ignore consecutive duplicates in history
 setopt histignoredups
+
+. "$HOME/.local/bin/env"
+eval "$(rbenv init - zsh)"
