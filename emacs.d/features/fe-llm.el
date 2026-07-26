@@ -37,6 +37,7 @@
 
 (use-package agent-shell
   :ensure t
+  :bind (("C-c C-a" . agent-shell))
   :config
   (setq agent-shell-anthropic-authentication
       (agent-shell-anthropic-make-authentication :login t))
