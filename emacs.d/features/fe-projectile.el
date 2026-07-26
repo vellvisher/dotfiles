@@ -1,10 +1,17 @@
 (use-package ripgrep
   :ensure t)
 
+(defun v/counsel-rg-project ()
+  "Search the current project root with `counsel-rg'.
+Replacement for the unmaintained `counsel-projectile-rg'."
+  (interactive)
+  (require 'projectile)
+  (counsel-rg nil (projectile-project-root)))
+
 (use-package projectile
   :ensure-system-package fd
   :defer 2
-  :bind (("C-c s" . counsel-projectile-rg))
+  :bind (("C-c s" . v/counsel-rg-project))
   :config
   (setq projectile-enable-caching t)
   (setq projectile-completion-system 'ivy)
