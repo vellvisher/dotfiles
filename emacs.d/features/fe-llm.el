@@ -42,5 +42,5 @@
   (setq agent-shell-anthropic-authentication
       (agent-shell-anthropic-make-authentication :login t))
   (setq agent-shell-google-authentication
-      (agent-shell-google-make-authentication :login t)))
+      (agent-shell-google-make-authentication :login t))
   (setq agent-shell-anthropic-default-model-id "opus")
