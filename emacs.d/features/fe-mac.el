@@ -11,36 +11,26 @@
   :vc (:url "https://github.com/xenodium/EmacsMacOSModule")
   :config
   (macos-load-module))
-;; ---- Paste browser rich text as Markdown ----
-;; When you copy from a browser text field, macOS keeps an HTML flavor on the
-;; clipboard alongside the plain text.  Pull that flavor and convert it to
-;; Markdown with pandoc, so bold/italics/links/lists survive the paste.
-(defun v/clipboard-html ()
-  "Return the clipboard's HTML flavor as a string, or nil when absent.
-Reads the «class HTML» pasteboard type via `osascript', which yields a hex
-dump, then decodes it back to raw HTML."
-  (let ((html (string-trim
-               (shell-command-to-string
-                (concat "osascript -e 'the clipboard as «class HTML»' 2>/dev/null"
-                        " | sed -e 's/.*HTML//' -e 's/[^0-9A-Fa-f].*//'"
-                        " | xxd -r -p")))))
-    (unless (string-empty-p html) html)))
+;; Yank the clipboard's HTML flavor as Markdown when present.
+(defun v/clipboard-html-as-markdown ()
+  "Return the macOS clipboard's HTML flavor converted to Markdown, or nil.
+Reads the \"public.html\" pasteboard flavor via AppleScript, decodes the
+hex `«data HTML…»' payload and pipes it through pandoc."
+  (let* ((script "raw=$(osascript -e 'the clipboard as «class HTML»' 2>/dev/null) || exit 0
+hex=$(printf '%s' \"$raw\" | sed -E 's/^«data HTML//; s/»$//')
+[ -z \"$hex\" ] && exit 0
+printf '%s' \"$hex\" | xxd -r -p | pandoc -f html -t gfm-raw_html --wrap=none | sed 's/\\xc2\\xa0/ /g'")
+         (out (string-trim (shell-command-to-string script))))
+    (unless (string-empty-p out) out)))
 
-(defun v/yank-as-markdown ()
-  "Yank the clipboard's HTML converted to Markdown via pandoc.
-Falls back to a plain `yank' when the clipboard has no HTML flavor."
-  (interactive)
-  (let ((html (v/clipboard-html)))
-    (if (not html)
-        (yank)
-      (insert
-       (with-temp-buffer
-         (insert html)
-         (if (zerop (call-process-region (point-min) (point-max)
-                                         "pandoc" t t nil
-                                         "--from=html" "--to=gfm" "--wrap=none"))
-             (string-trim-right (buffer-string))
-           (user-error "pandoc failed to convert clipboard HTML")))))))
+(defun v/yank-or-html-markdown (&optional arg)
+  "Yank, converting the clipboard's HTML flavor to Markdown when present.
+Falls back to the normal `yank' (honouring ARG) when the clipboard has no
+HTML flavor or the conversion yields nothing."
+  (interactive "*P")
+  (let ((md (v/clipboard-html-as-markdown)))
+    (if md
+        (progn (push-mark) (insert md))
+      (yank arg))))
 
-;; Cmd-Y: paste rich clipboard as Markdown (plain Cmd-V still yanks text).
-(global-set-key (kbd "M-Y") #'v/yank-as-markdown)
+(global-set-key (kbd "C-S-y") #'v/yank-or-html-markdown)
