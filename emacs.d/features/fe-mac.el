@@ -11,7 +11,6 @@
   :vc (:url "https://github.com/xenodium/EmacsMacOSModule")
   :config
   (macos-load-module))
-
 ;; Yank the clipboard's HTML flavor as Markdown when present.
 (defun v/clipboard-html-as-markdown ()
   "Return the macOS clipboard's HTML flavor converted to Markdown, or nil.

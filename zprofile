@@ -5,5 +5,3 @@ elif [[ "$(uname -m)" == "x86_64" ]]; then
   # Intel
   eval "$(/usr/local/bin/brew shellenv)"
 fi
-export PATH="$PATH:/Users/vaarnan/dev/flutter/bin"
-export PATH="$PATH:/Users/vaarnan/.docker/bin"
