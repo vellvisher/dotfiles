@@ -24,23 +24,37 @@
   ;; From https://platform.openai.com/docs/models/dall-e
   (v/csetq dall-e-shell-model-versions '("dall-e-3" "dall-e-2"))
   (defun v/dall-e-shell-swap-model-version ()
-  "Swap model version from `dall-e-shell-model-versions'."
-  (interactive)
-  (unless (eq major-mode 'dall-e-shell-mode)
-    (user-error "Not in a shell"))
-  (setq dall-e-shell-model-version
-              (completing-read "Model version: "
-                                 dall-e-shell-model-versions nil t))))
+    "Swap model version from `dall-e-shell-model-versions'."
+    (interactive)
+    (unless (eq major-mode 'dall-e-shell-mode)
+      (user-error "Not in a shell"))
+    (setq dall-e-shell-model-version
+          (completing-read "Model version: "
+                           dall-e-shell-model-versions nil t))))
 
 (use-package acp
   :vc (:url "https://github.com/xenodium/acp.el"))
 
 (use-package agent-shell
   :ensure t
-  :bind (("C-c C-a" . agent-shell))
+  :bind
+  (("C-c C-a" . agent-shell)
+   ("C-x b" . v/switch-buffer-or-agent-shell))
+  :custom
+  (agent-shell-preferred-agent-config '(auto . claude-code)) ;; change to preselect if I stop using claude exclusively
+  (agent-shell-session-restore-verbosity 'first-last)
+  (agent-shell-anthropic-default-model-id "opus")
+  :init
+  (defun v/switch-buffer-or-agent-shell (&optional arg)
+    "Run `switch-to-buffer', or `agent-shell-switch-buffer' with prefix ARG.
+Preserves the default `C-x b' binding while overloading the
+prefix argument, as `counsel-find-file' does."
+    (interactive "P")
+    (if arg
+        (call-interactively #'agent-shell-switch-buffer)
+      (call-interactively #'switch-to-buffer)))
   :config
   (setq agent-shell-anthropic-authentication
-      (agent-shell-anthropic-make-authentication :login t))
+        (agent-shell-anthropic-make-authentication :login t))
   (setq agent-shell-google-authentication
-      (agent-shell-google-make-authentication :login t)))
-  (setq agent-shell-anthropic-default-model-id "opus")
+        (agent-shell-google-make-authentication :login t)))
