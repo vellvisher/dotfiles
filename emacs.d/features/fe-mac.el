@@ -10,6 +10,14 @@
 (use-package macos
   :vc (:url "https://github.com/xenodium/EmacsMacOSModule")
   :config
+  ;; `macos-rebuild-module-and-reload' runs `swift build' via `compile',
+  ;; which uses the current buffer's `default-directory'.  When that isn't
+  ;; the package root, swift can't find Package.swift and the build fails.
+  ;; Force the build to run from the module source root.
+  (advice-add 'macos-rebuild-module-and-reload :around
+              (lambda (orig &rest args)
+                (let ((default-directory (macos--module-source-root)))
+                  (apply orig args))))
   (macos-load-module))
 ;; Yank the clipboard's HTML flavor as Markdown when present.
 (defun v/clipboard-html-as-markdown ()
