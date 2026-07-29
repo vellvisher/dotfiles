@@ -42,3 +42,82 @@ HTML flavor or the conversion yields nothing."
       (yank arg))))
 
 (global-set-key (kbd "C-S-y") #'v/yank-or-html-markdown)
+
+(when (eq system-type 'darwin)
+  (eval-and-compile (require 'eudcb-macos-contacts))
+  (eudc-macos-contacts-set-server "localhost"))
+(eval-when-compile (require 'message))
+(define-key message-mode-map
+  [(control ?c) (tab)] 'eudc-expand-inline)
+(eval-when-compile (require 'sendmail))
+(define-key mail-mode-map
+  [(control ?c) (tab)] 'eudc-expand-inline)
+
+;; Interactive contact lookup on top of the EUDC macOS Contacts backend.
+;; `eudc-expand-inline' only completes email in a header; these commands add
+;; `completing-read' (hence ivy) selection plus a details buffer.
+(defun v/eudc--search (term)
+  "Return macOS Contacts records matching TERM in the first or last name.
+The backend can only search name/org fields (not email or phone), so we
+query both name fields and merge the de-duplicated results.  Each record
+is an alist of (ATTR . VALUE) cons cells; `email' and `phone' may repeat."
+  (require 'eudc)
+  (when (string-empty-p (string-trim term))
+    (user-error "[eudc] Empty search term"))
+  (delete-dups
+   (mapcar #'v/eudc--clean
+           (append (ignore-errors (eudc-query (list (cons 'firstname term))))
+                   (ignore-errors (eudc-query (list (cons 'name term))))))))
+
+(defun v/eudc--clean (record)
+  "Drop RECORD fields whose value is the AppleScript \"missing value\" literal.
+Unset first/last names are coerced to that string by the backend; removing
+them keeps both the completion label and the details buffer clean."
+  (seq-remove (lambda (c) (equal (cdr c) "missing value")) record))
+
+(defun v/eudc--emails (record)
+  "Return the list of email addresses in RECORD."
+  (delq nil (mapcar (lambda (c) (and (eq (car c) 'email) (cdr c))) record)))
+
+(defun v/eudc--label (record)
+  "Return a one-line completion label for RECORD."
+  (let ((name (string-trim
+               (concat (or (cdr (assq 'first_name record)) "") " "
+                       (or (cdr (assq 'last_name record)) ""))))
+        (emails (v/eudc--emails record))
+        (org (cdr (assq 'organization record))))
+    (concat (if (string-empty-p name) "(no name)" name)
+            (when emails (format " <%s>" (string-join emails ", ")))
+            (when org (format " (%s)" org)))))
+
+(defun v/eudc--pick (prompt term)
+  "Search Contacts for TERM and read one record with PROMPT via completion."
+  (let* ((records (v/eudc--search term)))
+    (unless records
+      (user-error "[eudc] No contacts match %S" term))
+    (if (length= records 1)
+        (car records)
+      (let ((table (mapcar (lambda (r) (cons (v/eudc--label r) r)) records)))
+        (cdr (assoc (completing-read prompt table nil t) table))))))
+
+(defun v/eudc-contacts (term)
+  "Search macOS Contacts for TERM, pick a match, and show its details.
+Selection uses `completing-read' (ivy).  The chosen record is rendered
+in the EUDC results buffer via `eudc-display-records'."
+  (interactive "sSearch contacts: ")
+  (eudc-display-records (list (v/eudc--pick "Contact: " term))))
+
+(defun v/eudc-insert-email (term)
+  "Search macOS Contacts for TERM and insert a chosen contact's email at point.
+Prompts once more when the selected contact has multiple addresses."
+  (interactive "*sSearch contacts: ")
+  (let* ((record (v/eudc--pick "Contact: " term))
+         (emails (v/eudc--emails record)))
+    (unless emails
+      (user-error "[eudc] %s has no email address" (v/eudc--label record)))
+    (insert (if (length= emails 1)
+                (car emails)
+              (completing-read "Email: " emails nil t)))))
+
+(define-key message-mode-map (kbd "C-c C-f") #'v/eudc-insert-email)
+(define-key mail-mode-map (kbd "C-c C-f") #'v/eudc-insert-email)
