@@ -38,12 +38,27 @@
     (setq-local bidi-display-reordering nil)
     (when (boundp 'smartparens-mode)
       (smartparens-mode -1))))
+(defvar v/dired-sqlite-extensions '("sqlite" "sqlite3" "db" "db3")
+  "File extensions that should be opened with `sqlite-mode-open-file'.")
+
+(defun v/dired-find-file ()
+  "Open file at point.
+For sqlite files, use `sqlite-mode-open-file' instead of visiting directly."
+  (interactive)
+  (let ((file (dired-get-file-for-visit)))
+    (if (and (not (file-directory-p file))
+             (member (downcase (or (file-name-extension file) ""))
+                     v/dired-sqlite-extensions))
+        (sqlite-mode-open-file file)
+      (dired-find-file))))
+
 (use-package dired
   :hook ((dired-mode . dired-hide-details-mode)
          (dired-mode . dired-collapse-mode)
          (dired-mode . v/dired-mode-hook-function))
   :bind (:map dired-mode-map
               ("i" . dired-hide-details-mode)
+              ("<return>" . v/dired-find-file)
               ("M-<return>" . v/dired-find-file-conservatively)
               ("C-c C-c" . v/dired-execute-file))
   ;; ("M" . ar/dired-mark-all)
