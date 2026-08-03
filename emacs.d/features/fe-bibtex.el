@@ -13,7 +13,11 @@
 
 (use-package ivy-bibtex
   :ensure t
-  :bind ("C-c b" . ivy-bibtex)
+  :bind (
+         :map latex-mode-map ("C-c b" . ivy-bibtex)
+         :map markdown-mode-map ("C-c b" . ivy-bibtex)
+         :map org-mode-map ("C-c b" . ivy-bibtex)
+         :map bibtex-mode-map ("C-c b" . ivy-bibtex))
   :config
   ;; Global fallback bibliography (Zotero full-library export).
   (setq bibtex-completion-bibliography '("~/Zotero/library.bib"))
