@@ -38,7 +38,7 @@
     (setq-local bidi-display-reordering nil)
     (when (boundp 'smartparens-mode)
       (smartparens-mode -1))))
-(defvar v/dired-sqlite-extensions '("sqlite" "sqlite3" "db" "db3")
+(defvar v/dired-sqlite-extensions '("sqlite" "sqlite3" "db" "db3" "sqlite-wal" "sqlite-shm")
   "File extensions that should be opened with `sqlite-mode-open-file'.")
 
 (defun v/dired-find-file ()
