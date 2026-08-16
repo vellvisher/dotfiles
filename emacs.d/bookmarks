@@ -2,7 +2,11 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("email"
+(("journelly"
+ (filename . "~/Library/Mobile Documents/iCloud~com~xenodium~Journelly/Documents/Journelly.org")
+ (handler . org-bookmark-heading-jump)
+ (outline-path "[2026-08-16 Sun 21:11] @ -"))
+("email"
  (filename . "~/GoogleDriveGmail/org/work.org")
  (handler . org-bookmark-heading-jump)
  (outline-path "Inbox" "Passwords"))
