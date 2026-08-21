@@ -57,7 +57,7 @@
   (defun v/mu4e-mbsync-and-update-index ()
     "Syncs via a process with mbsync and then calls an index update."
     (interactive)
-    (set-process-sentinel (start-process-shell-command "mbsync" "*mbsync*" "mbsync -Va")
+    (set-process-sentinel (start-process-shell-command "mbsync" "*mbsync*" "mbsync -a")
                           (lambda (process state)
                             (let ((output (with-current-buffer (process-buffer process)
                                             (buffer-string))))
@@ -87,7 +87,7 @@
              (t                                       "/Gmail/[Gmail]/All Mail")))))
   ;; Update mail using 'U' in main view:
   ;; Only update the index, use the brew daemon.
-  (setq mu4e-get-mail-command "mbsync -Va")
+  (setq mu4e-get-mail-command "mbsync -a")
   (setq mu4e-view-show-addresses t)
   (setq mu4e-attachment-dir (expand-file-name "~/Downloads/"))
   (setq mu4e-maildir "~/mail")
