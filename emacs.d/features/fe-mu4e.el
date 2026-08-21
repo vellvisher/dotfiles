@@ -95,9 +95,9 @@
   (setq mu4e-user-mail-address-list v-mu4e-user-mail-address-list)
   (setq mu4e-context-policy 'pick-first)
   (setq mu4e-compose-context-policy 'pick-first)
-  (setq mu4e-update-interval 60)
+  (setq mu4e-update-interval 180)
   ;; (setq mu4e-index-cleanup nil)      ;; don't do a full cleanup check
-  ;; (setq mu4e-index-lazy-check t)    ;; don't consider up-to-date dirs
+  (setq mu4e-index-lazy-check t)    ;; only reindex dirs whose timestamp changed
 
   ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
   (setq mu4e-sent-messages-behavior 'delete)
